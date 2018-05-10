@@ -1,0 +1,137 @@
+
+
+
+
+
+/*************************************************/
+/* Auto-clearing of floats */
+.floatcontainer:after,
+.formcontrols .blockrow:after,
+dl.stats:after {
+	content:".";
+	display:block;
+	height:0;
+	clear:both;
+	visibility:hidden;
+}
+.floatcontainer,
+.formcontrols .blockrow,
+dl.stats {
+	display:inline-block;
+	font-weight:normal;
+}
+/* IE-Mac hide \*/
+* html .floatcontainer,
+.formcontrols .blockrow,
+dl.stats {
+	height:1%;
+}
+.floatcontainer,
+.formcontrols .blockrow,
+dl.stats {
+	display:block;
+}
+.floatcontainer.hidden {
+	display:none;
+}
+/* End IE-Mac hide */
+
+
+
+
+.txtLeft {
+	text-align : left;
+}
+.text-margin {
+	font-size : 1px;
+	height    : 8px;
+}
+
+/*----------------------------------------------------
+	CLEARFIX
+----------------------------------------------------*/
+.clearfix{
+    zoom:1;/*for IE 5.5-7*/
+}
+.clearfix:after{/*for modern browser*/
+    content:".";
+    display: block;
+    height:0px;
+    clear:both;
+    visibility:hidden;
+}
+* html .clearfix{
+	display:inline-table;
+	/*\*/display:block;/**/
+}
+body, x:-moz-broken {
+	margin-left: -1px;
+}
+/* IE7 */
+*:first-child+html body {
+	padding-left: 1px;
+}
+/* IE6 */
+*html body {
+	padding-left: 1px;
+}
+
+
+div.crVS {
+  width:       46%;
+  text-align:  center;
+  white-space: nowrap;
+}
+
+.crClear { clear: both; }
+.crLeft { float: left; }
+.crRight { float: right; }
+
+.cBox { position: relative;width:100%; margin-bottom:15px;}
+.cBoxInner { padding:9px;}
+.cBoxTL, .cBoxTR, .cBoxBL, .cBoxBR { position:absolute; display:block; width:10px; height:10px; z-index:1; }
+.cBoxTL { top:-1px; left:-1px; }
+.cBoxTR { top:-1px; right:-1px; }
+.cBoxBL { bottom:-1px; left:-1px; }
+.cBoxBR { bottom:-1px; right:-1px; }
+.cBoxR { position:absolute; display:block; width:1px; height:100%; top:-1px; right:-1px; background-color:#C9E1F4; }
+.cBoxB { position:absolute; display:block; width:100%; height:1px; bottom:-1px; background-color:#C9E1F4; }
+.cBoxTL, .cBoxTR, .cBoxBL, .cBoxBR { background-image:url(../img/cbox.png); background-repeat:no-repeat; }
+.cBoxTL { background-position: 0px 0px; }
+.cBoxTR { background-position: -10px 0px; }
+.cBoxBL { background-position: 0px -10px; }
+.cBoxBR { background-position: -10px -10px; }
+.secondary, .secEyebrow, .primary { font-family: 'Cabin'; border:1px solid #C9E1F4; border-right:none; border-bottom:none; }
+.secEyebrow h2 { margin:0; border-bottom:1px solid #E0EFFB; padding:6px 8px 6px 8px; font-size:100%; color:#030303; }
+.primary, .secEyebrow h2 { background-color:#EAF3FE; }
+.primary .cBoxTL, .secEyebrow .cBoxTL { background-position: 0px -40px; }
+.primary .cBoxTR, .secEyebrow .cBoxTR { background-position: -10px -40px; }
+.primary .cBoxBL { background-position: 0px -50px; }
+.primary .cBoxBR { background-position: -10px -50px; }
+.grayBox .cBoxTL { background-position: 0px -80px; }
+.grayBox .cBoxTR { background-position: -10px -80px; }
+.grayBox .cBoxBL { background-position: 0px -90px; }
+.grayBox .cBoxBR { background-position: -10px -90px; }
+.grayBox .cBoxR { background-color:#CCC; }
+.grayBox .cBoxB { background-color:#CCC; }
+.grayBox { border: 1px solid #CCC; border-right:none; border-bottom:none; }
+.dkBlueBox .cBoxTL { background-position: 0px -60px; }
+.dkBlueBox .cBoxTR { background-position: -10px -60px; }
+.dkBlueBox .cBoxBL { background-position: 0px -70px; }
+.dkBlueBox .cBoxBR { background-position: -10px -70px; }
+.dkBlueBox .cBoxR { background-color: #AED2EE; }
+.dkBlueBox .cBoxB { background-color: #AED2EE; }
+.dkBlueBox { border: 1px solid #AED2EE; border-right: none; border-bottom: none; }
+.tanBox .cBoxTL { background-position: 0px -100px; }
+.tanBox .cBoxTR { background-position: -10px -100px; }
+.tanBox .cBoxBL { background-position: 0px -110px; }
+.tanBox .cBoxBR { background-position: -10px -110px; }
+.tanBox .cBoxR { background-color: #CCC; }
+.tanBox .cBoxB { background-color: #CCC; }
+.tanBox { border:1px solid #CCC; border-right: none; border-bottom: none; background-color: #FCFCF3; }
+* html .cBox { height: 1%; }
+.s_boxLeft { background-position: 0px -40px; height: 12px; width: 12px; }
+.s_boxRight { background-position: -10px -40px; height:12px; width: 12px; }
+
+
+

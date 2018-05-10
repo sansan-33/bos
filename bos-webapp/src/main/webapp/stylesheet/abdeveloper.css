@@ -1,0 +1,81 @@
+.abd-main-container{
+    position: absolute;
+    text-align: center;
+    width:100%;
+    height:100%;
+    margin:0;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+}
+.abd-logger-container{
+    position: absolute;
+    height:80%;
+    width:100%;
+    text-align: center;
+    padding:5px;
+    margin:0;
+    bottom:0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+.abd-logger-text{
+    resize: none;
+    height: 100%;
+    width:100%;
+    overflow: auto;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+.abd-overlay{
+    background: rgba(0,0,0,0.5);
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    z-index:10000;
+}
+.abd-container{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index:10001;
+}
+.abd-login-text {
+    color:rgba(255, 255, 255, 1);
+    font-size: 2em;
+    text-align: center;
+    margin:20px;
+}
+.abd-login-link, .abd-logout-link{
+    color:rgba(255, 255, 255, 1);
+    font-size: 1em;
+    margin:20px;
+}
+.abd-login-btn, .abd-logout-btn{
+    min-width:100px;
+    min-height:30px;
+    padding: 5px 10px;
+    display: inline-block;
+    cursor: pointer;
+    box-sizing: content-box;
+    background-color:#4267B2;
+    font-size: 1.5em;
+    font-weight: bold;
+    line-height: 26px;
+    white-space: nowrap;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: none;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-font-smoothing: antialiased;
+}

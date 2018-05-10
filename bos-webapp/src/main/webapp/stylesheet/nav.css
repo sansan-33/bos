@@ -1,0 +1,187 @@
+nav{
+	
+	margin:0px;
+	text-align:left;
+	padding:0px;
+}
+
+/* APPLE STYLE NAVIGATION MENU */
+#appleNav { 
+    margin:1px 0; 
+    list-style:none;
+    font-family: "Lucida Grande",  Verdana, Arial, Helvetica, sans-serif; letter-spacing:-0.5px; font-size:12px;
+    text-shadow: 0 -1px 3px #202020;
+    height:30px;
+    width:450px;
+    left: 600px;
+    top: 10px;	
+}
+#smallNav{
+    top: -65px;
+	right: -585px;
+	width:400px;
+	text-shadow: 0;
+	height:30px;
+	margin: 0;
+    position:relative;
+}
+#smallNav li{display:block; float:left;padding-left:20px;}
+#appleNav li { 
+	display:block; float:left; border-right:0px solid #5d5d5d; border-left:1px solid #929292; height:10px; border-bottom:0px solid #575757; border-top:0px solid #797979; padding-left:5px;
+}
+#appleNav li a{ color:white; text-decoration:none; text-align:center; display:block; line-height:10px; outline:none; }
+#appleNav li a:hover{color:rgb(168,149,101);}
+
+#appleNav li:first-child {
+    -moz-border-radius:4px 0 0 4px;
+    -webkit-border-radius:4px 0 0 4px;
+    border-radius:4px 0 0 4px;
+    
+    border-left:none;
+}
+
+#appleNav {
+     -webkit-animation: showMenu 1s; position:relative;
+}
+a.mainmenu, a.submenu
+{
+    font-size:12px;
+    text-decoration: none;
+    padding: 5px;
+    color: white;
+}
+a.submenu{
+	font-size:9px;
+}
+a.mainmenu:hover, a.submenu:hover
+{
+    color:rgb(168,149,101);
+    cursor: pointer; cursor: hand;
+}
+
+/*************************************************/
+/* BREADCRUMB */
+
+.breadcrumb > ul {
+	background:transparent url(../img/navbit-home.png) left top no-repeat;
+	border:none;
+}
+
+.breadcrumb .navbit {
+	float:left;
+	background-image:url(../img/navbit-arrow-right.png);
+	background-position:right center;
+	background-repeat:no-repeat;
+	padding-right:10px;
+	padding-left:3px;
+	font-size: 1.3em !important;
+}
+
+.breadcrumb .navbit:first-child {
+	padding-left:0;
+}
+
+.breadcrumb .navbit.lastnavbit {
+	background: transparent;
+}
+
+.breadcrumb .navbit.lastnavbit span {
+	float:left;
+	background: transparent;
+	padding-right:10px;
+	padding-left:3px;
+}
+
+.breadcrumb .navbit > a, .breadcrumb .lastnavbit > span {
+	display:block;
+	padding:2px 4px;
+	float:left;
+	background-color:transparent;
+	border:1px solid transparent;
+	-moz-border-radius:0px;
+	-webkit-border-radius:0px;	
+	border-radius:0px;	
+        color: rgb(0,102,187);	
+}
+
+.breadcrumb .navbit a:hover {
+	border-color:#9c9588;
+	background-color:rgb(246,248,249);
+}
+
+.breadcrumb .navbit a {
+	text-decoration:none;
+}
+
+.breadcrumb .navbit a.popupctrl {
+	background-image:url(../img/navbit-arrow-right.png);
+	background-position:center center;
+	padding:2px 4px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+}
+
+.breadcrumb .navbit a.popupctrl:hover {
+	background-color:#f3ead5;
+	color:#e15d14;
+}
+
+.breadcrumb hr {
+	display:none;
+}
+.breadcrumb > ul {
+	background-image:none;
+	padding-left:0px;
+list-style-type: none;
+}
+.breadcrumb .navbithome {
+	float: left;
+	padding: 3.5px 0;
+}
+/* BREADCRUMB */
+/***************************************************************************/
+
+/* -----------------------------------------------------------
+		Start of Footer
+----------------------------------------------------------- */
+#footer-wrap {
+	font-family: 'Cabin';
+ 	background-color: rgb(248,248,237); 
+ 	width:1180px;
+	height:370px;
+	background-repeat:no-repeat;
+	margin:0px auto;
+	border-top-style:solid;
+	border-top-color:rgb(88,148,66);
+        border-top-width:1px;
+}
+ 	
+}
+#footer {
+	margin:auto;
+	padding:27px 36px 0 36px;
+	text-align:left;
+}
+.footertext , .footerpipedtext {
+   color     : rgb(88,148,66);
+   font-size:9px;
+   margin-right: 45px;
+   margin-top: 35px;
+   
+}
+.footerpipedtext {
+ 	margin-right: 5px;
+   	margin-top: 5px;
+        color: rgb(0,102,187);	
+}	
+/* PIPED LINKS */
+.piped { display: block; zoom: 1; }
+.piped:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.piped li { float: left; display: inline; }
+.piped a { color:white; border-left: 1px solid #797c80; padding: 0 0 0 0.75em; margin-left: 0.75em; display:block;}
+.piped a.first { color:white; border-left: 0 !important; padding-left: 0; margin-left: 0 !important; display:block;}
+/* -----------------------------------------------------------
+		End of Footer
+----------------------------------------------------------- */
+

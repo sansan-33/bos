@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+    <beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+     xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+        
+    <context:component-scan base-package="com.ana.util,com.ana.controller,com.ana.dao" />
+
+    <context:property-placeholder location="classpath:config.properties"></context:property-placeholder>
+
+
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${jdbc.driverClassName}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <property name="maxTotal" value="${jdbc.maxTotal}"/>
+        <property name="maxIdle" value="${jdbc.maxIdle}"/>
+        <!--
+            <property name="initialSize" value ="${jdbc.initialSize}"></property>
+            <property name="maxWait" value ="${jdbc.maxWait}"/>
+            <property name="maxIdle" value ="${jdbc.maxIdle}"/>
+            <property name="minIdle" value ="${jdbc.minIdle}"/>
+        -->
+    </bean>
+
+    <tx:annotation-driven/>
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+      <property name="dataSource" ref="dataSource" />
+    </bean>
+    
+    <bean id="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
+        <property name="transactionManager" ref="transactionManager" />
+    </bean>
+
+
+    <bean id="objectStatDAO" class="com.ana.dao.ObjectStatDAO">
+        <property name="transactionTemplate" ref="transactionTemplate" />
+    </bean>
+    <bean id="entityDAO" class="com.ana.dao.EntityDAO"/>
+
+    <bean id="spider" class="com.ana.util.Spider"/>
+    <bean id="spiderk" class="com.ana.util.SpiderKindergarten"/>
+    <bean id="spiders" class="com.ana.util.SpiderSecondary"/>
+    <bean id="mailUtil" class="com.ana.util.MailUtil"/> 
+    <bean id="fileUtil" class="com.ana.util.FileUtil"/>
+
+</beans>

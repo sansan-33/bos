@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: http://www.bookofschool.com/sitemap.xml

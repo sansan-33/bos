@@ -1,0 +1,501 @@
+#page-wrap { width: 1180px; margin: 0px auto;  }
+ul		{ list-style: none; }
+.override ul  { list-style: circle; }
+.override ul li { list-style: circle; padding-right:8px;}
+
+.bosmenu  , ul.dropdown li      
+{ 	
+	
+	background-color: #77BB44; /*Primary Green*/
+	background: -webkit-gradient(linear, left top, left bottom, from(#75B943), to(#56A02B)); /* Safari 4+, Chrome */
+    background: -webkit-linear-gradient(top, #75B943, #56A02B); /* Chrome 10+, Safari 5.1+ */
+    background: -moz-linear-gradient(top, #75B943, #56A02B); /* FF3.6+ */
+    background: -ms-linear-gradient(top, #75B943, #56A02B); /* IE10 */
+    background: -o-linear-gradient(top, #75B943, #56A02B); /* Opera */
+    background: linear-gradient(top, #75B943, #56A02B); /* W3C */ 
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#75B943, endColorstr=#56A02B)"; /*IE8-9*/
+    filter: progid:DXImageTransform.Microsoft.Gradient(startColorstr="#75B943", endColorstr="#56A02B", GradientType=0); /* IE6-7 */ 
+   
+    
+}
+/* 
+	LEVEL ONE
+*/
+ul.dropdown          { 
+	display: block;
+	margin: 0;
+	padding: 0;
+	line-height: 20px;
+	overflow: hidden;
+    
+    
+}
+ul.dropdown li        
+{ 	
+	
+	float: left;
+     display: list-item;
+     text-align: -webkit-match-parent;
+     list-style: none;
+     
+	zoom: 1; 
+	font-size: 13px;
+	font-family: 'Segoe UI' , Arial, Sans-Serif;
+    z-index: 30;
+    
+    
+
+}
+ul.dropdown a:hover				{ color: #DAE23F; }
+ul.dropdown a:active            { color: #DAE23F; }
+ul.dropdown li a              	{ display: block; white-space: nowrap;padding: 9px 25px 7px 25px; color: white;height:20px;  text-decoration: none;font-weight: bold; }
+ul.dropdown li:first-child a    {   text-decoration: none; } /* Doesn't work in IE */
+
+ul.dropdown li:hover				{ 
+
+	background-color: #1F6D34;
+    color: #DAE23F;
+    background: -webkit-gradient(linear, left top, left bottom, from(#2B9646), to(#1F6D34)); /* Safari 4+, Chrome */
+    background: -webkit-linear-gradient(top, #2B9646, #1F6D34); /* Chrome 10+, Safari 5.1+ */
+    background: -moz-linear-gradient(top, #2B9646, #1F6D34); /* FF3.6+ */
+    background: -ms-linear-gradient(top, #2B9646, #1F6D34); /* IE10 */
+    background: -o-linear-gradient(top, #2B9646, #1F6D34); /* Opera */
+    background: linear-gradient(top, #2B9646, #1F6D34); /* W3C */ 
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#2B9646FF, endColorstr=#1F6D34FF)"; /*IE8-9*/
+    filter: progid:DXImageTransform.Microsoft.Gradient(startColorstr="#2B9646", endColorstr="#1F6D34", GradientType=0); /* IE6-7 */ 
+    overflow: auto; /* Give "layout" for IE6-7 filters to work */
+
+	}
+ul.dropdown li.hover a       		 { color: white;  text-decoration: none; text-shadow: none;}
+
+
+/* 
+	LEVEL TWO
+*/
+ul.dropdown li ul 			{ 
+	
+	margin: 0;
+    position: absolute;
+    z-index: 200;
+    visibility: hidden;
+    font-size: 12px;
+    background: url(../img/menu_shadow.png) #2b9646 no-repeat;
+    min-width: 150px;
+    padding: 10px 0; 
+	 
+	
+	}
+ul.dropdown li ul li 		
+{ 
+	 
+	 float: none;
+     display: inline;
+     background-color: transparent;
+     line-height: 0;
+     margin: 0;
+     overflow:hidden;
+}
+
+
+ul.dropdown li ul li.hover a 	{  color: #DAE23F;  }								 
+
+ul.dropdown li ul li a		{ 
+    color: white;
+    width: auto;
+    background-color: transparent;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    line-height: 26px;
+    font-weight: normal;
+} 
+
+
+
+
+
+
+/***********************************************
+    Search Area and Context Menu
+************************************************/
+#suggestions{ position: relative;float:right; left:-250px;top:130px; width:320px; display:none; }
+
+div.SearchArea
+{
+    display: inline-block;
+    float: right;
+    margin-top: 7px;
+    margin-bottom: 4px;
+    margin-left: 12px;
+    margin-right: 7px;
+   
+}
+
+div.SearchArea input[type=button]
+{
+    border: 0px;
+    margin: 0px;
+    height: 25px;
+    width: 25px;
+    padding: 0px;
+    background-image: url(../img/looking_glass.png);
+    background-repeat: no-repeat;
+    cursor: pointer;
+    float: left;
+    min-width: 0;
+    background-color: #2CA243;
+}
+
+div.SearchArea input.TextBox
+{
+    margin: 0px;
+    width: 200px;
+    float: left;
+    color: #333132; /* Slate gray */
+    font-size: 12px;
+    font-family: 'Segoe UI' , Arial, Sans-Serif;
+    height: 24px;
+    line-height: 23px;
+    border: 0px;
+    padding: 0px;
+    padding-left: 5px;
+}
+
+div.SearchArea input.WatermarkColor
+{
+    color: #2B9646;
+}
+
+/***********************************************
+    Gridlayout
+************************************************/
+
+/* Container of 24 columns with 5 pixel spacing for 955 pixel total width */
+.container
+{
+	width: 1180px;
+	margin: 0 auto;
+}
+
+/* Clearing floats without extra markup
+   Based on How To Clear Floats Without Structural Markup by PiE
+   [http://www.positioniseverything.net/easyclearing.html] */
+.clearfix:after, .container:after {
+  content: "\0020"; 
+  display: block; 
+  height: 0; 
+  clear: both; 
+  visibility: hidden;
+  overflow:hidden; 
+}
+.clearfix, .container { display: block; }
+
+/* Regular clearing
+   apply to column that should drop below previous ones. */
+.clear { clear:both; }
+.left { float: left; }
+.right { float: right; }
+
+/***********************************************
+    BodyHeader
+************************************************/
+
+div#BodyHeader
+{
+    min-height: 100px;
+    z-index: 10;
+}
+
+body div#BodyHeader a
+{
+    
+}
+
+body div#BodyHeader a:hover
+{
+    text-decoration: none;
+}
+
+body div#BodyHeader div#ShellHeaderContent
+{
+    position: relative;
+    z-index: 20;
+    text-align: left;
+}
+
+/***********************************************
+    Me Bar General Styles
+************************************************/
+
+div#ShellHeaderContent div#ShellMeBarArea
+{
+    position: relative;
+    height: 85px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+div#ShellHeaderContent div#ShellMeBarArea a,
+div#ShellHeaderContent div#ShellMeBarArea a:visited
+{
+    color: #77BB44; /* Primary Green */
+}
+
+div#ShellHeaderContent div#ShellMeBarArea a:hover
+{
+    color: #2B9646;
+}
+
+div#ShellHeaderContent div#ShellMeBarArea div#HeadShotBox
+{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 70px;
+    height: 80px;
+}
+
+div#ShellHeaderContent div#ShellMeBarArea div#ShellMeBar
+{
+    position: absolute;
+    top: 0px;
+    right: 84px;
+    height: 80px;
+    width: 700px;
+    font-family: 'Segoe UI' , Arial, Sans-Serif;
+}
+
+
+div#ShellHeaderContent div#ShellMeBarArea div#ShellLogo
+{
+    position: absolute;
+    left: -25px;
+    top: 10px;
+    height: 65px;
+    width: 230px;
+    background-size: 165px 65px;
+    background-image: url(../img/logoname.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+div#ShellHeaderContent div#ShellMeBarArea div.GamerStatArea
+{
+    position: absolute;
+    bottom: 39px;
+    right: 0px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #BDBEC1; /*Alloy Grey*/
+    width: 100%;
+}
+
+div#ShellHeaderContent div#ShellMeBarArea div.LinkArea
+{
+    position: absolute;
+    top: 44px;
+    text-align: right;
+    right: 0px;
+    font-size: 12px;
+    color: #BDBEC1; /*Alloy Grey*/
+    width: 100%;
+}
+
+/***********************************************
+    Signed Out Experience
+************************************************/
+
+div#ShellHeaderContent div#ShellMeBarArea div#HeadShotBox.SignedOut
+{
+    background-image: url(../img/headbox-signedout.png);
+    background-position: center right;
+    background-repeat: no-repeat;
+}
+
+div#ShellHeaderContent div#ShellMeBarArea div#ShellMeBar.SignedOut div.LinkArea a
+{
+    font-size: 12px;
+}
+
+div#ShellHeaderContent div#ShellMeBarArea div#ShellMeBar.SignedOut div.GamerStatArea div.WelcomeText
+{
+    float: right;
+    padding-right: 104px;
+    padding-top: 1px;
+    height: 20px;
+    background-image: url(../img/xboxlive.png);
+    background-position: center right;
+    background-repeat: no-repeat;
+    font-size: 16px;
+    font-weight: bold;
+    color: #636468;
+}
+
+/***********************************************
+    Signed In Experience
+************************************************/
+
+div#ShellHeaderContent div#ShellMeBarArea div#HeadShotBox.SignedIn div.avatarHeadshot
+{
+    width: 70px;
+    height: 80px;
+    background-position: right center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+div#ShellMeBar.SignedIn div.GamerStatArea h1.gamertag
+{
+    color: #F17922; /* Live Orange */
+    font-weight: normal;
+    float: right;
+    margin: 0px;
+    margin-left: 30px;
+    font-size: 18px;
+}
+
+div#ShellMeBar.SignedIn div.GamerStatArea h1.gamertag a,
+div#ShellMeBar.SignedIn div.GamerStatArea h1.gamertag a:visited
+{
+    color: #F17922 !important; /* Live Orange */
+}
+
+div#ShellMeBar.SignedIn div.GamerStatArea h1.gamertag a:hover
+{
+    color: #EE9933 !important; /* Live Hover Orange */
+}
+
+div#ShellMeBar.SignedIn div.GamerStatArea div.Stats
+{
+    padding-top: 5px;
+}
+
+div#ShellMeBar.SignedIn div.GamerStatArea div.gamerscore
+{
+    float: right;
+    height: 18px;
+    margin-left: 20px;
+    padding-left: 20px;
+    background-image: url(../img/Shell_Icons.png);
+    background-position: -10px -79px;
+    background-repeat: no-repeat;
+}
+
+div#ShellMeBar.SignedIn div.GamerStatArea div.notifications
+{
+    float: right;
+    height: 18px;
+    margin-left: 20px;
+    padding-left: 19px;
+    background-image: url(../img/Shell_Icons.png);
+    background-position: -10px -178px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+/* Quick fix to hide the notifications icon in the MeBar for Madrid.
+ * Please update/remove this CSS as appropriate once notifications are back. */
+#notifications
+{
+    display: none;
+}
+
+div#ShellMeBar.SignedIn div.GamerStatArea div.messages
+{
+    float: right;
+    height: 18px;
+    margin-left: 20px;
+    padding-left: 24px;
+    background-image: url(../img/Shell_Icons.png);
+    background-position: -10px -127px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+div#ShellHeaderContent div#ShellMeBarArea div#ShellMeBar.SignedIn div.LinkArea span
+{
+    padding: 0px;
+}
+
+.pointsDisabled #ShellHeaderContent #points
+{
+    display: none;
+}
+
+div#ShellHeaderContent div#ShellMeBarArea div#ShellMeBar.SignedIn div.LinkArea span.points
+{
+    position: relative;
+    padding-right: 18px;
+}
+
+div#ShellHeaderContent div#ShellMeBarArea div#ShellMeBar.SignedIn div.LinkArea span.pointsIcon
+{
+    position: absolute;
+    top: 2px;
+    right: 0px;
+    background-image: url(../img/Shell_Icons.png);
+    background-position: -10px -230px;
+    background-repeat: no-repeat;
+    width: 15px;
+    height: 12px;
+}
+
+div#ShellHeaderContent div#ShellMeBarArea div#ShellMeBar.SignedOut div.LinkArea span.spread,
+div#ShellHeaderContent div#ShellMeBarArea div#ShellMeBar.SignedIn div.LinkArea span.spread
+{
+    background-image: url(../img/glyph-pipe.png);
+    background-position: 7px center;
+    padding-left: 15px;
+    background-repeat: no-repeat;
+}
+
+div#ShellHeaderContent div#ShellMeBarArea div#ShellMeBar.SignedIn div.LinkArea span.nowrap
+{
+    white-space: nowrap;
+}
+
+/***********************************************
+    Navigation Bar
+************************************************/
+
+div#ShellHeaderContent div#ShellNavigationBar
+{
+    font-size: 13px;
+    font-family: 'Segoe UI' , Arial, Sans-Serif;
+    background-color: #77BB44; /*Primary Green*/
+    overflow: auto;
+    zoom: 1; /* IE6 */
+    z-index: 30;
+    text-align: left;
+    background: -webkit-gradient(linear, left top, left bottom, from(#75B943), to(#56A02B)); /* Safari 4+, Chrome */
+    background: -webkit-linear-gradient(top, #75B943, #56A02B); /* Chrome 10+, Safari 5.1+ */
+    background: -moz-linear-gradient(top, #75B943, #56A02B); /* FF3.6+ */
+    background: -ms-linear-gradient(top, #75B943, #56A02B); /* IE10 */
+    background: -o-linear-gradient(top, #75B943, #56A02B); /* Opera */
+    background: linear-gradient(top, #75B943, #56A02B); /* W3C */ 
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#75B943, endColorstr=#56A02B)"; /*IE8-9*/
+    filter: progid:DXImageTransform.Microsoft.Gradient(startColorstr="#75B943", endColorstr="#56A02B", GradientType=0); /* IE6-7 */ 
+    overflow: auto; /* Give "layout" for IE6-7 filters to work */
+}
+
+
+
+div#ShellHeaderContent div#ShellNavigationBar > div
+{
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+
+.divider {
+	margin: 20px 0 20px 0;
+background: url(../img/divider.png) top center no-repeat;
+width: 900px;
+height: 9px;
+}
+.divider-small {
+	margin: 20px 0 20px 0;
+background: url(../img/divider-small.png) top center no-repeat;
+width: 550px;
+height: 4px;
+}

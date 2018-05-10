@@ -1,0 +1,169 @@
+/** Events Calendar **/
+.EventControl {
+	margin-right: 0px;
+	width: 910px;
+	background-color: #e2e3e2;
+	height: 40px;
+}
+ul.calendarcontrol  { 
+	display: block;
+	margin: 0;
+	padding: 0;
+	line-height: 10px;
+	overflow: hidden;
+    
+    
+}
+ul.calendarcontrol  li        
+{ 	
+	float: left; 
+	zoom: 1; 
+	font-size: 13px;
+	font-family: 'Segoe UI' , Arial, Sans-Serif;
+    z-index: 30;
+    text-align: left;
+}
+ul.calendarcontrol a:hover				{ color: #1F6D34; }
+ul.calendarcontrol a:active            { color: #1F6D34; }
+ul.calendarcontrol li, ul.calendarcontrol li a              	
+{ display: block; padding: 9px 25px 7px 10px; color: #7B4;height:20px;  text-decoration: none;font-weight: bold; }
+
+
+h4 {
+	color: #636468;
+	font-weight: normal;
+	font-family: 'Segoe UI', Arial, Sans-Serif;
+	font-size: 14px;
+	margin: 10px;
+	text-transform: none;
+	line-height: 120%;
+	display: block;
+	-webkit-margin-before: 1.33em;
+	-webkit-margin-after: 1.33em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+}
+
+h4:first-child {
+	margin-top: 0;
+	font-size: 14px;
+	-webkit-margin-before: 0.43em;
+	-webkit-margin-after: 0.43em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+}
+
+.EventBlockOuter {
+	
+	margin-bottom: 20px;
+	margin-left: 5px;
+}
+
+.EventBlockOuter .grid-4 {
+	margin-right: 0px;
+	width: 130px;
+	background-color: #e2e3e2;
+}
+
+.grid-4 {
+	overflow: hidden;
+	display: inline;
+	float: left;
+}
+
+.EventBlock {
+	margin-bottom: 5px;
+	margin-right: 5px;
+	padding-top: 5px;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	background-color: #fff;
+	height: 175px;
+	overflow: hidden;
+	position: relative;
+}
+
+.EventBlock .month {
+	font-size: 38px;
+	color: #e2e3e2;
+	font-family: 'Segoe UI', Arial, Sans-Serif;
+	position: absolute;
+	top: -10px;
+	left: 0px;
+}
+
+.EventBlockOuter .firstchild {
+	margin-left: 5px;
+}
+
+.EventBlock .Header .alloy {
+	color: #bdbec1;
+}
+
+.EventBlock .Header .today {
+	color: #77BB44;
+}
+
+.EventBlock .TextBody {
+	position: relative;
+	left: 0px;
+	top: 0px;
+}
+
+.EventBlock .links div {
+	margin-top: 10px;
+	font-size: 12px;
+}
+
+.EventBlock .links div:first-child {
+	margin-top: 0px;
+}
+
+/** Events Calendar End **/
+
+/** Events Details Page  **/
+.EventDetails {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.EventDetails .TextBodyEvent {
+	margin-top: 20px;
+	margin-right: 15px;
+}
+
+.EventDetails h3 {
+	font-weight: bold;
+}
+
+.EventDetails .pdDetails {
+	background: #eee;
+	font-weight: bold;
+	font-size: 90%;
+	margin-right: 20px;
+	margin-left: 5px;
+}
+
+.EventDetails .pdDetails dl {
+	padding: 0 10px;
+	margin: 0;
+}
+
+.EventDetails .pdDetails dt {
+	padding-top: 10px;
+	border-top: 1px #aaa solid;
+	text-transform: uppercase;
+}
+
+.EventDetails .pdDetails dd {
+	margin-left: 0;
+	padding-bottom: 10px;
+	text-transform: none;
+}
+
+.EventDetails .pdDetails dt.first {
+	border-top: none;
+}
+
+/** Events Details End **/

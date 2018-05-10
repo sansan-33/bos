@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+              xmlns:beans="http://www.springframework.org/schema/beans"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+    http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.0.xsd">
+
+<http use-expressions="true" >
+    <intercept-url pattern="/" access="permitAll" />
+    <intercept-url pattern="/controller/aadmin**" access="hasRole('ADMIN')" />
+    <intercept-url pattern="/controller/api/*" access="hasRole('API')" />
+    <!--
+        <intercept-url pattern="/dba**" access="hasRole('ADMIN') and hasRole('DBA')" />
+        <form-login  authentication-failure-url="/Access_Denied" />
+    -->
+    <http-basic entry-point-ref="myBasicAuthenticationEntryPoint" />
+    <csrf disabled="true"/>
+    <headers>
+        <frame-options policy="SAMEORIGIN"/>
+    </headers>
+</http>
+
+<authentication-manager >
+    <authentication-provider>
+        <user-service>
+            <user name="admin" password="root123" authorities="ROLE_ADMIN" />
+            <user name="api"   password="api9751" authorities="ROLE_API" />
+        </user-service>
+    </authentication-provider>
+</authentication-manager>
+
+
+</beans:beans>

@@ -1,0 +1,13 @@
+ul.dropdown ul li 		
+{ 
+font-weight: normal; 
+background: rgb(248,248,237);
+float: none; 
+border: none;
+padding-right:50px; 
+border-left: 1px solid rgb(88,154,27);
+border-right: 1px solid rgb(88,154,27);
+border-bottom: 1px solid rgb(88,154,27);
+
+color:rgb(40,102,153);
+}
