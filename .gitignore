@@ -1,0 +1,8 @@
+.idea
+*.iml
+
+/target/*
+!/target/generated-sources/
+
+*/target/*
+!*/target/generated-sources/
