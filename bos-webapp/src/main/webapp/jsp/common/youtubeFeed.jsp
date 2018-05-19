@@ -121,7 +121,7 @@ ul.videos
                 var youtubeid  = entry.id.videoId.split('/').reverse()[0];
                 var thumbnailUrl = entry.snippet.thumbnails.medium.url;
                 console.log("thumbnailUrl: " + thumbnailUrl);
-                if(title.indexOf('9 UP') == -1 ){
+                if(title.indexOf('9 UP') == -1  && title.indexOf('versus 0.2 Certi') ){
                     html.push('<li>',
                         '<img class="youtube" youtubeid="',youtubeid ,'" style="cursor: pointer;" src="', thumbnailUrl, '" width="190" height="125"/></br>',
                           '<div class="titlec">', title, '...</div></li>');
