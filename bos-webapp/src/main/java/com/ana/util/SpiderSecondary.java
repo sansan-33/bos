@@ -9,63 +9,66 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SpiderSecondary extends Spider{
-	
-		
 
-	public static final String URL[] = {"http://applications.chsc.hk/ssp2015/sch_detail1.php?lang_id=2&sch_id=",
-										"http://applications.chsc.hk/ssp2015/sch_detail2.php?lang_id=1&sch_id=",
-										"http://applications.chsc.hk/ssp2015/sch_detail3.php?lang_id=2&sch_id=",
-										"http://applications.chsc.hk/ssp2015/sch_detail1.php?lang_id=1&sch_id=",
-										"http://applications.chsc.hk/ssp2015/sch_detail4.php?lang_id=1&sch_id=",
-										"http://applications.chsc.hk/ssp2015/sch_detail6.php?lang_id=2&sch_id=",
-										"http://applications.chsc.hk/ssp2015/sch_detail8.php?lang_id=2&sch_id="
-										};
+
+	public static final String URL[] = {"http://www.chsc.hk/ssp2017/sch_detail.php?lang_id=2&sch_id="};
+										//"http://www.chsc.hk/ssp2017/sch_detail.php?lang_id=1&sch_id=",
+										//"http://www.chsc.hk/ssp2017/sch_detail.php?lang_id=2&sch_id=",
+										//"http://www.chsc.hk/ssp2017/sch_detail.php?lang_id=1&sch_id=",
+										//"http://www.chsc.hk/ssp2017/sch_detail.php?lang_id=1&sch_id=",
+										//"http://www.chsc.hk/ssp2017/sch_detail.php?lang_id=2&sch_id=",
+										//"http://www.chsc.hk/ssp2017/sch_detail.php?lang_id=2&sch_id="
+										//};
 	public static ArrayList <HashMap<String,String>> searchKeyList = new ArrayList<HashMap<String,String>>();
 	public static HashMap <String,String> searchKeyMap = new HashMap<String,String>();
 	static{
 		//searchKeyMap.put("name", "(<td width=\"16%\" rowspan=\"5\" align=\"center\">.*?</td>\\s+.*?<td colspan=\"4\" align=\"left\"><span class=\"sch_detail_header\">)(.*?)(</span></td>)");
-        searchKeyMap.put("name", "(<a></td>\\s+.*?<td colspan=\"4\" align=\"left\"><span class=\"sch_detail_header_text\">)(.*?)(</span></td>)");
-        searchKeyMap.put("nameeng", "(</tr>\\s+.*?<tr>\\s+.*?<td colspan=\"4\" align=\"left\"><span class=\"sch_detail_header_text\">)(.*?)(</span></td>)");
-		searchKeyMap.put("address", "(<td colspan=\"3\" align=\"left\"><span class=\"sch_detail_info\">)(.*?)(</span></td>)");
-		searchKeyMap.put("telephone", "(<td width=\"10%\" align=\"left\"><span class=\"sch_detail_info\">)(.*)(</span></td>)");
-		searchKeyMap.put("email", "(<td width=\"60%\" align=\"left\"><span class=\"sch_detail_info\">)(.*)(</span></td>)");
-		searchKeyMap.put("url", "(<td align=\"left\"><span class=\"sch_detail_info\">\u7DB2\u5740\uFF1A</span></td>\\s+.*?<td align=\"left\">.*?<span class=\"sch_detail_info\">)(.*?)(</span></a></td>)");
+        searchKeyMap.put("name", "(<dd class=\"xxzl-info-tit\">\\s+.*?)(.*?)(<Br>)");
+        searchKeyMap.put("nameeng", "(<dd class=\"xxzl-info-tit\">\\s+.*?<Br>\\s+.*?)(.*?)(</dd>)");
+		searchKeyMap.put("address", "(<td colspan=\"4\">)(.*?)(</td>)");
+		searchKeyMap.put("telephone", "(電話:&nbsp;&nbsp;</td>\\s+.*?<td>)(.*)(</td>)");
+		searchKeyMap.put("email", "(電郵:&nbsp;&nbsp;</td>\\s+.*?<td>)(.*)(</td>)");
+		searchKeyMap.put("url", "(網址:&nbsp;&nbsp;</td>\\s+.*?<td>)(.*?)(</td>)");
 		//searchKeyMap.put("poaschoolnet", "(<td width=\"61%\" align=\"left\">)(.*)(</td>)");
-		searchKeyMap.put("principal", "(<td align=\"left\">\u6821\u9577</td>\\s+.*?<td>:</td>\\s+.*?<td align=\"left\">)(.*)(</td>)");
-		searchKeyMap.put("financetype", "(<td align=\"left\">\u5B78\u6821\u985E\u5225</td>\\s+.*?<td>:</td>\\s+.*?<td align=\"left\">)(.*)(</td>)");
-		searchKeyMap.put("sex", "(<td align=\"left\">\u5B78\u751F\u6027\u5225</td>\\s+.*?<td>:</td>\\s+.*?<td align=\"left\">)(.*)(</td>)");
-		searchKeyMap.put("area", "(<td align=\"left\">\u5B78\u6821\u4F54\u5730\u9762\u7A4D</td>\\s+.*?<td>:</td>\\s+.*?<td align=\"left\">)(.*)(</td>)");
-		searchKeyMap.put("religion", "(<td align=\"left\">\u5B97\u6559</td>\\s+.*?<td>:</td>\\s+.*?<td align=\"left\">)(.*)(</td>)");
-		searchKeyMap.put("yearofcommencement", "(<td align=\"left\">\u5275\u6821\u5E74\u4EFD</td>\\s+.*?<td>:</td>\\s+.*?<td align=\"left\">)(.*)(</td>)");
-		searchKeyMap.put("discretionaryplaces", "(<td align=\"left\">\u662F\u5426\u63A5\u6536\u4E2D\u4E00\u81EA\u884C\u5206\u914D\u7533\u8ACB</td>\\s+.*?<td>:</td>\\s+.*?<td align=\"left\">)(.*)(</td>)");
-		searchKeyMap.put("secondaryoneadmission", "(<td align=\"left\">\u4E2D\u4E00\u5165\u5B78 </td>\\s+.*?<td>:</td>\\s+.*?<td align=\"left\">)(.*)(</td>)");
-		searchKeyMap.put("transportation", "(<td align=\"left\">\u76F4\u9054\u5B78\u6821\u7684\u516C\u5171\u4EA4\u901A\u5DE5\u5177  </td>\\s+.*?<td>:</td>\\s+.*?<td align=\"left\">)(.*)(</td>)");
-		searchKeyMap.put("schoolmotto", "(<td align=\"left\">\u6821\u8A13</td>\\s+.*?<td>:</td>\\s+.*?<td align=\"left\">)(.*)(</td>)");
-		searchKeyMap.put("schoolmission", "(\u8FA6\u5B78\u5B97\u65E8.*?</td>\\s+.*?<td align=\"left\">\\s+.*?)(.*)(\\s+.*?</td>)");
+		searchKeyMap.put("principal", "(校長</td>\\s+.*?<td.*?> :\\s+.*?<td>)(.*)(</td>)");
+		searchKeyMap.put("financetype", "(學校類別</td>\\s+.*?<td.*?> :\\s+.*?<td>)(.*)(</td>)");
+		searchKeyMap.put("sex", "(學生性別</td>\\s+.*?<td.*?> :\\s+.*?<td>)(.*)(</td>)");
+		searchKeyMap.put("area", "(學校佔地面積</td>\\s+.*?<td.*?> :\\s+.*?<td>)(.*)(</td>)");
+		searchKeyMap.put("religion", "(宗教</td>\\s+.*?<td.*?> :\\s+.*?<td>)(.*)(</td>)");
+		searchKeyMap.put("yearofcommencement", "(創校年份</td>\\s+.*?<td.*?> :\\s+.*?<td>)(.*)(</td>)");
+		//searchKeyMap.put("discretionaryplaces", "(校長</td>\\s+.*?<td.*?> :\\s+.*?<td>)(.*)(</td>)");
+		//searchKeyMap.put("secondaryoneadmission", "(校長</td>\\s+.*?<td.*?> :\\s+.*?<td>)(.*)(</td>)");
+		//searchKeyMap.put("transportation", "(校長</td>\\s+.*?<td.*?> :\\s+.*?<td>)(.*)(</td>)");
+		searchKeyMap.put("schoolmotto", "(校訓</td>\\s+.*?<td.*?> :\\s+.*?<td>)(.*)(</td>)");
+		//searchKeyMap.put("schoolmission", "(校長</td>\\s+.*?<td.*?> :\\s+.*?<td>)(.*)(</td>)");
 		
 		
-		searchKeyList.add(searchKeyMap);
-		searchKeyMap = new HashMap();
-		searchKeyMap.put("schoolfee", "(<td align=\"left\">S1</td>\\s+.*?<td align=\"left\">)(.*)(</td>)");
-		searchKeyMap.put("tuitionfee", "(<td align=\"left\">S4</td>\\s+.*?<td align=\"left\">-</td>\\s+.*?<td align=\"left\">)(.*)(</td>)");
-		searchKeyList.add(searchKeyMap);
-		searchKeyMap = new HashMap();
-		searchKeyMap.put("noofspecialroom", "(</tr>\\s+.?<tr class=\"sch_detail_line1_bgcolor\">\\s+.?<td width=\"5%\">&nbsp;</td>\\s+.?<td width=\"92%\" align=\"left\">)(.*)(</td>)");
-		searchKeyList.add(searchKeyMap);
-		searchKeyMap = new HashMap();
-		searchKeyMap.put("poaschoolnet", "(<td width=\"61%\" align=\"left\">)(.*)(</td>)");
-		searchKeyList.add(searchKeyMap);
-		searchKeyMap = new HashMap();
-		searchKeyMap.put("teacherexperience", "(<td align=\"left\">10 years or abov :</td>\\s+.*?<td>)(.*)(</td>)");
-		searchKeyMap.put("teachermaster", "(<td align=\"left\">Master / Doctorate Degree or above :</td>\\s+.*?<td>)(.*)(</td>)");
-		searchKeyMap.put("teacherbachelor", "(<td align=\"left\">Bachelor Degree:</td>\\s+.*?<td>)(.*)(</td>)");
-		searchKeyList.add(searchKeyMap);
-		
-		searchKeyMap = new HashMap();
-		searchKeyMap.put("language", "(<tr class=\"sch_detail_line2_bgcolor\">\\s+.*?<td>&nbsp;</td>\\s+.*?<td align=\"left\">\u4EE5\u82F1\u6587\u70BA\u6559\u5B78\u8A9E\u8A00 :</td>\\s+.*?<td align=\"left\">)(.*)(</td>)");
-		searchKeyList.add(searchKeyMap);
-		searchKeyMap = new HashMap();
-		searchKeyMap.put("languagepolicy", "(<tr class=\"sch_detail_line1_bgcolor\">\\s+.*?<td>&nbsp;</td>\\s+.*?<td align=\"left\">)(.*)(</td>)");
+		//searchKeyList.add(searchKeyMap);
+		//searchKeyMap = new HashMap();
+		searchKeyMap.put("schoolfee", "(中六.*?</strong></td>\\s+.*?<td align=\"left\">)(.*)(</td>)");
+		searchKeyMap.put("tuitionfee", "(中六.*?</strong></td>\\s+.*?<td align=\"left\">.*?</td>\\s+.*?<td.*?>)(.*)(</td>)");
+
+		//searchKeyList.add(searchKeyMap);
+		//searchKeyMap = new HashMap();
+		searchKeyMap.put("noofspecialroom", "(學校設施：</td>\\s+.*?<td.*?> :\\s+.*?<td>)(.*)(</td>)");
+
+		//searchKeyList.add(searchKeyMap);
+		//searchKeyMap = new HashMap();
+		searchKeyMap.put("poaschoolnet", "(本區</td>\\s+.*?<td.*?> :\\s+.*?<td>)(.*)(</td>)");
+
+		//searchKeyList.add(searchKeyMap);
+		//searchKeyMap = new HashMap();
+		searchKeyMap.put("teacherexperience", "(10 年或以上</td>\\s+.*?<td.*?> :\\s+.*?<td>)(.*)(</td>)");
+		searchKeyMap.put("teachermaster", "(碩士、博士或以上</td>\\s+.*?<td.*?> :\\s+.*?<td>)(.*)(</td>)");
+		searchKeyMap.put("teacherbachelor", "(學士： </td>\\s+.*?<td.*?> :\\s+.*?<td>)(.*)(</td>)");
+
+		//searchKeyList.add(searchKeyMap);
+		//searchKeyMap = new HashMap();
+		//searchKeyMap.put("language", "(教學語言</td>\\s+.*?<td.*?> :\\s+.*?<td>)(.*)(</td>)");
+
+		//searchKeyList.add(searchKeyMap);
+		//searchKeyMap = new HashMap();
+		//searchKeyMap.put("languagepolicy", "(學費</td>\\s+.*?<td.*?> :\\s+.*?<td>)(.*)(</td>)");
 		searchKeyList.add(searchKeyMap);
 	}
 	
@@ -77,7 +80,7 @@ public class SpiderSecondary extends Spider{
 			SpiderSecondary sp = new SpiderSecondary();
 
 			try {
-				sp.onWeb(2,3);
+				sp.onWeb(123,124);
 
 			} catch (Exception ex) {
 				ex.printStackTrace();
@@ -111,7 +114,7 @@ public class SpiderSecondary extends Spider{
 				    Matcher matcher = p.matcher(result);
 				    boolean matchFound = matcher.find();
 				    if(matchFound) {
-                        //System.out.println(key + " " + matcher.group(2));
+				    	System.out.println(key + " " + matcher.group(2));
 
 				        if("financetype".equalsIgnoreCase(key) && matcher.group(2).contains("<br>") ){
 				    		String tmp[] = matcher.group(2).split("<br>");
@@ -168,7 +171,7 @@ public class SpiderSecondary extends Spider{
 
 			if(!entity.isEmpty() && entity.containsKey("name")
 					&& entity.get("name") != null && entity.get("name").toString().trim().length() > 0
-					&& "!testing".equalsIgnoreCase(entity.get("nameeng").toString())){
+					){
 				//System.out.println("chscid " + i + " added");
 				resultList.add(entity);
 			}
