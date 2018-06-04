@@ -864,7 +864,7 @@ public class EntityDAO extends BaseDAO {
 
             String categoryid = "0";
             String year="" + getRankingYear();
-			theLogger.info("synchronize start 22-Oct: {} -- {} ",action, year);
+			theLogger.info("synchronize start 01-Jun: {} -- {} ",action, year);
 
             int maxRecordKindergaretn=2000;
 			//int maxRecordKindergaretn=1;
@@ -958,6 +958,8 @@ public class EntityDAO extends BaseDAO {
                             }
                             if(entityid > 0){
 
+                            	theLogger.info("processing entityid: {}" , entityid);
+
                                 if(iExistingEntity < 1){
                                     jdbcTemplate.update("insert into entitybasic (entityid,lastmodified) values(" + entityid +",now())");
                                     for(int j = 2011; j<= Integer.parseInt(year); j++){
@@ -1006,37 +1008,39 @@ public class EntityDAO extends BaseDAO {
                             }
                         }//Check for empty entity
                     }//End of for loop
-					jdbcTemplate.update("update bos.entity set lastmodified=current_timestamp where categoryid='" + categoryid + "'");
-					jdbcTemplate.update("update entity set session='\u5168\u65E5' where session='\u5168\uFFFD'");
-					jdbcTemplate.update("update entity set session='\u5168\u65E5' where session='\u5168\uFFFD\uFFFD'");
-					jdbcTemplate.update("update entity set session='\u5168\u65E5' where session='\uFFFD\u65E5'");
-					jdbcTemplate.update("update entity set session='\u5168\u65E5' where session='\uFFFD\uFFFD\u65E5'");
-					jdbcTemplate.update("update entity set session='\u4E0A\u5348+\u4E0B\u5348' where session='\uFFFD\uFFFD\u5348+\u4E0B\u5348'");
-					//Exception
-					jdbcTemplate.update("update bos.entity set poaschoolnet='Yau Tsim Mong' where id='5890'");  //Diocesan Girls' School
-					jdbcTemplate.update("update bos.entity set financetype='\u975E\u725F\u5229' where id=5429");  //PEGASUS SAU WAH CHRISTIAN KINDERGARTEN FINANCE TYPE
-					if("0".equalsIgnoreCase(categoryid)){
-						jdbcTemplate.update("update entity set qareport='' where qareport is null and categoryid=0");  //update qareport null to empty for scoring purpose.
-						jdbcTemplate.update("update entity set poaschoolnet='Central & Western' where categoryid=0 and poaschoolnet like '%Central%'");
-						jdbcTemplate.update("update entity set poaschoolnet='Kowloon City' where id=6008"); // update Bishop Hall Jubilee School poaschool net
-
-					}
-					if("2".equalsIgnoreCase(categoryid)){ //Patch Uau Tsim Mong POA school net data issue.
-						jdbcTemplate.update("update entity set poaschoolnet='Yau Tsim Mong' where poaschoolnet='Yau Tsim  Mong'");
-						jdbcTemplate.update("update entity set area=18697 where id=6098");  //Maryknoll Convent School (Secondary Section)
-						jdbcTemplate.update("update entityscore set area=18697 where entityid=6098 and year=" + year);
-					}
-                    if("1".equalsIgnoreCase(categoryid)){
-                        jdbcTemplate.update("update entity set area=6000 where id=3518"); //patch Holy Family Canossian School (Kowloon Tong)
-						jdbcTemplate.update("update entityscore set area=6000 where entityid=3518 and year=" + year);
-					}
-					//currentRecord = nextRecord;
-					//nextRecord += 100;
 					currentRecord += nextRecord;
+				theLogger.info("currentRecord: {} " , currentRecord);
+
+			} // end of while loop
+			theLogger.info("last record ");
+
+			jdbcTemplate.update("update bos.entity set lastmodified=current_timestamp where categoryid='" + categoryid + "'");
+			jdbcTemplate.update("update entity set session='\u5168\u65E5' where session='\u5168\uFFFD'");
+			jdbcTemplate.update("update entity set session='\u5168\u65E5' where session='\u5168\uFFFD\uFFFD'");
+			jdbcTemplate.update("update entity set session='\u5168\u65E5' where session='\uFFFD\u65E5'");
+			jdbcTemplate.update("update entity set session='\u5168\u65E5' where session='\uFFFD\uFFFD\u65E5'");
+			jdbcTemplate.update("update entity set session='\u4E0A\u5348+\u4E0B\u5348' where session='\uFFFD\uFFFD\u5348+\u4E0B\u5348'");
+			//Exception
+			jdbcTemplate.update("update bos.entity set poaschoolnet='Yau Tsim Mong' where id='5890'");  //Diocesan Girls' School
+			jdbcTemplate.update("update bos.entity set financetype='\u975E\u725F\u5229' where id=5429");  //PEGASUS SAU WAH CHRISTIAN KINDERGARTEN FINANCE TYPE
+			if("0".equalsIgnoreCase(categoryid)){
+				jdbcTemplate.update("update entity set qareport='' where qareport is null and categoryid=0");  //update qareport null to empty for scoring purpose.
+				jdbcTemplate.update("update entity set poaschoolnet='Central & Western' where categoryid=0 and poaschoolnet like '%Central%'");
+				jdbcTemplate.update("update entity set poaschoolnet='Kowloon City' where id=6008"); // update Bishop Hall Jubilee School poaschool net
 
 			}
+			if("2".equalsIgnoreCase(categoryid)){ //Patch Uau Tsim Mong POA school net data issue.
+				jdbcTemplate.update("update entity set poaschoolnet='Yau Tsim Mong' where poaschoolnet='Yau Tsim  Mong'");
+				jdbcTemplate.update("update entity set area=18697 where id=6098");  //Maryknoll Convent School (Secondary Section)
+				jdbcTemplate.update("update entityscore set area=18697 where entityid=6098 and year=" + year);
+			}
+			if("1".equalsIgnoreCase(categoryid)){
+				jdbcTemplate.update("update entity set area=6000 where id=3518"); //patch Holy Family Canossian School (Kowloon Tong)
+				jdbcTemplate.update("update entityscore set area=6000 where entityid=3518 and year=" + year);
+			}
 
-            theLogger.info("synchronize finished ");
+
+			theLogger.info("synchronize finished ");
 		} catch (Exception ex) {
 			ex.printStackTrace();
 
