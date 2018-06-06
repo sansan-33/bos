@@ -884,7 +884,7 @@ public class EntityDAO extends BaseDAO {
                 currentRecord=5600;
                 maxRecord=currentRecord + maxRecordKindergaretn;
 				categoryid = "0";
-				theLogger.info("action {} currentrecord {} , nextrecord {} categoryid{}" ,action,  currentRecord, nextRecord, categoryid);
+				//theLogger.info("action {} currentrecord {} , nextrecord {} categoryid{}" ,action,  currentRecord, nextRecord, categoryid);
 
 			}
 			
@@ -896,10 +896,10 @@ public class EntityDAO extends BaseDAO {
 					}else if("secondary".equalsIgnoreCase(action)){
 						entityList = (ArrayList<Map<String, Object>>) spiders.onWeb(currentRecord,currentRecord + nextRecord);
 					}else{
-						theLogger.info("spider kindergarten currentrecord {} , nextrecord {}" , currentRecord, currentRecord + nextRecord);
+						theLogger.debug("spider kindergarten currentrecord {} , nextrecord {}" , currentRecord, currentRecord + nextRecord);
 						entityList = (ArrayList<Map<String, Object>>) spiderk.onWeb(currentRecord,currentRecord +nextRecord);
 					}
-					theLogger.info("synchronize {} - size {} ", action , entityList.size());
+					theLogger.debug("synchronize {} - size {} ", action , entityList.size());
 					for(Map<String,Object> entitymap : entityList){
 						StringBuffer entitydesc = new StringBuffer();
 						for (String key : entitymap.keySet()) {
@@ -916,7 +916,7 @@ public class EntityDAO extends BaseDAO {
 						//Check for empty entity
                         if(entity.containsKey("name")){
                             int iExistingEntity = jdbcTemplate.queryForObject("select count(1) from bos.entity where chscid='" + quote((String) entity.get("chscid")) + "' and categoryid='" + categoryid + "'" , Integer.class );
-
+							//theLogger.info("new entity{},  chscid:{} " , entity.get("name"),  entity.get("chscid"));
                             StringBuffer sqlName = new StringBuffer();
                             StringBuffer sqlValue = new StringBuffer();
 
@@ -940,7 +940,8 @@ public class EntityDAO extends BaseDAO {
                             if("683".equalsIgnoreCase( (String) entity.get("chscid")))
                                 theLogger.info(sqlName.toString() + sqlValue.toString());
                             try{
-                                jdbcTemplate.update(sqlName.toString() + sqlValue.toString());
+                                if(iExistingEntity  > 0)
+                            		jdbcTemplate.update(sqlName.toString() + sqlValue.toString());
                             }catch(Exception ex){
                                 ex.printStackTrace();
                                 theLogger.debug("synchronize exception:" + entity.get("chscid"));
@@ -958,12 +959,13 @@ public class EntityDAO extends BaseDAO {
                             }
                             if(entityid > 0){
 
-                            	theLogger.info("processing entityid: {}" , entityid);
+                            	theLogger.debug("processing entityid: {}" , entityid);
 
                                 if(iExistingEntity < 1){
                                     jdbcTemplate.update("insert into entitybasic (entityid,lastmodified) values(" + entityid +",now())");
                                     for(int j = 2011; j<= Integer.parseInt(year); j++){
-                                        jdbcTemplate.update("insert into comment (entityid,metric1,metric2,metric3,metric4,metric5,year,comment,type,userid,lastmodified,created) values(" + entityid +",0,0,0,0,0," + j + ",'N/A','system',1,now(),now())");
+                                        //jdbcTemplate.update("insert into comment (entityid,metric1,metric2,metric3,metric4,metric5,year,comment,type,userid,lastmodified,created) values(" + entityid +",0,0,0,0,0," + j + ",'N/A','system',1,now(),now())");
+                                    	theLogger.info("insert into comment (entityid,metric1,metric2,metric3,metric4,metric5,year,comment,type,userid,lastmodified,created) values(" + entityid +",0,0,0,0,0," + j + ",'N/A','system',1,now(),now())");
                                     }
                                 }
 
@@ -982,7 +984,8 @@ public class EntityDAO extends BaseDAO {
                                         }
                                         sqlName.deleteCharAt(sqlName.length() - 1).append(")");
                                         sqlValue.deleteCharAt(sqlValue.length() - 1).append(")");
-                                        jdbcTemplate.update(sqlName.toString() + sqlValue.toString());
+                                        theLogger.info(sqlName.toString() + sqlValue.toString());
+                                        //jdbcTemplate.update(sqlName.toString() + sqlValue.toString());
                                         sqlName = new StringBuffer();
                                         sqlValue = new StringBuffer();
 
@@ -1009,7 +1012,7 @@ public class EntityDAO extends BaseDAO {
                         }//Check for empty entity
                     }//End of for loop
 					currentRecord += nextRecord;
-				theLogger.info("currentRecord: {} " , currentRecord);
+				theLogger.debug("currentRecord: {} " , currentRecord);
 
 			} // end of while loop
 			theLogger.info("last record ");

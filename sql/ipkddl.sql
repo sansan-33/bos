@@ -923,3 +923,7 @@ jstatd -p 1099 -J-Djava.security.policy=/usr/lib/jvm/java-8-oracle/bin/all.polic
 jstatd -J-Djava.security.policy=/usr/lib/jvm/java-8-oracle/bin/all.policy  -J-Djava.rmi.server.hostname=www.bookofschool.com   -J-Dcom.sun.management.jmxremote.rmi.port=1099 -J-Dcom.sun.management.jmxremote.port=8088   -J-Dcom.sun.management.jmxremote.ssl=false  -J-Dcom.sun.management.jmxremote.authenticate=false -J-Djava.rmi.server.logCalls=true
 
 alter table entityimage add status varchar(1);
+
+alter table entity change qareporturl qareporturl  varchar(200);
+alter table entity change url url  varchar(200);
+

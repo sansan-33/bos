@@ -10,20 +10,20 @@ import java.util.regex.Pattern;
 
 public class SpiderKindergarten extends Spider{
 
-	public static final String URL[] = {"http://kgp2016.highlight.hk/web/schoolinfo.php?schid=","http://kgp2016.highlight.hk/web/schoolinfo.php?lang=en&schid=" };
+	public static final String URL[] = {"http://kgp2017.highlight.hk/edb/schoolinfo.php?lang=tc&schid=","http://kgp2017.highlight.hk/edb/schoolinfo.php?lang=en&schid=" };
 	//public static final String URL[] = {"http://hi.baidu.com/nivrrex/blog/item/35eba3cc0616631600e92868.html"};
 	public static ArrayList <HashMap<String,String>> searchKeyList = new ArrayList<HashMap<String,String>>();
 	public static HashMap <String,String> searchKeyMap = new HashMap<String,String>();
     public static HashMap <String,String> searchKeyMapEng = new HashMap<String,String>();
     static{
-		searchKeyMap.put("name", "(<td colspan=\"2\" class=\"Font12\">\\s+)(.*?)(</td>)");
+		searchKeyMap.put("name", "(<td width=\"285\" style=\"font-size:16px\">\\s+)(.*?)(<div style='height:10px'>)");
 		searchKeyMap.put("address", "(<td width=\"80\">地址</td>\\s+<td>\\s+)(.*?)(</td>)");
 		//searchKeyMap.put("addresseng", "(<td width=\"80\">地址<br>Address</td>\\s+<td>\\s+.*?<br>\\s+)(.*?)(</td>)");
         searchKeyMap.put("telephone", "(<td width=\"80\">電話</td>\\s+<td>\\s+)(.*?)(</td>)");
 
         searchKeyMap.put("session","(<div style=\"padding:0 0 0 10px\">全日班</div>\\s+</td>\\s+<td align=\"center\" bgcolor=\"#ffffff\">.*?</td>\\s+<td align=\"center\" bgcolor=\"#ffffff\">.*?</td>\\s+<td align=\"center\" bgcolor=\"#ffffff\">)(.*?)(</td>\\s+<td align=\"center\" bgcolor=\"#ffffff\">.*?</td>)");
 
-		searchKeyMap.put("poaschoolnet", "(<td align=\"left\" width='485'>)([^\\s]+)(</td>)");
+		searchKeyMap.put("poaschoolnet", "(<td width=\"90\"><img src=\"images/district/)(.*)(.png\" width=\"90\" border=\"0\" title=\"\" alt=\"\"></td>)");
 		//searchKeyMap.put("sex", "(<td width=\"318\" height=\"41\"><div align=\"center\">)(\\s+.*?)(<br />)");
 		//searchKeyMap.put("sexeng", "(<td width=\"318\" height=\"41\"><div align=\"center\">\\s+.*?<br />)(.*?)(\\s+.*?</div></td>)");
 		searchKeyMap.put("url", "(<td align=\"center\"  bgcolor=\"#ffffff\" width=\"50%\">\\s+<a href='.*?' target='_blank'>)(.*?)(</a>)");
@@ -43,7 +43,7 @@ public class SpiderKindergarten extends Spider{
         searchKeyMap.put("totalstaff", "(校長及教學人員總人數.*?</div>\\s+</td>\\s+<td align=\"center\"  bgcolor=\"#ffffff\" width=\"50%\">\\s+)(.*)(</td>)");
 
         //New field
-        searchKeyMap.put("voucher", "(兌現學券資格</td>\\s+<td align=\"center\">\\s+)(.*)(</td>\\s+</tr>)");
+        searchKeyMap.put("voucher", "(教育計劃</td>\\s+<td align=\"center\">\\s+)(.*)(</td>\\s+</tr>)");
         searchKeyMap.put("activitieswithparent", "(其他家長活動 / 聯繫</div>\\s+</td>\\s+</tr>\\s+<tr height=\"50\">\\s+<td colspan=\"2\" bgcolor=\"#ffffff\">\\s+<div style=\"padding:0 0 0 20px\">)(.*?)(</div>)");
 		searchKeyMap.put("nursery", "(收錄2-3歲級別兒童人數</div>\\s+</td>\\s+<td colspan=\"2\" align=\"center\" bgcolor=\"#ffffff\">\\s+)(.*?)(</td>)");
 
@@ -61,7 +61,7 @@ public class SpiderKindergarten extends Spider{
 
 		searchKeyList.add(searchKeyMap);
 
-        searchKeyMapEng.put("nameeng", "(<td colspan=\"2\" class=\"Font12\">\\s+)(.*?)(</td>)");
+        searchKeyMapEng.put("nameeng", "(<td width=\"285\" style=\"font-size:16px\">\\s+)(.*?)(<div style='height:10px'>)");
         searchKeyList.add(searchKeyMapEng);
 
     }
@@ -75,7 +75,7 @@ public class SpiderKindergarten extends Spider{
 
             SpiderKindergarten sp = new  SpiderKindergarten();
             try {
-				sp.onWeb(6089,6090);
+				sp.onWeb(5956,5957);
                 //sp.onWeb(6563,6564);
 
 
@@ -141,11 +141,14 @@ public class SpiderKindergarten extends Spider{
                                 }else{
                                     entity.put(key,"全日制");
                                 }
+                        }else if("qareport".equalsIgnoreCase(key) || "qareporturl".equalsIgnoreCase(key)){
+                            entity.put("qareport","質素評核報告");
+                            entity.put("qareporturl","http://www.edb.gov.hk/tc/edu-system/preprimary-kindergarten/quality-assurance-framework/qr/qr-report/index.html");
                         }else{
 				    		entity.put((eng==0) ? key : key+ "eng", matcher.group(2).trim());
 				    	}
 
-				        System.out.println(key + " " + matcher.group(2).trim());
+				        //System.out.println(key + " " + matcher.group(2).trim());
                         //System.out.println(key + " " + entity.get(key));
 
                         matchFound = matcher.find(matcher.end());
@@ -201,11 +204,13 @@ public class SpiderKindergarten extends Spider{
                     }
                 }
             }
+            //System.out.println("chscid " + chscid + " added");
+
             entity.put("chscid", (chscid != null && chscid.trim().length() > 0) ? chscid :  "" + i  );
             entity.put("chscidnew", "" + i);
 			if(!entity.isEmpty() && entity.containsKey("name")
                     && entity.get("name") != null && entity.get("name").toString().trim().length() > 0
-                    && !"testing".equalsIgnoreCase(entity.get("nameeng").toString())){
+                    ){
 				//System.out.println("chscid " + entity.get("chscid") + " added");
 				resultList.add(entity);
 			}
@@ -2155,29 +2160,31 @@ private void setChscid(){
 }
 
     private String getChscId(String key){
+        //System.out.println("getChscId key/value " + key + " " + chscid.get(key));
+
         return  chscid.get(key);
     }
 
     public void setSchoolNet() {
 
-        schoolNet.put("黃大仙區", "Wong Tai Sin");
-        schoolNet.put("南區", "Southern");
-        schoolNet.put("元朗區", "Yuen Long");
-        schoolNet.put("大埔區", "Tai Po");
-        schoolNet.put("西貢區", "Sai Kung");
-        schoolNet.put("屯門區", "Tuen Mun");
-        schoolNet.put("沙田區", "Sha Tin");
-        schoolNet.put("荃灣區", "Tsuen Wan");
-        schoolNet.put("灣仔區", "Wan Chai");
-        schoolNet.put("九龍城區", "Kowloon City");
-        schoolNet.put("觀塘區", "Kwun Tong");
-        schoolNet.put("葵青區", "Kwai Tsing");
-        schoolNet.put("深水埗區", "Sham Shui Po");
-        schoolNet.put("港島東區", "East");
-        schoolNet.put("北區", "North");
-        schoolNet.put("離島區", "Islands");
-        schoolNet.put("油尖旺區", "Yau Tsim Mong Kok");
-        schoolNet.put("中西區", "Central & Western");
+        schoolNet.put("wongtaisin", "Wong Tai Sin");
+        schoolNet.put("southern", "Southern");
+        schoolNet.put("yuenlong", "Yuen Long");
+        schoolNet.put("taipo", "Tai Po");
+        schoolNet.put("saikung", "Sai Kung");
+        schoolNet.put("tuenmun", "Tuen Mun");
+        schoolNet.put("shatin", "Sha Tin");
+        schoolNet.put("tsuenwan", "Tsuen Wan");
+        schoolNet.put("wanchai", "Wan Chai");
+        schoolNet.put("kowlooncity", "Kowloon City");
+        schoolNet.put("kwuntong", "Kwun Tong");
+        schoolNet.put("kwaichung", "Kwai Tsing");
+        schoolNet.put("shamshuipo", "Sham Shui Po");
+        schoolNet.put("hkeast", "East");
+        schoolNet.put("north", "North");
+        schoolNet.put("islands", "Islands");
+        schoolNet.put("yautsimmongkok", "Yau Tsim Mong Kok");
+        schoolNet.put("central", "Central & Western");
     }
     public String getSchoolNet(String key){
         return schoolNet.get(key);
