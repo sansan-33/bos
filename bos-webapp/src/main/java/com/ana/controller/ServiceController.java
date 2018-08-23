@@ -172,13 +172,13 @@ public class ServiceController extends BaseController {
 		String reporttype = request.getParameter("reporttype") != null ? request.getParameter("reporttype") : "-1";
 		String lastyearrecord = request.getParameter("lastyearrecord") != null && request.getParameter("lastyearrecord").length() > 0  ? request.getParameter("lastyearrecord") : "-1";
 		
-		if("secondaryranking".equalsIgnoreCase(reporttype) ){
-			ModelAndView model = new ModelAndView("entity/schoolSearchSecondary");
+		if("secondaryranking-old".equalsIgnoreCase(reporttype) ){
+			ModelAndView model = new ModelAndView("entity/schoolSearchSecondaryStatic");
 			model.addObject("lastyearrecord",lastyearrecord);
 			return model;
 			
-		}else if("primaryranking".equalsIgnoreCase(reporttype) ){
-			ModelAndView model = new ModelAndView("entity/schoolSearchPrimary");
+		}else if("primaryranking-old".equalsIgnoreCase(reporttype) ){
+			ModelAndView model = new ModelAndView("entity/schoolSearchPrimaryStatic");
 			model.addObject("lastyearrecord",lastyearrecord);
 			return model;
 			
