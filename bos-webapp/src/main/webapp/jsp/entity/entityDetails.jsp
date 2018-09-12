@@ -928,7 +928,7 @@ ${requestScope.categoryid eq '5' ||  empty requestScope.ranking ||  requestScope
             </td>
         </tr>
 <!-- 6171: SKH Li Fook Hing Secondary School && T.W.G.Hs. Wong See Sum Primary School && The Hong Kong Taoist Association Ching Chung Secondary School-->
-    <c:if test="${requestScope.entityid eq '6171' || requestScope.entityid eq '3593' ||  requestScope.entityid eq '6247' ||  requestScope.entityid eq '6035' ||  requestScope.entityid eq '3554' ||  requestScope.entityid eq '6168' ||  requestScope.entityid eq '3847' ||  requestScope.entityid eq '3551' ||  requestScope.entityid eq '6276' ||  requestScope.entityid eq '3714' }">
+    <c:if test="${requestScope.entityid eq '6171' || requestScope.entityid eq '3593' ||  requestScope.entityid eq '6247' ||  requestScope.entityid eq '6035' ||  requestScope.entityid eq '3554' ||  requestScope.entityid eq '6168' ||  requestScope.entityid eq '3847' ||  requestScope.entityid eq '3551' ||  requestScope.entityid eq '6276' ||  requestScope.entityid eq '3714' ||  requestScope.entityid eq '6301'  }">
         <tr>
             <td>
 
