@@ -222,7 +222,7 @@ public class LoginController extends BaseController {
 				
 				ArrayList<Map<String, String>> favorite = new ArrayList <Map<String, String>> ();
 				String favoriteid = (String) session.getAttribute("viewedentityid");
-				System.out.print("viewedentityid favorite  id " + session.getAttribute("viewedentityid"));
+				System.out.print("viewedentityid favorite id " + session.getAttribute("viewedentityid"));
 				HashMap <String, String> map = null;
 				if("new".equalsIgnoreCase((String) paramMap.get("action")) ){
 					
@@ -262,7 +262,7 @@ public class LoginController extends BaseController {
 				if("new".equalsIgnoreCase((String) paramMap.get("action")) && "0".equalsIgnoreCase(paramMap.get("roleid"))){
 					saveComment(request,response);
 				}
-				theLogger.debug("login controller session.getAttribute(user) " + (session.getAttribute("user") == null) );
+				theLogger.info("login controller session.getAttribute(user) " + (session.getAttribute("user") == null) );
 				return getHomeDetail(request,response);
 			}else{
 				theLogger.debug("login controller session.getAttribute(user) " + (session.getAttribute("user") == null) );
