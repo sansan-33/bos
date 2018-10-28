@@ -105,7 +105,7 @@ public class UserDAO extends BaseDAO {
 			}
 			
 			result.putAll(getUserTutorCategoryMap(result.get("id") + ""));
-			theLogger.debug("getuserinfo user map   " + result);
+			theLogger.info("getuserinfo user map   " + result);
 		}else{
 			result.put("errorstatus", errorstatus);
 		}

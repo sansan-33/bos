@@ -788,6 +788,31 @@ values('2018中學學位 公布自行分配學位及統一派位結果', '<ul><l
 
 
 
+insert into event (title,note,entityid,active,lastmodified,startdate,enddate,created,eventtype,ipaddr,userid,url)
+values('2019年九月小一入學自行分配學位 ', 'https://www.edb.gov.hk/attachment/tc/edu-system/primary-secondary/spa-systems/primary-1-admission/EDB-POALeaflet2019_TC.pdf' ,10001,'y',current_timestamp,'2018-09-24','2018-10-02',current_timestamp,'importantday','',1, 'https://www.edb.gov.hk/attachment/tc/edu-system/primary-secondary/spa-systems/primary-1-admission/EDB-POALeaflet2019_TC.pdf');
+
+insert into event (title,note,entityid,active,lastmodified,startdate,enddate,created,eventtype,ipaddr,userid,url)
+values('2019年九月小一入學自行分配學位公布派位結果', 'https://www.edb.gov.hk/attachment/tc/edu-system/primary-secondary/spa-systems/primary-1-admission/EDB-POALeaflet2019_TC.pdf' ,10001,'y',current_timestamp,'2018-11-26','2018-11-26',current_timestamp,'importantday','',1, 'https://www.edb.gov.hk/attachment/tc/edu-system/primary-secondary/spa-systems/primary-1-admission/EDB-POALeaflet2019_TC.pdf');
+
+
+insert into event (title,note,entityid,active,lastmodified,startdate,enddate,created,eventtype,ipaddr,userid,url)
+values('2019 小一入學 統一派位學位申請', 'https://www.edb.gov.hk/attachment/tc/edu-system/primary-secondary/spa-systems/primary-1-admission/EDB-POALeaflet2019_TC.pdf' ,10001,'y',current_timestamp,'2019-01-26','2019-01-27',current_timestamp,'importantday','',1, 'https://www.edb.gov.hk/attachment/tc/edu-system/primary-secondary/spa-systems/primary-1-admission/EDB-POALeaflet2019_TC.pdf');
+
+insert into event (title,note,entityid,active,lastmodified,startdate,enddate,created,eventtype,ipaddr,userid,url)
+values('2019 小一入學 統一派位公佈結果', '<ul><li>2019小一入學 統一派位公佈結果</li><li><a rel="nofollow" target="_blank" href="https://www.edb.gov.hk/attachment/tc/edu-system/primary-secondary/spa-systems/primary-1-admission/EDB-POALeaflet2019_TC.pdf">資料來源</a></li></ul>' ,10001,'y',current_timestamp,'2019-06-01','2019-06-01',current_timestamp,'importantday','',1, 'https://www.edb.gov.hk/attachment/tc/edu-system/primary-secondary/spa-systems/primary-1-admission/EDB-POALeaflet2019_TC.pdf');
+
+
+insert into event (title,note,entityid,active,lastmodified,startdate,enddate,created,eventtype,ipaddr,userid,url)
+values('2019 中學學位 申請自行分配學位', '<ul><li>2019 中學學位 申請自行分配學位</li><li><a rel="nofollow" target="_blank" href="https://www.edb.gov.hk/attachment/tc/edu-system/primary-secondary/spa-systems/secondary-spa/general-info/SSA%20leaflet%202017-19%20web-TC.pdf">資料來源</a></li></ul>' ,10001,'y',current_timestamp,'2019-01-03','2019-01-17',current_timestamp,'importantday','',1, 'https://www.edb.gov.hk/attachment/tc/edu-system/primary-secondary/spa-systems/secondary-spa/general-info/SSA%20leaflet%202017-19%20web-TC.pdf');
+
+insert into event (title,note,entityid,active,lastmodified,startdate,enddate,created,eventtype,ipaddr,userid,url)
+values('2019 中學學位 申請統一派位', '<ul><li>2019 中學學位 申請統一派位</li><li><a rel="nofollow" target="_blank" href="https://www.edb.gov.hk/attachment/tc/edu-system/primary-secondary/spa-systems/secondary-spa/general-info/SSA%20leaflet%202017-19%20web-TC.pdf">資料來源</a></li></ul>' ,10001,'y',current_timestamp,'2019-04-10','2019-05-10',current_timestamp,'importantday','',1, 'https://www.edb.gov.hk/attachment/tc/edu-system/primary-secondary/spa-systems/secondary-spa/general-info/SSA%20leaflet%202017-19%20web-TC.pdf');
+
+insert into event (title,note,entityid,active,lastmodified,startdate,enddate,created,eventtype,ipaddr,userid,url)
+values('2019 中學學位 公布自行分配學位及統一派位結果', '<ul><li>2019 中學學位 公布自行分配學位及統一派位結果</li><li><a rel="nofollow" target="_blank" href="https://www.edb.gov.hk/attachment/tc/edu-system/primary-secondary/spa-systems/secondary-spa/general-info/SSA%20leaflet%202017-19%20web-TC.pdf">資料來源</a></li></ul>' ,10001,'y',current_timestamp,'2019-07-09','2019-07-09',current_timestamp,'importantday','',1, 'https://www.edb.gov.hk/attachment/tc/edu-system/primary-secondary/spa-systems/secondary-spa/general-info/SSA%20leaflet%202017-19%20web-TC.pdf');
+
+
+
 
 
 ALTER TABLE objectstat ADD CONSTRAINT CK_objectstat UNIQUE (objectid,type);
