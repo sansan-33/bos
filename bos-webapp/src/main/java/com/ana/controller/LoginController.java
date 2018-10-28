@@ -262,7 +262,7 @@ public class LoginController extends BaseController {
 				if("new".equalsIgnoreCase((String) paramMap.get("action")) && "0".equalsIgnoreCase(paramMap.get("roleid"))){
 					saveComment(request,response);
 				}
-				theLogger.info("login controller session.getAttribute(user) " + (session.getAttribute("user") == null) );
+				theLogger.info("login controller session.getAttribute(user) " + session.getAttribute("user") );
 				return getHomeDetail(request,response);
 			}else{
 				theLogger.debug("login controller session.getAttribute(user) " + (session.getAttribute("user") == null) );
