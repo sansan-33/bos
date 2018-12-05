@@ -1,0 +1,30 @@
+.ypaAdTitleInner{
+  font-family: 'Cabin';
+  background-repeat: no-repeat;
+  background-position: right;
+  padding-right: 0px;
+  text-decoration: none;
+  font-weight: bold !important;
+  color: #000066 !important;
+  font-size: 13px;
+}
+
+.ypaAdDescInner{
+  color: #403f3e !important;
+  font-size: 13px;
+}
+
+.ypaAdURLInner{
+  color: #888 !important;
+  font-size: 13px;
+}/Users/anthan/Downloads/bookofschool_search2.css
+
+.ypaAdElement:hover{
+	background-color: #FFE47E;
+}
+
+.ypaAdImageInAdImage{
+  width: 66px;
+  height: auto;
+  margin-top: 9px;
+}

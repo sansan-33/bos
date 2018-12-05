@@ -1,0 +1,11 @@
+.ypaAdBox{background-color:#fdfdfd;border:1px solid;border-color:#e5e5e5 #dbdbdb #d2d2d2;border-radius:4px;box-shadow:rgba(0,0,0,0.3)0 1px 3px;-moz-box-shadow:rgba(0,0,0,0.3)0 1px 3px;-webkit-box-shadow:rgba(0,0,0,0.3)0 1px 3px;padding:0}
+.ypaAdLabel{border-bottom:1px solid #bfbfbf;background:#fafafa;padding:11px 26px 9px;margin:0}
+.ypaAdLabelText{font-size:9pt;vertical-align:middle;color:#000}
+.ypaAdTextDiv{width:calc(100% - 162px);vertical-align:top;display:table-cell;float:right;padding:0;position:relative}
+.AdLine1{padding:6px 21px 4px;display:table-cell;border-left:1px solid #bfbfbf;border-bottom:1px solid #E0E0E0;height:88px;width:151px;word-break:break-word}
+.ypaAdTitleInner{font-size:13px;font-weight:bold;color:#006}
+.ypaAdLine2{padding:6px 21px 4px;display:table-cell;border-left:1px solid #bfbfbf;border-bottom:1px solid #E0E0E0}
+.ypaAdDescInner{color:#333333;font-size:13px}
+.ypaAdImageDiv{vertical-align:top;display:table-cell;padding:5px 20px 15px;border-left:1px solid #bfbfbf;border-bottom:1px solid #E0E0E0;float:left;width:120px}
+.ypaAdImageInAdImage{width:120px;height:78px}
+.ypaAdTextDiv > div:nth-child(4){display:inline;position:absolute;right:0;bottom:0;border:0;font-family:Tahoma;color:#ccc;font-size:12px;}

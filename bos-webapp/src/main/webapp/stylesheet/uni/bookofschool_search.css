@@ -1,0 +1,41 @@
+.ypaAdTextDiv{
+  vertical-align: top;
+  display: table-cell;
+  padding: 0 0 15px 0;
+  float: right;
+  width: 70%;
+}
+
+.ypaAdImageDiv{
+  vertical-align: top;
+  display: table-cell;
+  padding: 0 10px 15px;
+  float: left;
+}
+
+.ypaAdImageInAdImage{
+	width: 68px;
+	height: 54px;
+}
+
+.ypaAdTitleInner{
+  font-family: 'Cabin';
+  background-repeat: no-repeat;
+  background-position: right;
+  padding-right: 0px;
+  text-decoration: none;
+  font-weight: bold !important;
+  color: #000066 !important;
+}
+
+.ypaAdDescInner{
+  color: #403f3e !important;
+}
+
+.ypaAdURLInner{
+  color: #888 !important;
+}
+
+.ypaAdElement:hover{
+	background-color: #FFE47E;
+}
