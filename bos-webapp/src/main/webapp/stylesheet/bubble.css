@@ -76,7 +76,7 @@
 
 /* CSS talk bubble */
 .talk-bubble {
-	margin: 20px;
+	margin: 10px;
   display: inline-block;
   position: relative;
 	width: 180px;
@@ -115,7 +115,7 @@
 
 /* talk bubble contents */
 .talktext{
-  padding: 1em;
+  padding: 3px 0px 3px 3px;
 	text-align: left;
   line-height: 1.5em;
 }
