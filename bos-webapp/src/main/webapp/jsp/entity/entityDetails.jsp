@@ -773,7 +773,7 @@ ${requestScope.categoryid eq '5' ||  empty requestScope.ranking ||  requestScope
 <div style="padding-top:0px;">&nbsp;</div>
 <div class="dbl-bdr"><div class="wrapper-small ">
 <!--  ======================== -->
-<c:forEach begin="2013" end="${requestScope.rankingyear}"  var="i" varStatus="stat">
+<c:forEach begin="2014" end="${requestScope.rankingyear}"  var="i" varStatus="stat">
 <c:set var="btn">
 <a href="/school/controller/entityForm?entityid=${requestScope.entityid}&action=edit&year=${i}&categoryid=${requestScope.categoryid}" rel="#overlay_entityedit" style="text-decoration:none">
 	<font class="fontbold fontxlarge">${i}</font>
