@@ -174,7 +174,7 @@ onclick="clickclear(this, '<spring:message code='label.searchtextfield'/>')" onb
 			    <li>
         				<a href="#"><spring:message code="label.rankingreport"/><img style="padding-left:5px;" src="../img/newtrip.png"/><img style="padding-left:10px;" src="/school/img/dropDownArrow.png"></a>
         				<ul>
-        					<li><a href="/school/controller/getHitSchoolReport?schoolyear=2017"><spring:message code="label.hitschool"/><img style="padding-left:5px;" src="../img/newtrip.png"/></a></li>
+        					<li><a href="/school/controller/getHitSchoolReport?schoolyear=2018"><spring:message code="label.hitschool"/><img style="padding-left:5px;" src="../img/newtrip.png"/></a></li>
         					<li><a href="/school/controller/schoolSearch?reporttype=kindergartenranking&schoolcategory=0"><spring:message code="label.kindergartenranking"/></a></li>
         					<li><a href="/school/controller/schoolSearch?reporttype=primaryranking&schoolcategory=1"><spring:message code="label.primaryranking"/></a></li>
         					<li><a href="/school/controller/schoolSearch?reporttype=secondaryranking&schoolcategory=2"><spring:message code="label.secondaryranking"/></a></li>
@@ -187,8 +187,8 @@ onclick="clickclear(this, '<spring:message code='label.searchtextfield'/>')" onb
         				<a href="#"><spring:message code="label.schoolsearchtool"/><img style="padding-left:10px;" src="/school/img/dropDownArrow.png"></a>
         				<ul>
         					<li><a href="/school/controller/eventFullCalendar?view=list&year=${current_year}&sortby=full#todayanchor"><spring:message code="label.eventcalendar"/></a></li>
-                			<li><a href="/school/controller/schoolAllocationReport?categoryid=0&schoolplacementyear=2017"><spring:message code="label.schoolallocationsummary0"/></a></li>
-                        	<li><a href="/school/controller/schoolAllocationReport?categoryid=1&schoolplacementyear=2017"><spring:message code="label.schoolallocationsummary1"/></a></li>
+                			<li><a href="/school/controller/schoolAllocationReport?categoryid=0&schoolplacementyear=2018"><spring:message code="label.schoolallocationsummary0"/></a></li>
+                        	<li><a href="/school/controller/schoolAllocationReport?categoryid=1&schoolplacementyear=2018"><spring:message code="label.schoolallocationsummary1"/></a></li>
                             <li><a href="/school/controller/searchForm?nocache=<%=new java.util.Date().getTime()%>" style="text-decoration:none"><spring:message code="label.advancedsearch"/></a></li>
 							<li><a href="/school/controller/reverseSearchForm?nocache=<%=new java.util.Date().getTime()%>"  style="text-decoration:none" ><spring:message code="label.reversesearch"/></a></li>
 							<li><a href="/school/controller/schoolCompare?nocache=<%=new java.util.Date().getTime()%>" style="text-decoration:none" ><spring:message code="label.schoolcompare"/></a></li>

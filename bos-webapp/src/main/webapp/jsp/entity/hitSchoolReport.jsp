@@ -57,7 +57,7 @@
 					<br class="clearboth"><br class="clearboth">
 					<div style="position:relative;float:left;padding-left:10px;">
                     <span style="padding-right:10px;" class="fontxxlarge fontbold"><spring:message code="label.year"/> : </span>
-                    <c:forEach begin="2012" end="2017"  var="i" varStatus="stat">
+                    <c:forEach begin="2013" end="2018"  var="i" varStatus="stat">
                         <a href="/school/controller/getHitSchoolReport?categoryid=${requestScope.categoryid}&schoolyear=${i}"><font class="d3-color-${requestScope.schoolyear eq i ? 'blue fontbold' : 'gray-1' }">${i+1}</font></a> ${stat.last ? '' : '|' }
                     </c:forEach>
                     </div>
