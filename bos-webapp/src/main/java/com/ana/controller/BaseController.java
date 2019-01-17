@@ -5,7 +5,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
@@ -13,6 +12,8 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.*;
+
+import static org.springframework.web.context.support.WebApplicationContextUtils.*;
 
 @Controller(value="baseController")
 public abstract class BaseController {
@@ -214,7 +215,7 @@ public abstract class BaseController {
 	
 	protected ArrayList<Map<String,String>> buildTopMenu(HttpServletRequest request){
 		
-		ApplicationContext applicationContext = WebApplicationContextUtils.getWebApplicationContext(request.getServletContext());
+		ApplicationContext applicationContext = getWebApplicationContext(request.getServletContext());
 		boolean entityexist = false;
 		boolean poaschoolnetexist = true;
 		String URI = request.getRequestURI();
@@ -646,7 +647,7 @@ public abstract class BaseController {
 	public String getChatMsg(List<Map<String, Object>> result, HttpServletRequest request, Date lastread){
 		
 		try{
-		ApplicationContext applicationContext = WebApplicationContextUtils.getWebApplicationContext(request.getServletContext());
+		ApplicationContext applicationContext = getWebApplicationContext(request.getServletContext());
 		String userscore = applicationContext.getMessage("label.userscore",new Object[] {},Locale.SIMPLIFIED_CHINESE);
 		String parentrating = applicationContext.getMessage("label.parentrating",new Object[] {},Locale.SIMPLIFIED_CHINESE);
 		String dayago = applicationContext.getMessage("label.dayago",new Object[] {},Locale.SIMPLIFIED_CHINESE);

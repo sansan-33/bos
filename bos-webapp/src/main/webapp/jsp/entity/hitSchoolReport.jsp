@@ -52,8 +52,13 @@
                     </div>
 					<br class="clearboth">
 					<h1>${title}</h1><br>
+
 					<p style="padding-bottom:5px;"><font class="fontxlarge"><spring:message code="label.hitschooldesc" arguments="${requestScope.schoolyear+1},${requestScope.schoolyear+2}" htmlEscape="false"/></font></p>
-               		<div style="float:right;right:20px;position:relative;top:-60px;"><img src="/school/img/barchart.png" style="width:30px;height:30px;position:relative;top:5px;" /><a class="fontbold" style=" font-size:25px !important;" href="/school/controller/getCMSDetails?id=6"><spring:message code="label.howtorank"/></a></div>
+					<c:if  test="${requestScope.schoolyear eq '2018' }" >
+                  	    <p style="padding-bottom:5px;"><font class="fontxlarge"><spring:message code="label.draw.desc" arguments="" htmlEscape="false"/></font></p>
+                    </c:if>
+
+               		<div style="float:right;right:20px;position:relative;top:-100px;"><img src="/school/img/barchart.png" style="width:30px;height:30px;position:relative;top:5px;" /><a class="fontbold" style=" font-size:25px !important;" href="/school/controller/getCMSDetails?id=6"><spring:message code="label.howtorank"/></a></div>
 					<br class="clearboth"><br class="clearboth">
 					<div style="position:relative;float:left;padding-left:10px;">
                     <span style="padding-right:10px;" class="fontxxlarge fontbold"><spring:message code="label.year"/> : </span>

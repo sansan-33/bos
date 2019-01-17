@@ -17,7 +17,7 @@ import java.util.regex.Pattern;
 
 public class Spider {
 
-	public static final String URL[] = {"http://www.chsc.hk/psp2017/sch_detail.php?lang_id=2&sch_id="};
+	public static final String URL[] = {"https://www.chsc.hk/psp2018/sch_detail.php?lang_id=2&sch_id="};
 /*
 	  									"http://www.chsc.hk/psp2017/sch_detail.php?lang_id=2&sch_id=",
 	  									"http://www.chsc.hk/psp2017/sch_detail.php?lang_id=2&sch_id=",
@@ -96,7 +96,7 @@ public class Spider {
 			Spider sp = new Spider();
 
 			try {
-				sp.onWeb(1,100);
+				sp.onWeb(95,96);
 
 			} catch (Exception ex) {
 				ex.printStackTrace();
