@@ -30,6 +30,9 @@ public class EntityDAO extends BaseDAO {
 	protected SpiderKindergarten spiderk;
 	protected SpiderSecondary spiders;
 	final static int RANKING_BETWEEN_MIN = 5;
+	final static boolean IS_SCORING_ACAD=true;
+	final static boolean IS_SCORING_METRIC=true;
+	final static boolean IS_UPDATE_RANK=true;
 
 
 	@Autowired
@@ -569,12 +572,10 @@ public class EntityDAO extends BaseDAO {
 			}
 		}
 		sql.append(searchMap.get("limit") != null ? " limit "+ searchMap.get("limit") + " " : "");
-		
+		theLogger.debug("generate comment get entity : " + sql.toString());
+
 		List<Map<String, Object>> result = jdbcTemplate.queryForList(sql.toString());
-        //if("y".equalsIgnoreCase(searchMap.get("comparemapshowsql")) && ( "13122".equalsIgnoreCase(searchMap.get("entityid")) || "5888".equalsIgnoreCase(searchMap.get("entityid")) )  ) {  // update ranking ...
-		if(( "13122".equalsIgnoreCase(searchMap.get("entityid")) || "5888".equalsIgnoreCase(searchMap.get("entityid")) )  ) {  // update ranking ...
-				theLogger.info("update ranking: " + sql.toString());
-        }
+
 		return result;
 	}
 	public List<Map<String, Object>> getEntityLastYear(final HashMap<String,String> searchMap) throws SQLException {
@@ -862,7 +863,8 @@ public class EntityDAO extends BaseDAO {
             fields.put("noofotherroom", "y");
 
 
-            String categoryid = "0";
+
+			String categoryid = "0";
             String year="" + getRankingYear();
 			theLogger.info("synchronize start 01-Jun: {} -- {} ",action, year);
 
@@ -966,7 +968,7 @@ public class EntityDAO extends BaseDAO {
                             	theLogger.debug("processing entityid: {}" , entityid);
 
                                 if(iExistingEntity < 1){
-                                    jdbcTemplate.update("insert into entitybasic (entityid,lastmodified) values(" + entityid +",now())");
+                                    jdbcTemplate.update("insert into entitybasic (entityid,lastmodified,isclosed) values(" + entityid +",now(),'n')");
                                     for(int j = 2011; j<= Integer.parseInt(year); j++){
                                         jdbcTemplate.update("insert into comment (entityid,metric1,metric2,metric3,metric4,metric5,year,comment,type,userid,lastmodified,created) values(" + entityid +",0,0,0,0,0," + j + ",'N/A','system',1,now(),now())");
                                     	theLogger.info("insert into comment (entityid,metric1,metric2,metric3,metric4,metric5,year,comment,type,userid,lastmodified,created) values(" + entityid +",0,0,0,0,0," + j + ",'N/A','system',1,now(),now())");
@@ -1655,7 +1657,9 @@ public class EntityDAO extends BaseDAO {
 		if(isAdmin(userid)){
         theLogger.info("start scoring for category {} , year {}", categoryid, getRankingYear());
 		// Update the school allocation score by inherit parent.
-		scoringAcademic(categoryid);
+		if(IS_SCORING_ACAD) {
+			scoringAcademic(categoryid);
+		}
 		
 		String systemuserid = "1";
 		String metricvalue = "0";
@@ -1686,227 +1690,232 @@ public class EntityDAO extends BaseDAO {
 			jdbcTemplate.update("update bos.comment set comment='', metric1=" + MINSCORE + ",metric2=" + MINSCORE + ",metric3=" + MINSCORE + ",metric4=" + MINSCORE + ",metric5=" + MINSCORE  + ",metric6=" + MINSCORE + "," +
 					"lastmodified=current_timestamp,created=current_timestamp " +
 					"where year=" + getRankingYear() + " and type='system' and userid='" + systemuserid + "' and entityid in (select id from entity where categoryid='" + categoryid + "' ) ");
+			if(IS_SCORING_METRIC) {
 
-            for (String metrickey : metric.keySet()) {
-				if("metric3".equalsIgnoreCase(metrickey))
-					winner= true;
-				else if("5".equalsIgnoreCase(categoryid) && "metric1".equalsIgnoreCase(metrickey) )
-					winner= true;
-				else
-					winner=false;
-				
-				totalMetric++;
-				entityList = new ArrayList<Map<String, Object>>();
-				if("metric2".equalsIgnoreCase(metrickey)){
-					if(!"0".equalsIgnoreCase(categoryid)){
-						entityList = (ArrayList<Map<String, Object>>) getEntityListBySportMetric(metric.get(metrickey),categoryid, metricZeroValExclude.get(metrickey)  ); 
+
+				for (String metrickey : metric.keySet()) {
+					if ("metric3".equalsIgnoreCase(metrickey))
+						winner = true;
+					else if ("5".equalsIgnoreCase(categoryid) && "metric1".equalsIgnoreCase(metrickey))
+						winner = true;
+					else
+						winner = false;
+
+					totalMetric++;
+					entityList = new ArrayList<Map<String, Object>>();
+					if ("metric2".equalsIgnoreCase(metrickey)) {
+						if (!"0".equalsIgnoreCase(categoryid)) {
+							entityList = (ArrayList<Map<String, Object>>) getEntityListBySportMetric(metric.get(metrickey), categoryid, metricZeroValExclude.get(metrickey));
+						}
+					} else {
+						if ("metric1".equalsIgnoreCase(metrickey) && "1".equalsIgnoreCase(categoryid)) {
+							patchExceedQuotaData(categoryid, "");
+						}
+						entityList = (ArrayList<Map<String, Object>>) getEntityListByMetric(metric.get(metrickey), categoryid, metricZeroValExclude.get(metrickey));
+						if ("metric1".equalsIgnoreCase(metrickey) && "1".equalsIgnoreCase(categoryid)) {
+							patchExceedQuotaData(categoryid, "y");
+						}
 					}
-				}else{
-                    if("metric1".equalsIgnoreCase(metrickey) && "1".equalsIgnoreCase(categoryid)){
-                        patchExceedQuotaData(categoryid,"");
-                    }
-                    entityList = (ArrayList<Map<String, Object>>) getEntityListByMetric(metric.get(metrickey),categoryid, metricZeroValExclude.get(metrickey)  );
-                    if("metric1".equalsIgnoreCase(metrickey) && "1".equalsIgnoreCase(categoryid)){
-                        patchExceedQuotaData(categoryid,"y");
-                    }
+					totalRecord = entityList.size();
+					recordCounter = 1;
+					for (Iterator i = entityList.iterator(); i.hasNext(); ) {
+						if ("5".equalsIgnoreCase(categoryid)) {
+							theLogger.debug("is winner ? " + winner);
+							if (recordCounter <= totalRecord * 1 / 10) {                                                                            //(10%)
+								metricvalue = winner ? "10" : "10";
+								theLogger.debug("cat-5 10 point");
+							} else if (recordCounter > totalRecord * 1 / 10 && recordCounter <= totalRecord * 2 / 10) {                            //(20%)
+								metricvalue = winner ? "9.8" : "9";
+							} else if (recordCounter > totalRecord * 2 / 10 && recordCounter <= totalRecord * 3 / 10) {                            //(30%)
+								metricvalue = winner ? "9.5" : "8";
+							} else if (recordCounter > totalRecord * 3 / 10 && recordCounter <= totalRecord * 4 / 10) {                            //(40%)
+								metricvalue = winner ? "9" : "7";
+							} else if (recordCounter > totalRecord * 4 / 10 && recordCounter <= totalRecord * 5 / 10) {                            //(50%)
+								metricvalue = winner ? "8.8" : "6";
+							} else if (recordCounter > totalRecord * 5 / 10 && recordCounter <= totalRecord * 6 / 10) {                            //(60%)
+								metricvalue = winner ? "8.5" : "5";
+							} else if (recordCounter > totalRecord * 6 / 10 && recordCounter <= totalRecord * 7 / 10) {                            //(70%)
+								metricvalue = winner ? "8" : "4";
+							} else if (recordCounter > totalRecord * 7 / 10 && recordCounter <= totalRecord * 8 / 10) {                            //(80%)
+								metricvalue = winner ? "7.8" : "3";
+							} else if (recordCounter > totalRecord * 8 / 10 && recordCounter <= totalRecord * 9 / 10) {                            //(90%)
+								metricvalue = winner ? "7.5" : "2";
+							} else {
+								metricvalue = winner ? "7" : "1";
+							}
+						} else {
+							if (recordCounter <= totalRecord * 1.5 / 100) {                                                                            //1.5 (10)
+								metricvalue = winner ? "10" : "10";
+							} else if (recordCounter > totalRecord * 1.5 / 100 && recordCounter <= totalRecord * 5 / 100) {                            //3.5 (9)
+								metricvalue = winner ? "9.5" : "9";
+							} else if (recordCounter > totalRecord * 5 / 100 && recordCounter <= totalRecord * 16 / 100) {                            //10.8 (8)
+								metricvalue = winner ? "9" : "8";
+							} else if (recordCounter > totalRecord * 16 / 100 && recordCounter <= totalRecord * 28.8 / 100) {                        //12.8 (7)
+								metricvalue = winner ? "8.5" : "7";
+							} else if (recordCounter > totalRecord * 28.8 / 100 && recordCounter <= totalRecord * 38.9 / 100) {                        //10.1 (6.5)
+								metricvalue = winner ? "8.3" : "6.5";
+							} else if (recordCounter > totalRecord * 38.9 / 100 && recordCounter <= totalRecord * 49.9 / 100) {                        //10 (6)
+								metricvalue = winner ? "8" : "6";
+							} else if (recordCounter > totalRecord * 49.9 / 100 && recordCounter <= totalRecord * 84.1 / 100) {                        //35 (5)
+								metricvalue = winner ? "7.8" : "5";
+							} else if (recordCounter > totalRecord * 84.1 / 100 && recordCounter <= totalRecord * 97.7 / 100) {                        //13 (4)
+								metricvalue = winner ? "7.5" : "4";
+							} else if (recordCounter > totalRecord * 97.7 / 100 && recordCounter <= totalRecord * 98.8 / 100) {                        //1.1 (3)
+								metricvalue = winner ? "7" : "3";
+							} else if (recordCounter > totalRecord * 98.8 / 100 && recordCounter <= totalRecord * 100 / 100) {                        //1.2 (2)
+								metricvalue = winner ? "6.5" : "2";
+							} else {
+								metricvalue = winner ? "6" : "1";
+							}
+						}
+						Map<String, Object> entity = (Map<String, Object>) i.next();
+						int iExisting = jdbcTemplate.queryForObject("select count(1) from bos.comment where year=" + getRankingYear() + " and type='system' and entityid='" + quote("" + entity.get("entityid")) + "' and userid='" + systemuserid + "'", Integer.class);
+
+						StringBuffer sqlName = new StringBuffer();
+						StringBuffer sqlValue = new StringBuffer();
+						StringBuffer sqlEntity = new StringBuffer();
+
+						HashMap<String, String> systemComment = new HashMap<String, String>();
+						Double imetricvalue = 0.0;
+						try {
+							imetricvalue = Double.parseDouble(metricvalue);
+						} catch (Exception ex) {
+							imetricvalue = 0.0;
+						}
+						if ("6143".equalsIgnoreCase("" + entity.get("entityid")) && "metric2".equalsIgnoreCase(metrickey)) {
+							theLogger.debug("Jockey Club Ti-I College " + imetricvalue);
+							imetricvalue = imetricvalue <= 7 ? imetricvalue + 2 : imetricvalue;
+							metricvalue = "" + imetricvalue;
+						}
+						if ("6160".equalsIgnoreCase("" + entity.get("entityid")) && "metric2".equalsIgnoreCase(metrickey)) {
+							theLogger.debug("St. Paul's Co-Educational College " + imetricvalue);
+							imetricvalue = imetricvalue <= 8.0 ? 8.0 : imetricvalue;
+							metricvalue = "" + imetricvalue;
+						}
+						systemComment.put("comment", "n/a");
+						systemComment.put("subject", "\u4E3B\u7DE8\u8A55\u8AD6");
+						systemComment.put("entityid", "" + entity.get("entityid"));
+						systemComment.put("userid", systemuserid);
+						//systemComment.put("type", "system");
+
+						systemComment.put(metrickey, metricvalue);
+
+						if (iExisting < 1) {
+							sqlName.append("insert into bos.comment(lastmodified,created,type,year,  ");
+							sqlValue.append(" values(current_timestamp,current_timestamp,'system', " + getRankingYear() + " ,  ");
+							for (String key : systemComment.keySet()) {
+								sqlName.append(key + ",");
+								sqlValue.append("'" + quote(systemComment.get(key)) + "',");
+							}
+							sqlName.deleteCharAt(sqlName.length() - 1).append(")");
+							sqlValue.deleteCharAt(sqlValue.length() - 1).append(")");
+						} else {
+							sqlName.append("update bos.comment set lastmodified=current_timestamp,created=current_timestamp, ");
+							for (String key : systemComment.keySet()) {
+								sqlName.append(key + "='").append(quote(systemComment.get(key)) + "',");
+							}
+
+							// TODO remove ib school year 2011 metric update next year ...
+							sqlName.deleteCharAt(sqlName.length() - 1).append(" where  type='system' and entityid='" + quote("" + entity.get("entityid")) + "' and userid='" + systemuserid + "' " + (!"5".equalsIgnoreCase(categoryid) ? " and year=" + getRankingYear() + " " : ""));
+						}
+
+						//if("3751".equalsIgnoreCase("" + entity.get("entityid")) || "3767".equalsIgnoreCase("" + entity.get("entityid")) || "3749".equalsIgnoreCase("" + entity.get("entityid")) )
+						//theLogger.info(sqlName.toString() + sqlValue.toString());
+
+						jdbcTemplate.update(sqlName.toString() + sqlValue.toString());
+
+						sqlEntity = new StringBuffer();
+						sqlEntity.append("update entity e,");
+						sqlEntity.append("		(select ");
+						sqlEntity.append("entityid,");
+						sqlEntity.append("IF(avg(metric1) > 0 , round(avg(metric1),1) , '0')  as metric1,");
+						sqlEntity.append("IF(avg(metric2) > 0 , round(avg(metric2),1) , '0')  as metric2,");
+						sqlEntity.append("IF(avg(metric3) > 0 , round(avg(metric3),1) , '0')  as metric3,");
+						sqlEntity.append("IF(avg(metric4) > 0 , round(avg(metric4),1) , '0')  as metric4,");
+						sqlEntity.append("IF(avg(metric5) > 0 , round(avg(metric5),1) , '0')  as metric5 ");
+						sqlEntity.append("from comment where type='system' and entityid=" + entity.get("entityid") + " group by entityid ) c set ");
+						sqlEntity.append("e.metricoverall1=c.metric1,");
+						sqlEntity.append("		e.metricoverall2=c.metric2,");
+						sqlEntity.append("		e.metricoverall3=c.metric3,");
+						sqlEntity.append("		e.metricoverall4=c.metric4,");
+						sqlEntity.append("		e.metricoverall5=c.metric5 ");
+						sqlEntity.append("where e.id=c.entityid ");
+						sqlEntity.append(" and e.id=" + entity.get("entityid"));
+						jdbcTemplate.update(sqlEntity.toString());
+						recordCounter++;
+					}
+
+					//if("2".equalsIgnoreCase(categoryid) && "metric4".equalsIgnoreCase(metrickey)){
+					//	jdbcTemplate.update("update entity set area=4800 where id = 6056;"); //Ho Fung College (Sponsored by Sik Sik Yuen)
+					//	jdbcTemplate.update("update entity set area=6000 where id = 5900;"); //Po Leung Kuk Lee Shing Pik College
+					//}
+
 				}
-				totalRecord = entityList.size();
-				recordCounter = 1;
-				for (Iterator i = entityList.iterator(); i.hasNext(); ){
-					if("5".equalsIgnoreCase(categoryid)){
-                            theLogger.debug("is winner ? " + winner);
-						if(recordCounter <= totalRecord * 1 / 10 ){																			//(10%)
-							metricvalue = winner ? "10" : "10";
-                            theLogger.debug("cat-5 10 point");
-						}else if (recordCounter > totalRecord * 1 / 10 && recordCounter <= totalRecord * 2 / 10 ){							//(20%)
-							metricvalue = winner ? "9.8" : "9";
-						}else if (recordCounter > totalRecord * 2 / 10 && recordCounter <= totalRecord * 3 / 10 ){							//(30%)
-							metricvalue = winner ? "9.5" : "8";
-						}else if (recordCounter > totalRecord * 3 / 10 && recordCounter <= totalRecord * 4 / 10 ){							//(40%)
-							metricvalue = winner ? "9" : "7";
-						}else if (recordCounter > totalRecord * 4 / 10 && recordCounter <= totalRecord * 5 / 10 ){							//(50%)
-							metricvalue = winner ? "8.8" : "6";
-						}else if (recordCounter > totalRecord * 5 / 10 && recordCounter <= totalRecord * 6 / 10 ){							//(60%)
-							metricvalue = winner ? "8.5" : "5";
-						}else if (recordCounter > totalRecord * 6 / 10 && recordCounter <= totalRecord * 7 / 10 ){							//(70%)
-							metricvalue = winner ? "8" : "4";
-						}else if (recordCounter > totalRecord * 7 / 10 && recordCounter <= totalRecord * 8 / 10 ){							//(80%)
-							metricvalue = winner ? "7.8" : "3";
-						}else if (recordCounter > totalRecord * 8 / 10 && recordCounter <= totalRecord * 9 / 10 ){							//(90%)
-							metricvalue = winner ? "7.5" : "2";
-						}else{
-							metricvalue = winner ? "7" : "1"; 
-						}
-					}else{
-						if(recordCounter <= totalRecord * 1.5 / 100 ){																			//1.5 (10)
-							metricvalue = winner ? "10" : "10";
-						}else if (recordCounter > totalRecord * 1.5 / 100 && recordCounter <= totalRecord * 5 / 100 ){							//3.5 (9)
-							metricvalue = winner ? "9.5" : "9";
-						}else if (recordCounter > totalRecord * 5 / 100 && recordCounter <= totalRecord * 16  / 100 ){							//10.8 (8)
-							metricvalue = winner ? "9" : "8";
-						}else if (recordCounter > totalRecord * 16  / 100 && recordCounter <= totalRecord * 28.8 / 100 ){						//12.8 (7)
-							metricvalue = winner ? "8.5" : "7";
-						}else if (recordCounter > totalRecord * 28.8 / 100 && recordCounter <= totalRecord * 38.9 / 100 ){						//10.1 (6.5)
-							metricvalue = winner ? "8.3" : "6.5";
-						}else if (recordCounter > totalRecord * 38.9 / 100 && recordCounter <= totalRecord * 49.9 / 100 ){						//10 (6)
-							metricvalue = winner ? "8" : "6";
-						}else if (recordCounter > totalRecord * 49.9 / 100 && recordCounter <= totalRecord * 84.1 / 100 ){						//35 (5)
-							metricvalue = winner ? "7.8" : "5";
-						}else if (recordCounter > totalRecord * 84.1 / 100 && recordCounter <= totalRecord * 97.7 / 100 ){						//13 (4)	
-							metricvalue = winner ? "7.5" : "4";
-						}else if (recordCounter > totalRecord * 97.7 / 100 && recordCounter <= totalRecord * 98.8 / 100 ){						//1.1 (3)
-							metricvalue = winner ? "7" : "3";	
-						}else if (recordCounter > totalRecord * 98.8 / 100 && recordCounter <= totalRecord * 100 / 100 ){						//1.2 (2)
-							metricvalue = winner ? "6.5" : "2";
-						}else{
-							metricvalue = winner ? "6" : "1";
-						}
-					}
-					Map<String, Object> entity = (Map<String, Object>) i.next();
-					int iExisting = jdbcTemplate.queryForObject("select count(1) from bos.comment where year=" + getRankingYear() + " and type='system' and entityid='" + quote( "" + entity.get("entityid")) + "' and userid='" + systemuserid + "'" , Integer.class );
-					
-					StringBuffer sqlName = new StringBuffer();
-					StringBuffer sqlValue = new StringBuffer();
-					StringBuffer sqlEntity = new StringBuffer();
 
-					HashMap<String,String> systemComment = new HashMap<String,String>();
-					Double imetricvalue=0.0;
-					try{
-						imetricvalue = Double.parseDouble(metricvalue);
-					}catch(Exception ex){
-						imetricvalue=0.0;
-					}
-					if("6143".equalsIgnoreCase("" + entity.get("entityid")) && "metric2".equalsIgnoreCase(metrickey)){
-                        theLogger.debug("Jockey Club Ti-I College " + imetricvalue);
-						imetricvalue = imetricvalue <= 7 ? imetricvalue + 2 :  imetricvalue ;
-						metricvalue = "" + imetricvalue;
-					}
-					if("6160".equalsIgnoreCase("" + entity.get("entityid")) && "metric2".equalsIgnoreCase(metrickey)){
-                        theLogger.debug("St. Paul's Co-Educational College " + imetricvalue);
-						imetricvalue = imetricvalue <= 8.0 ? 8.0 :  imetricvalue ;
-						metricvalue = "" + imetricvalue;
-					}
-					systemComment.put("comment", "n/a");
-					systemComment.put("subject", "\u4E3B\u7DE8\u8A55\u8AD6");
-					systemComment.put("entityid", "" + entity.get("entityid") );
-					systemComment.put("userid", systemuserid);
-					//systemComment.put("type", "system");
-					
-					systemComment.put(metrickey, metricvalue);
+				if ("2".equalsIgnoreCase(categoryid)) {
 
-					if(iExisting < 1){
-						sqlName.append("insert into bos.comment(lastmodified,created,type,year,  ");
-						sqlValue.append(" values(current_timestamp,current_timestamp,'system', " +  getRankingYear() +  " ,  ");
-						for (String key : systemComment.keySet()) {
-							sqlName.append(key + ",");
-							sqlValue.append("'" + quote(systemComment.get(key)) + "',");
-						}
-						sqlName.deleteCharAt(sqlName.length() - 1).append(")");
-						sqlValue.deleteCharAt(sqlValue.length() - 1).append(")");
-					}else{
-						sqlName.append("update bos.comment set lastmodified=current_timestamp,created=current_timestamp, ");
-						for (String key : systemComment.keySet()) {
-							sqlName.append(key + "='").append(quote(systemComment.get(key)) + "',");
-						}
-						
-						// TODO remove ib school year 2011 metric update next year ...
-						sqlName.deleteCharAt(sqlName.length() - 1).append(" where  type='system' and entityid='" + quote( "" + entity.get("entityid")) + "' and userid='" + systemuserid + "' " + (!"5".equalsIgnoreCase(categoryid) ? " and year=" +  getRankingYear() +  " " : "" )) ;
-					}
+					jdbcTemplate.update("update comment set metric1=IF(metric1 < 8.8 ,8.8, metric1) where type='system' and  entityid=6303 and year=" + getRankingYear());  //Ying Wa
+					jdbcTemplate.update("update comment set metric1=IF(metric1 < 8.7 ,8.7, metric1) where type='system' and  entityid=6096 and year=" + getRankingYear());  //Marymount
+					jdbcTemplate.update("update comment set metric1=IF(metric1 < 8.7 ,8.7, metric1) where type='system' and  entityid=6194 and year=" + getRankingYear()); //St. Joseph
+					jdbcTemplate.update("update comment set metric1=IF(metric1 < 8.9 ,8.9, metric1) where type='system' and  entityid=6098 and year=" + getRankingYear()); //Maryknoll Convent School (Secondary Section)
+					jdbcTemplate.update("update comment set metric1=IF(metric1 < 8.7 ,8.7, metric1) where type='system' and  entityid=6304 and year=" + getRankingYear()); //King's
+					jdbcTemplate.update("update comment set metric1=IF(metric1 < 8.7 ,8.7, metric1) where type='system' and  entityid=6039 and year=" + getRankingYear()); //Sacred Heart Canossian
+					jdbcTemplate.update("update comment set metric1=IF(metric1 < 8.7 ,8.7, metric1) where type='system' and  entityid=6196 and year=" + getRankingYear()); //St. Stephen Girl
 
-					if("3751".equalsIgnoreCase("" + entity.get("entityid")) || "3767".equalsIgnoreCase("" + entity.get("entityid")) || "3749".equalsIgnoreCase("" + entity.get("entityid")) )
-                    theLogger.info(sqlName.toString() + sqlValue.toString());
+					jdbcTemplate.update("update comment set metric1=10, metric5=9 where  type='system' and entityid = 5890 and year=" + getRankingYear()); //Diocesan Girl School
 
-					jdbcTemplate.update(sqlName.toString() + sqlValue.toString());
+					jdbcTemplate.update("update comment set metric1=9, metric5=8,metric4=10 where type='system' and  entityid = 6062 and year=" + getRankingYear()); //La Salle College
+					jdbcTemplate.update("update comment set metric1=9, metric5=8, metric4=10 where type='system' and entityid = 5888 and year=" + getRankingYear()); //Diocesan Boy school
+					jdbcTemplate.update("update comment set metric5=8,metric4=10 where type='system' and entityid = 5937 and year=" + getRankingYear()); //Good Hope
+					jdbcTemplate.update("update comment set metric5=8,metric4=9 where type='system' and entityid = 6284 and year=" + getRankingYear()); //Heep Yunn
+					jdbcTemplate.update("update comment set metric5=8 where type='system' and entityid = 6013 and year=" + getRankingYear()); //Quuen's College
+					jdbcTemplate.update("update comment set metric5=7.5 where type='system' and entityid = 6011 and year=" + getRankingYear()); //Wah Ying College
+					jdbcTemplate.update("update comment set metric5=7.5 where type='system' and entityid = 6194 and year=" + getRankingYear()); //St Joseph's college
+					jdbcTemplate.update("update comment set metric5=7 where type='system' and  entityid = 6104 and year=" + getRankingYear()); //Munsang college
+					jdbcTemplate.update("update comment set metric5=7 where type='system' and entityid = 6298 and year=" + getRankingYear()); //Queen Elizabeth School
+					jdbcTemplate.update("update comment set metric5=7 where type='system' and entityid = 6304 and year=" + getRankingYear()); //King's College
+					jdbcTemplate.update("update comment set metric3=IF(metric3 <  8.6 , 8.6, metric3 ), metric4=IF(metric4 <  8.5 , 8.5, metric4 ), metric5=8.5  where type='system' and entityid = 6160 and year=" + getRankingYear()); //St. Paul's Co-Educational College
+					jdbcTemplate.update("update comment set metric2=IF(metric2 <  6.5 , 6.5, metric2 ) where type='system' and entityid = 6035 and year=" + getRankingYear()); //Pui Tak Canossian College
 
-					sqlEntity = new StringBuffer();
-					sqlEntity.append("update entity e,");
-					sqlEntity.append("		(select ");
-					sqlEntity.append("entityid,");
-					sqlEntity.append("IF(avg(metric1) > 0 , round(avg(metric1),1) , '0')  as metric1,");
-					sqlEntity.append("IF(avg(metric2) > 0 , round(avg(metric2),1) , '0')  as metric2,");
-					sqlEntity.append("IF(avg(metric3) > 0 , round(avg(metric3),1) , '0')  as metric3,");
-					sqlEntity.append("IF(avg(metric4) > 0 , round(avg(metric4),1) , '0')  as metric4,");
-					sqlEntity.append("IF(avg(metric5) > 0 , round(avg(metric5),1) , '0')  as metric5 ");
-					sqlEntity.append("from comment where type='system' and entityid=" + entity.get("entityid") + " group by entityid ) c set ");
-					sqlEntity.append("e.metricoverall1=c.metric1,");
-					sqlEntity.append("		e.metricoverall2=c.metric2,");
-					sqlEntity.append("		e.metricoverall3=c.metric3,");
-					sqlEntity.append("		e.metricoverall4=c.metric4,");
-					sqlEntity.append("		e.metricoverall5=c.metric5 ");
-					sqlEntity.append("where e.id=c.entityid ");
-					sqlEntity.append(" and e.id=" + entity.get("entityid"));
-					jdbcTemplate.update(sqlEntity.toString());
-					recordCounter++;
+					//Fix the zero music score for current year but not for past year
+					jdbcTemplate.update("update comment c1,(select IF(max(metric2)-3 > 0 , max(metric2)-3,1 ) as metric2, c.entityid, e.athleticsposmale, e.athleticsposfemale from comment c, entityscore e where type='system' and c.entityid=e.entityid and e.categoryid=2 and e.year=" + getRankingYear() + " group by c.entityid) c2  set c1.metric2=c2.metric2 where c1.entityid=c2.entityid and c2.athleticsposmale=0 and c2.athleticsposfemale=0 and c1.type='system' and c1.year=" + getRankingYear());
+					jdbcTemplate.update("update comment c1,(select IF(max(metric3)-3 > 0 , max(metric3)-3,1 ) as metric3, c.entityid from comment c, entityscore e where type='system' and c.entityid=e.entityid and e.categoryid=2 and e.year=" + getRankingYear() + " group by c.entityid) c2  set c1.metric3=c2.metric3 where c1.entityid=c2.entityid and c1.metric3=0 and c1.type='system' and c1.year=" + getRankingYear());
+
 				}
-				
-				//if("2".equalsIgnoreCase(categoryid) && "metric4".equalsIgnoreCase(metrickey)){
-                    //	jdbcTemplate.update("update entity set area=4800 where id = 6056;"); //Ho Fung College (Sponsored by Sik Sik Yuen)
-				    //	jdbcTemplate.update("update entity set area=6000 where id = 5900;"); //Po Leung Kuk Lee Shing Pik College
-				//}
+				if ("1".equalsIgnoreCase(categoryid)) { // teacher
 
-            }
-
-            if("2".equalsIgnoreCase(categoryid)){
-
-                jdbcTemplate.update("update comment set metric1=IF(metric1 < 8.8 ,8.8, metric1) where type='system' and  entityid=6303 and year=" +  getRankingYear() );  //Ying Wa
-                jdbcTemplate.update("update comment set metric1=IF(metric1 < 8.7 ,8.7, metric1) where type='system' and  entityid=6096 and year=" +  getRankingYear() );  //Marymount
-                jdbcTemplate.update("update comment set metric1=IF(metric1 < 8.7 ,8.7, metric1) where type='system' and  entityid=6194 and year=" +  getRankingYear() ); //St. Joseph
-                jdbcTemplate.update("update comment set metric1=IF(metric1 < 8.9 ,8.9, metric1) where type='system' and  entityid=6098 and year=" +  getRankingYear() ); //Maryknoll Convent School (Secondary Section)
-                jdbcTemplate.update("update comment set metric1=IF(metric1 < 8.7 ,8.7, metric1) where type='system' and  entityid=6304 and year=" +  getRankingYear() ); //King's
-                jdbcTemplate.update("update comment set metric1=IF(metric1 < 8.7 ,8.7, metric1) where type='system' and  entityid=6039 and year=" +  getRankingYear() ); //Sacred Heart Canossian
-                jdbcTemplate.update("update comment set metric1=IF(metric1 < 8.7 ,8.7, metric1) where type='system' and  entityid=6196 and year=" +  getRankingYear() ); //St. Stephen Girl
-
-                jdbcTemplate.update("update comment set metric1=10, metric5=9 where  type='system' and entityid = 5890 and year=" +  getRankingYear() ); //Diocesan Girl School
-
-                jdbcTemplate.update("update comment set metric1=9, metric5=8,metric4=10 where type='system' and  entityid = 6062 and year=" +  getRankingYear() ); //La Salle College
-                jdbcTemplate.update("update comment set metric1=9, metric5=8, metric4=10 where type='system' and entityid = 5888 and year=" +  getRankingYear() ); //Diocesan Boy school
-                jdbcTemplate.update("update comment set metric5=8,metric4=10 where type='system' and entityid = 5937 and year=" +  getRankingYear() ); //Good Hope
-                jdbcTemplate.update("update comment set metric5=8,metric4=9 where type='system' and entityid = 6284 and year=" +  getRankingYear() ); //Heep Yunn
-                jdbcTemplate.update("update comment set metric5=8 where type='system' and entityid = 6013 and year=" +  getRankingYear() ); //Quuen's College
-                jdbcTemplate.update("update comment set metric5=7.5 where type='system' and entityid = 6011 and year=" +  getRankingYear() ); //Wah Ying College
-                jdbcTemplate.update("update comment set metric5=7.5 where type='system' and entityid = 6194 and year=" +  getRankingYear() ); //St Joseph's college
-                jdbcTemplate.update("update comment set metric5=7 where type='system' and  entityid = 6104 and year=" +  getRankingYear() ); //Munsang college
-                jdbcTemplate.update("update comment set metric5=7 where type='system' and entityid = 6298 and year=" +  getRankingYear() ); //Queen Elizabeth School
-                jdbcTemplate.update("update comment set metric5=7 where type='system' and entityid = 6304 and year=" +  getRankingYear() ); //King's College
-                jdbcTemplate.update("update comment set metric3=IF(metric3 <  8.6 , 8.6, metric3 ), metric4=IF(metric4 <  8.5 , 8.5, metric4 ), metric5=8.5  where type='system' and entityid = 6160 and year=" +  getRankingYear() ); //St. Paul's Co-Educational College
-				jdbcTemplate.update("update comment set metric2=IF(metric2 <  6.5 , 6.5, metric2 ) where type='system' and entityid = 6035 and year=" +  getRankingYear() ); //Pui Tak Canossian College
-
-                //Fix the zero music score for current year but not for past year
-                jdbcTemplate.update("update comment c1,(select IF(max(metric2)-3 > 0 , max(metric2)-3,1 ) as metric2, c.entityid, e.athleticsposmale, e.athleticsposfemale from comment c, entityscore e where type='system' and c.entityid=e.entityid and e.categoryid=2 and e.year=" +  getRankingYear() + " group by c.entityid) c2  set c1.metric2=c2.metric2 where c1.entityid=c2.entityid and c2.athleticsposmale=0 and c2.athleticsposfemale=0 and c1.type='system' and c1.year=" + getRankingYear() );
-                jdbcTemplate.update("update comment c1,(select IF(max(metric3)-3 > 0 , max(metric3)-3,1 ) as metric3, c.entityid from comment c, entityscore e where type='system' and c.entityid=e.entityid and e.categoryid=2 and e.year=" +  getRankingYear() + " group by c.entityid) c2  set c1.metric3=c2.metric3 where c1.entityid=c2.entityid and c1.metric3=0 and c1.type='system' and c1.year=" + getRankingYear() );
-
-            }
-            if("1".equalsIgnoreCase(categoryid)){ // teacher
-
-                jdbcTemplate.update("update comment set metric5=8 where  type='system' and entityid = 3850 and year=" +  getRankingYear() ); //Good Hope Primary School
-                jdbcTemplate.update("update comment set metric4=6.5 where  type='system' and entityid = 3590 and year=" +  getRankingYear() ); //PLK Castar Primary School
-                jdbcTemplate.update("update comment set metric4=7.5 where  type='system' and entityid = 3509 and year=" +  getRankingYear() ); //Diocesan Preparatory Schoo
-                jdbcTemplate.update("update comment set metric4=IF(metric4 <  6 , 6, metric4 ) where type='system' and entityid = 3420 and year=" +  getRankingYear() ); // St. Paul's College Primary School
-                jdbcTemplate.update("update comment set metric4=IF(metric4 <  9 , 9, metric4 ) where  type='system' and entityid = 3656 and year=" +  getRankingYear() ); //St. Paul's Co-educational College Primary School
-                jdbcTemplate.update("update comment set metric4=IF(metric4 <  7.5 , 7.5, metric4 ) where  type='system' and entityid = 3933 and year=" +  getRankingYear() ); //P.L.K. Camoes Tan Siu Lin Primary School
-                jdbcTemplate.update("update comment set metric4=IF(metric4 <  10 , 10, metric4 ) where  type='system' and entityid = 3494 and year=" +  getRankingYear() ); //Diocesan Boys' School Primary Division
-                jdbcTemplate.update("update comment set metric5=IF(metric5 <  8 , 8, metric5 )  where  type='system' and entityid = 3504 and year=" +  getRankingYear() ); //Maryknoll Convent School (Primary Section)
-                jdbcTemplate.update("update comment set metric5=IF(metric4 <  6.5 , 6.5, metric4 )  where  type='system' and entityid = 3505 and year=" +  getRankingYear() ); //Alliance Primary School, Kowloon Tong
+					jdbcTemplate.update("update comment set metric5=8 where  type='system' and entityid = 3850 and year=" + getRankingYear()); //Good Hope Primary School
+					jdbcTemplate.update("update comment set metric4=6.5 where  type='system' and entityid = 3590 and year=" + getRankingYear()); //PLK Castar Primary School
+					jdbcTemplate.update("update comment set metric4=7.5 where  type='system' and entityid = 3509 and year=" + getRankingYear()); //Diocesan Preparatory Schoo
+					jdbcTemplate.update("update comment set metric4=IF(metric4 <  6 , 6, metric4 ) where type='system' and entityid = 3420 and year=" + getRankingYear()); // St. Paul's College Primary School
+					jdbcTemplate.update("update comment set metric4=IF(metric4 <  9 , 9, metric4 ) where  type='system' and entityid = 3656 and year=" + getRankingYear()); //St. Paul's Co-educational College Primary School
+					jdbcTemplate.update("update comment set metric4=IF(metric4 <  7.5 , 7.5, metric4 ) where  type='system' and entityid = 3933 and year=" + getRankingYear()); //P.L.K. Camoes Tan Siu Lin Primary School
+					jdbcTemplate.update("update comment set metric4=IF(metric4 <  10 , 10, metric4 ) where  type='system' and entityid = 3494 and year=" + getRankingYear()); //Diocesan Boys' School Primary Division
+					jdbcTemplate.update("update comment set metric5=IF(metric5 <  8 , 8, metric5 )  where  type='system' and entityid = 3504 and year=" + getRankingYear()); //Maryknoll Convent School (Primary Section)
+					jdbcTemplate.update("update comment set metric5=IF(metric4 <  6.5 , 6.5, metric4 )  where  type='system' and entityid = 3505 and year=" + getRankingYear()); //Alliance Primary School, Kowloon Tong
 
 
-                //Fix the zero music, sport score for current year but not for past year
-                jdbcTemplate.update("update comment c1,(select IF(max(metric2)-3 > 0 , max(metric2)-3, 1 ) as metric2, c.entityid, e.athleticsposmale, e.athleticsposfemale from comment c, entityscore e where type='system' and c.entityid=e.entityid and e.categoryid=1 and e.year=" +  getRankingYear() + " group by c.entityid) c2  set c1.metric2 = c2.metric2 where c1.entityid=c2.entityid and c2.athleticsposmale=0 and c2.athleticsposfemale=0 and c1.type='system' and c1.year=" + getRankingYear()  );
-                jdbcTemplate.update("update comment c1,(select IF(max(metric3)-3 > 0 , max(metric3)-3, 1 ) as metric3, c.entityid from comment c, entityscore e where type='system' and c.entityid=e.entityid and e.categoryid=1 and e.year=" +  getRankingYear() + " group by c.entityid) c2  set c1.metric3 = c2.metric3 where c1.entityid=c2.entityid and c1.metric3=0 and c1.type='system' and c1.year=" + getRankingYear() );
+					//Fix the zero music, sport score for current year but not for past year
+					jdbcTemplate.update("update comment c1,(select IF(max(metric2)-3 > 0 , max(metric2)-3, 1 ) as metric2, c.entityid, e.athleticsposmale, e.athleticsposfemale from comment c, entityscore e where type='system' and c.entityid=e.entityid and e.categoryid=1 and e.year=" + getRankingYear() + " group by c.entityid) c2  set c1.metric2 = c2.metric2 where c1.entityid=c2.entityid and c2.athleticsposmale=0 and c2.athleticsposfemale=0 and c1.type='system' and c1.year=" + getRankingYear());
+					jdbcTemplate.update("update comment c1,(select IF(max(metric3)-3 > 0 , max(metric3)-3, 1 ) as metric3, c.entityid from comment c, entityscore e where type='system' and c.entityid=e.entityid and e.categoryid=1 and e.year=" + getRankingYear() + " group by c.entityid) c2  set c1.metric3 = c2.metric3 where c1.entityid=c2.entityid and c1.metric3=0 and c1.type='system' and c1.year=" + getRankingYear());
 
-				jdbcTemplate.update("update comment set metric1=IF(metric1 <  7.5 , 7.5, metric1 )  where  type='system' and entityid = 3742 and year=" +  getRankingYear() ); //Po Leung Kuk Hong Kong Taoist Association Yuen Yuen Pri. Sch.
+					jdbcTemplate.update("update comment set metric1=IF(metric1 <  7.5 , 7.5, metric1 )  where  type='system' and entityid = 3742 and year=" + getRankingYear()); //Po Leung Kuk Hong Kong Taoist Association Yuen Yuen Pri. Sch.
 
+				}
+				if ("0".equalsIgnoreCase(categoryid)) { // Area
+					jdbcTemplate.update("update comment set metric4=8.5 where type='system' and entityid = 5186 and year=" + getRankingYear()); //Heep Yunn Kindergarten
+					jdbcTemplate.update("update comment set metric4=8.5 where type='system' and entityid = 5864 and year=" + getRankingYear()); //Good Hope Kindergarten
+					jdbcTemplate.update("update comment set metric4=6.5 where type='system' and entityid = 5337 and year=" + getRankingYear()); //Learning Habitat Tsing yi
+					jdbcTemplate.update("update comment set metric4=8.0 where type='system' and entityid = 5134 and year=" + getRankingYear()); //ELCHK SHATIN LUTHERAN KINDERGARTEN sport stadium, bbq area, fish pool
+					jdbcTemplate.update("update comment set metric4=10 where type='system' and entityid = 5705 and year=" + getRankingYear()); //True Light Middle School of Hong Kong (Kindergarten Section)
+
+				}
+
+				theLogger.info(" All metric calculation completed , waiting for update entity ranking and generate comment for category {} ", categoryid);
 			}
-            if("0".equalsIgnoreCase(categoryid)){ // Area
-                jdbcTemplate.update("update comment set metric4=8.5 where type='system' and entityid = 5186 and year=" +  getRankingYear() ); //Heep Yunn Kindergarten
-                jdbcTemplate.update("update comment set metric4=8.5 where type='system' and entityid = 5864 and year=" +  getRankingYear() ); //Good Hope Kindergarten
-                jdbcTemplate.update("update comment set metric4=6.5 where type='system' and entityid = 5337 and year=" +  getRankingYear() ); //Learning Habitat Tsing yi
-                jdbcTemplate.update("update comment set metric4=8.0 where type='system' and entityid = 5134 and year=" +  getRankingYear() ); //ELCHK SHATIN LUTHERAN KINDERGARTEN sport stadium, bbq area, fish pool
-                jdbcTemplate.update("update comment set metric4=10 where type='system' and entityid = 5705 and year=" +  getRankingYear() ); //True Light Middle School of Hong Kong (Kindergarten Section)
-
-            }
-
-            theLogger.info(" All metric calculation completed , waiting for update entity ranking and generate comment for category {} ", categoryid);
-			updateEntityRanking(categoryid);
+			if(IS_UPDATE_RANK) {
+				updateEntityRanking(categoryid);
+			}
 			generateComment(categoryid,applicationContext);
 				
 		} catch (Exception ex) {
@@ -2492,7 +2501,7 @@ public class EntityDAO extends BaseDAO {
 		
 		try{
 			String schooltype= applicationContext.getMessage("label." + getLookupMap("entity.category").get(categoryid),new Object[] {},Locale.SIMPLIFIED_CHINESE);
-			theLogger.info("Generate Commnet entity list 123 ");
+			theLogger.info("Generate Commnet entity list 18-Jan-19 ");
 			List<Map<String, Object>> entityRankingList = getEntity(tmp,"y");
 			for (int i=0; i<entityRankingList.size(); i++ ){
 
@@ -2789,7 +2798,8 @@ public class EntityDAO extends BaseDAO {
 					if (((String) entity.get("nameeng")).toLowerCase().contains("catherine") && "0".equalsIgnoreCase(categoryid))
 						syscomment = applicationContext.getMessage("comment.kindergarten.unique.stcatherines", new Object[]{ranking, entity.get("schoolfee")}, Locale.SIMPLIFIED_CHINESE) + "\u3002" + schoolcompare + "\u3002";
 
-					//theLogger.debug("Generate comment: " + comment);
+					if("13126".equals(entity.get("entityid")) || "13127".equals(entity.get("entityid")))
+						theLogger.info("Generate comment: " + comment);
 
 					jdbcTemplate.update("update bos.comment set comment=?,metadesc=?,keywords=?,type='system' where type='system' and userid=1 and entityid=?", syscomment, metadesc, keywords, entity.get("entityid"));
 				}
