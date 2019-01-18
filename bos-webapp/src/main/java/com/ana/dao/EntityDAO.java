@@ -905,7 +905,7 @@ public class EntityDAO extends BaseDAO {
 						for (String key : entitymap.keySet()) {
 							entitydesc.append("DAO " + key + ":" +  entitymap.get(key)).append("\n");
 						}
-						if("885".equalsIgnoreCase( (String) entitymap.get("chscid")))
+						if("541".equalsIgnoreCase( (String) entitymap.get("chscid")))
 							theLogger.info(entitydesc.toString());
 					}
 
@@ -937,12 +937,16 @@ public class EntityDAO extends BaseDAO {
                                 }
                                 sqlName.deleteCharAt(sqlName.length() - 1).append(" where chscid='" + quote((String) entity.get("chscid")) + "' and categoryid='" + categoryid + "'");
                             }
-                            if("683".equalsIgnoreCase( (String) entity.get("chscid")))
+                            if("541".equalsIgnoreCase( (String) entity.get("chscid")))
                                 theLogger.info(sqlName.toString() + sqlValue.toString());
                             try{
                                 if(iExistingEntity  > 0)
                             		jdbcTemplate.update(sqlName.toString() + sqlValue.toString());
-                            }catch(Exception ex){
+                                else
+									jdbcTemplate.update(sqlName.toString() + sqlValue.toString());
+							//	System.out.println(sqlName.toString() + sqlValue.toString());
+
+							}catch(Exception ex){
                                 ex.printStackTrace();
                                 theLogger.debug("synchronize exception:" + entity.get("chscid"));
                             }
@@ -964,7 +968,7 @@ public class EntityDAO extends BaseDAO {
                                 if(iExistingEntity < 1){
                                     jdbcTemplate.update("insert into entitybasic (entityid,lastmodified) values(" + entityid +",now())");
                                     for(int j = 2011; j<= Integer.parseInt(year); j++){
-                                        //jdbcTemplate.update("insert into comment (entityid,metric1,metric2,metric3,metric4,metric5,year,comment,type,userid,lastmodified,created) values(" + entityid +",0,0,0,0,0," + j + ",'N/A','system',1,now(),now())");
+                                        jdbcTemplate.update("insert into comment (entityid,metric1,metric2,metric3,metric4,metric5,year,comment,type,userid,lastmodified,created) values(" + entityid +",0,0,0,0,0," + j + ",'N/A','system',1,now(),now())");
                                     	theLogger.info("insert into comment (entityid,metric1,metric2,metric3,metric4,metric5,year,comment,type,userid,lastmodified,created) values(" + entityid +",0,0,0,0,0," + j + ",'N/A','system',1,now(),now())");
                                     }
                                 }
@@ -973,7 +977,8 @@ public class EntityDAO extends BaseDAO {
 
 
                                 if(iExistingEntityScore < 1){
-                                    for(int j = (iExistingEntity < 1 ? 2011 : Integer.parseInt(year)) ; j<= Integer.parseInt(year); j++){
+									int commentcount = (iExistingEntity < 1 ? 2011 : Integer.parseInt(year));
+                                    for( int j = commentcount ; j<= Integer.parseInt(year); j++){
                                         sqlName.append("insert into bos.entityscore(entityid,year,lastmodified,categoryid,ranking,");
                                         sqlValue.append(" values(" + entityid + "," + j + ",now()," + categoryid + ",999,"  );
                                         for (String key : entity.keySet()) {
@@ -985,7 +990,7 @@ public class EntityDAO extends BaseDAO {
                                         sqlName.deleteCharAt(sqlName.length() - 1).append(")");
                                         sqlValue.deleteCharAt(sqlValue.length() - 1).append(")");
                                         theLogger.info(sqlName.toString() + sqlValue.toString());
-                                        //jdbcTemplate.update(sqlName.toString() + sqlValue.toString());
+                                        jdbcTemplate.update(sqlName.toString() + sqlValue.toString());
                                         sqlName = new StringBuffer();
                                         sqlValue = new StringBuffer();
 

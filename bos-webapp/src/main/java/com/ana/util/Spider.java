@@ -33,11 +33,12 @@ public class Spider {
 	static{
         //TODO td format changed in the src
 		searchKeyMap.put("name", "(<dd class=\"xxzl-info-tit\">\\s+.*?)(.*)(<Br>)");
+		searchKeyMap.put("nameeng", "(<dd class=\"xxzl-info-tit\">\\s+.*?.*<Br>\\s+.*?)(.*)(</dd>)");
 		searchKeyMap.put("address", "(<td colspan=\"4\">)(.*?)(</td>)");
-		searchKeyMap.put("email", "(<td width=\"15%\">電郵:&nbsp;&nbsp;</td>\\s+.*?<td>)(.*?)(</td>)");
+		searchKeyMap.put("email", "(<td width=\"15%\">電郵:&nbsp;&nbsp;</td>\\s+.*?<td><a.*? target=\"_blank\">)(.*?)(</a></td>)");
 
         searchKeyMap.put("poaschoolnet", "(校網編號 : )(.*)(</span>)");
-		searchKeyMap.put("url", "(<td>網址:&nbsp;&nbsp;</td>\\s+.*?<td>)(.*?)(</td>)");
+		searchKeyMap.put("url", "(<td>網址:&nbsp;&nbsp;</td>\\s+.*?<td><a.*? target=\"_blank\">)(.*?)(</a></td>)");
 		searchKeyMap.put("language", "(教學語言</td>\\s+.*?<td.*?> :\\s+.*?<td>)(.*)(</td>)");
 		searchKeyMap.put("financetype", "(類別</td>\\s+.*?<td.*?> :\\s+.*?<td>)(.*)(<br>)");
 		searchKeyMap.put("area", "(學校佔地面積</td>\\s+.*?<td.*?> :\\s+.*?<td>)(.*)(</td>)");
@@ -96,7 +97,7 @@ public class Spider {
 			Spider sp = new Spider();
 
 			try {
-				sp.onWeb(95,96);
+				sp.onWeb(541,542);
 
 			} catch (Exception ex) {
 				ex.printStackTrace();
