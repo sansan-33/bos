@@ -1789,3 +1789,4 @@ mysql> update entitybasic set isclosed='n' where entityid=13126;
 Query OK, 1 row affected (0.03 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
 
+mysql> exit

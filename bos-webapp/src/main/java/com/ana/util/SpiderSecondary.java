@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 public class SpiderSecondary extends Spider{
 
 
-	public static final String URL[] = {"http://www.chsc.hk/ssp2017/sch_detail.php?lang_id=2&sch_id="};
+	public static final String URL[] = {"http://www.chsc.hk/ssp2018/sch_detail.php?lang_id=2&sch_id="};
 										//"http://www.chsc.hk/ssp2017/sch_detail.php?lang_id=1&sch_id=",
 										//"http://www.chsc.hk/ssp2017/sch_detail.php?lang_id=2&sch_id=",
 										//"http://www.chsc.hk/ssp2017/sch_detail.php?lang_id=1&sch_id=",

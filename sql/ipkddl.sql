@@ -950,7 +950,7 @@ jstatd -J-Djava.security.policy=/usr/lib/jvm/java-8-oracle/bin/all.policy  -J-Dj
 alter table entityimage add status varchar(1);
 
 alter table entity change qareporturl qareporturl  varchar(200);
-alter table entity change url url  varchar(200);
+alter table entity change url url  varchar(500);
 
 update entity set poaschoolnet='Kwai Tsing' where categoryid=2 and poaschoolnet='葵青區';
 update entity set poaschoolnet='Tuen Mun' where categoryid=2 and poaschoolnet='屯門區';

@@ -10,16 +10,18 @@ import java.util.regex.Pattern;
 
 public class SpiderKindergarten extends Spider{
 
-	public static final String URL[] = {"http://kgp2017.highlight.hk/edb/schoolinfo.php?lang=tc&schid=","http://kgp2017.highlight.hk/edb/schoolinfo.php?lang=en&schid=" };
+
+    public static final String URL[] = {"https://kgp2018.azurewebsites.net/edb/schoolinfo.php?schid=","https://kgp2018.azurewebsites.net/edb/schoolinfo.php?lang=en&schid=" };
+    //public static final String URL[] = {"http://kgp2017.highlight.hk/edb/schoolinfo.php?lang=tc&schid=","http://kgp2017.highlight.hk/edb/schoolinfo.php?lang=en&schid=" };
 	//public static final String URL[] = {"http://hi.baidu.com/nivrrex/blog/item/35eba3cc0616631600e92868.html"};
 	public static ArrayList <HashMap<String,String>> searchKeyList = new ArrayList<HashMap<String,String>>();
 	public static HashMap <String,String> searchKeyMap = new HashMap<String,String>();
     public static HashMap <String,String> searchKeyMapEng = new HashMap<String,String>();
     static{
 		searchKeyMap.put("name", "(<td width=\"285\" style=\"font-size:16px\">\\s+)(.*?)(<div style='height:10px'>)");
-		searchKeyMap.put("address", "(<td width=\"80\">地址</td>\\s+<td>\\s+)(.*?)(</td>)");
+		searchKeyMap.put("address", "(<td width=\"50\">地址:</td>\\s+<td>\\s+)(.*?)(</td>)");
 		//searchKeyMap.put("addresseng", "(<td width=\"80\">地址<br>Address</td>\\s+<td>\\s+.*?<br>\\s+)(.*?)(</td>)");
-        searchKeyMap.put("telephone", "(<td width=\"80\">電話</td>\\s+<td>\\s+)(.*?)(</td>)");
+        searchKeyMap.put("telephone", "(<td width=\"50\">電話:</td>\\s+<td>\\s+)(.*?)(</td>)");
 
         searchKeyMap.put("session","(<div style=\"padding:0 0 0 10px\">全日班</div>\\s+</td>\\s+<td align=\"center\" bgcolor=\"#ffffff\">.*?</td>\\s+<td align=\"center\" bgcolor=\"#ffffff\">.*?</td>\\s+<td align=\"center\" bgcolor=\"#ffffff\">)(.*?)(</td>\\s+<td align=\"center\" bgcolor=\"#ffffff\">.*?</td>)");
 
@@ -75,8 +77,8 @@ public class SpiderKindergarten extends Spider{
 
             SpiderKindergarten sp = new  SpiderKindergarten();
             try {
-				sp.onWeb(5956,5957);
-                //sp.onWeb(6563,6564);
+				//sp.onWeb(5956,5957);
+                sp.onWeb(6985,6986);
 
 
             } catch (Exception ex) {
@@ -148,7 +150,7 @@ public class SpiderKindergarten extends Spider{
 				    		entity.put((eng==0) ? key : key+ "eng", matcher.group(2).trim());
 				    	}
 
-				        //System.out.println(key + " " + matcher.group(2).trim());
+				        System.out.println(key + " " + matcher.group(2).trim());
                         //System.out.println(key + " " + entity.get(key));
 
                         matchFound = matcher.find(matcher.end());
