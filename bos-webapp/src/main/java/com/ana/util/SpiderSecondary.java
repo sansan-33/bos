@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 public class SpiderSecondary extends Spider{
 
 
-	public static final String URL[] = {"http://www.chsc.hk/ssp2018/sch_detail.php?lang_id=2&sch_id="};
+	public static final String URL[] = {"https://www.chsc.hk/ssp2018/sch_detail.php?lang_id=2&sch_id=","https://www.chsc.hk/ssp2018/sch_detail.php?lang_id=1&sch_id="};
 										//"http://www.chsc.hk/ssp2017/sch_detail.php?lang_id=1&sch_id=",
 										//"http://www.chsc.hk/ssp2017/sch_detail.php?lang_id=2&sch_id=",
 										//"http://www.chsc.hk/ssp2017/sch_detail.php?lang_id=1&sch_id=",
@@ -54,7 +54,6 @@ public class SpiderSecondary extends Spider{
 
 		//searchKeyList.add(searchKeyMap);
 		//searchKeyMap = new HashMap();
-		searchKeyMap.put("poaschoolnet", "(本區</td>\\s+.*?<td.*?> :\\s+.*?<td>)(.*)(</td>)");
 
 		//searchKeyList.add(searchKeyMap);
 		//searchKeyMap = new HashMap();
@@ -62,8 +61,9 @@ public class SpiderSecondary extends Spider{
 		searchKeyMap.put("teachermaster", "(碩士、博士或以上</td>\\s+.*?<td.*?> :\\s+.*?<td>)(.*)(</td>)");
 		searchKeyMap.put("teacherbachelor", "(學士： </td>\\s+.*?<td.*?> :\\s+.*?<td>)(.*)(</td>)");
 
-		//searchKeyList.add(searchKeyMap);
-		//searchKeyMap = new HashMap();
+		searchKeyList.add(searchKeyMap);
+		searchKeyMap = new HashMap();
+		searchKeyMap.put("poaschoolnet", "(District</td>\\s+.*?<td.*?> :\\s+.*?<td>)(.*)(</td>)");
 		//searchKeyMap.put("language", "(教學語言</td>\\s+.*?<td.*?> :\\s+.*?<td>)(.*)(</td>)");
 
 		//searchKeyList.add(searchKeyMap);
@@ -80,7 +80,7 @@ public class SpiderSecondary extends Spider{
 			SpiderSecondary sp = new SpiderSecondary();
 
 			try {
-				sp.onWeb(123,124);
+				sp.onWeb(459,465);
 
 			} catch (Exception ex) {
 				ex.printStackTrace();
@@ -105,16 +105,17 @@ public class SpiderSecondary extends Spider{
 				
 				//result = result.replaceAll("<br>", "");
 				result = result.replaceAll("<p align='left'>-</p>", "");
-				
-		
+
 				HashMap<String,String> map = searchKeyList.get(j);
+				//System.out.println(result);
+
 				for (String key : map.keySet()) {
 					eng=0;
 					Pattern p = Pattern.compile(map.get(key));
 				    Matcher matcher = p.matcher(result);
 				    boolean matchFound = matcher.find();
 				    if(matchFound) {
-				    	System.out.println(key + " " + matcher.group(2));
+				    	//System.out.println(key + " " + matcher.group(2));
 
 				        if("financetype".equalsIgnoreCase(key) && matcher.group(2).contains("<br>") ){
 				    		String tmp[] = matcher.group(2).split("<br>");
@@ -172,7 +173,7 @@ public class SpiderSecondary extends Spider{
 			if(!entity.isEmpty() && entity.containsKey("name")
 					&& entity.get("name") != null && entity.get("name").toString().trim().length() > 0
 					){
-				//System.out.println("chscid " + i + " added");
+				System.out.println("chscid " + i + " added");
 				resultList.add(entity);
 			}
 		}

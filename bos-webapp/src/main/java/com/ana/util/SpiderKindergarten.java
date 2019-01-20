@@ -150,7 +150,7 @@ public class SpiderKindergarten extends Spider{
 				    		entity.put((eng==0) ? key : key+ "eng", matcher.group(2).trim());
 				    	}
 
-				        System.out.println(key + " " + matcher.group(2).trim());
+				        //System.out.println(key + " " + matcher.group(2).trim());
                         //System.out.println(key + " " + entity.get(key));
 
                         matchFound = matcher.find(matcher.end());
