@@ -1929,8 +1929,7 @@ public class EntityDAO extends BaseDAO {
 
 
         try {
-            String TESTID = "3913";
-            String TESTID2 = "3494";
+            String TESTID = "3619";
 
             ArrayList<Map<String, Object>> entityList;
 			ArrayList<String> schoolnamelist;
@@ -1955,14 +1954,14 @@ public class EntityDAO extends BaseDAO {
 
 				Map<String, Object> entity = (Map<String, Object>) i.next();
                 if(TESTID.equalsIgnoreCase(""  + entity.get("id"))){
-                    theLogger.debug("scoringAcademic  " + entity.get("nameeng") + "\n");
+                    theLogger.info("scoringAcademic  " + entity.get("nameeng") + "\n");
                 }
 				String schoolallocationscore="";
 				if( entity.get("feeder") != null && ((String) entity.get("feeder")).trim().length() > 0 && ! "-".equalsIgnoreCase(((String) entity.get("feeder")).trim())   || (entity.get("throughtrain") != null && ((String) entity.get("throughtrain")).trim().length() > 0 && !"-".equalsIgnoreCase(((String) entity.get("throughtrain")).trim())) ){
 					
 					schoolname = entity.get("feeder") != null && ! "-".equalsIgnoreCase(((String) entity.get("feeder")).trim())   ? ((String) entity.get("feeder")).replaceAll("\u3001",",") : "";
 					schoolname += entity.get("throughtrain") != null && ! "-".equalsIgnoreCase(((String) entity.get("throughtrain")).trim())   ? ((String) entity.get("throughtrain")).replaceAll("\u3001",",")  : "";
-					if(TESTID.equalsIgnoreCase( ""+ entity.get("id")) || TESTID2.equalsIgnoreCase( ""+ entity.get("id")) ){
+					if(TESTID.equalsIgnoreCase( ""+ entity.get("id")) ){
 						theLogger.info("Feeder / throughtrain    " + entity.get("feeder") + "/" + entity.get("throughtrain"));
 						theLogger.info("schoolname " + schoolname);
 					
@@ -1972,7 +1971,7 @@ public class EntityDAO extends BaseDAO {
 						sql.append("'" +   quote(st.nextToken().trim()) + "',");
 					}
 					result = this.jdbcTemplate.queryForList("select metric1,score from comment c, entity e where c.entityid=e.id and c.type='system' and c.userid=1 and c.year=" +  getRankingYear() + " and c.entityid in (select id from entity where categoryid=2 and name in (" + sql.toString() + "'@'))" );
-                    if(TESTID.equalsIgnoreCase(""  + entity.get("id")) || TESTID2.equalsIgnoreCase( ""+ entity.get("id")) ){
+                    if(TESTID.equalsIgnoreCase(""  + entity.get("id"))  ){
                         theLogger.info("select metric1,score from comment c, entity e where c.entityid=e.id and c.type='system' and c.userid=1 and c.year=" +  getRankingYear() + " and c.entityid in (select id from entity where name in (" + sql.toString() + "'@'))" );
                     }
 
@@ -1989,8 +1988,8 @@ public class EntityDAO extends BaseDAO {
                         avg = score.divide(student,2, BigDecimal.ROUND_HALF_UP);
 
 					}
-					if(TESTID.equalsIgnoreCase(""  + entity.get("id")) || TESTID2.equalsIgnoreCase( ""+ entity.get("id")) ){
-						theLogger.info("scoringAcademic " );
+					if(TESTID.equalsIgnoreCase(""  + entity.get("id"))  ){
+						theLogger.info("scoringAcademic " + entity.get("name")  );
 						theLogger.info("score " + score);
 						theLogger.info("student " + student);
 						theLogger.info("avg " + avg);
@@ -2002,12 +2001,12 @@ public class EntityDAO extends BaseDAO {
                     try{
 							//schoolallocationscore = Double.parseDouble("" + result.get(0).get("metric1")) > Double.parseDouble("" + result.get(0).get("score")) ? "" + result.get(0).get("metric1") : "" + result.get(0).get("score");
 
-                        if(TESTID.equalsIgnoreCase(""  + entity.get("id")) || TESTID2.equalsIgnoreCase( ""+ entity.get("id")) ){
+                        if(TESTID.equalsIgnoreCase(""  + entity.get("id"))  ){
                             theLogger.info("through train : schoolallocationscore " + schoolallocationscore);
                         }
                         //if(avg > 0){
     						schoolallocationscore =  Double.parseDouble(schoolallocationscore) > avg.doubleValue() ? schoolallocationscore : "" + avg;
-	    					if(TESTID.equalsIgnoreCase(""  + entity.get("id")) || TESTID2.equalsIgnoreCase( ""+ entity.get("id")) ){
+	    					if(TESTID.equalsIgnoreCase(""  + entity.get("id"))  ){
 								theLogger.info("schoolallocationscore " + schoolallocationscore);
 							}
 						//}
@@ -2035,10 +2034,13 @@ public class EntityDAO extends BaseDAO {
                   	}
 					theLogger.debug("school allocation ");
 					result = this.jdbcTemplate.queryForList("select c.metric1,s.noofstudent  from comment c, schoolallocation s where c.type='system' and c.userid=1 and c.year=" +  getRankingYear() + " and s.noofstudent > 0 and s.allocationyear=" +  getRankingYear() + " and c.entityid = s.entityidto and s.entityidfrom=" + entity.get("id") + " order by c.metric1 desc limit " + SCHOOLALLOCATIONLIMIT ); // select top 8 from the school allocation list
+					if(TESTID.equalsIgnoreCase(""  + entity.get("id"))  ) {
+						theLogger.info("select c.metric1,s.noofstudent  from comment c, schoolallocation s where c.type='system' and c.userid=1 and c.year=" + getRankingYear() + " and s.noofstudent > 0 and s.allocationyear=" + getRankingYear() + " and c.entityid = s.entityidto and s.entityidfrom=" + entity.get("id") + " order by c.metric1 desc limit " + SCHOOLALLOCATIONLIMIT); // select top 8 from the school allocation list
+					}
 					for (Iterator j = result.iterator(); j.hasNext(); ){
 						Map<String, Object> allocation = (Map<String, Object>) j.next();
                         BigDecimal allStudent = new BigDecimal((Integer) allocation.get("noofstudent"));
-                        if(TESTID.equalsIgnoreCase(""  + entity.get("id")) || TESTID2.equalsIgnoreCase( ""+ entity.get("id")) ){
+                        if(TESTID.equalsIgnoreCase(""  + entity.get("id"))  ){
                             theLogger.info("score " + score);
                             theLogger.info("student " + student);
                         }
@@ -2046,7 +2048,15 @@ public class EntityDAO extends BaseDAO {
                         student = allStudent.add(student);
 
 					}
-					if( (score.intValue() > 0 && student.intValue() > 0) || scoreDragon.intValue() > 0){
+					if(TESTID.equalsIgnoreCase(""  + entity.get("id"))  ) {
+						theLogger.info("school allocation " +  entity.get("nameeng") + "\n");
+						theLogger.info("score "  + score );
+						theLogger.info("student "  + student );
+						theLogger.info("scoreDragon "  + scoreDragon );
+
+
+					}
+						if( (score.intValue() > 0 && student.intValue() > 0) || scoreDragon.intValue() > 0){
 
                         try{
                             avg = score.divide(student,2, BigDecimal.ROUND_HALF_UP);
@@ -2067,7 +2077,7 @@ public class EntityDAO extends BaseDAO {
                                 avg = avgDragon;
                         }
 
-                        if(TESTID.equalsIgnoreCase(""  + entity.get("id")) || TESTID2.equalsIgnoreCase( ""+ entity.get("id")) ){
+                        if(TESTID.equalsIgnoreCase(""  + entity.get("id"))  ){
                             theLogger.info("scoreDragon "  + scoreDragon );
                             theLogger.info("score " + score);
                             theLogger.info("student " + student);

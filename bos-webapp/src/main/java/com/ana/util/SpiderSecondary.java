@@ -80,7 +80,7 @@ public class SpiderSecondary extends Spider{
 			SpiderSecondary sp = new SpiderSecondary();
 
 			try {
-				sp.onWeb(459,465);
+				sp.onWeb(58,59);
 
 			} catch (Exception ex) {
 				ex.printStackTrace();
@@ -115,7 +115,7 @@ public class SpiderSecondary extends Spider{
 				    Matcher matcher = p.matcher(result);
 				    boolean matchFound = matcher.find();
 				    if(matchFound) {
-				    	//System.out.println(key + " " + matcher.group(2));
+				    	System.out.println(key + " " + matcher.group(2));
 
 				        if("financetype".equalsIgnoreCase(key) && matcher.group(2).contains("<br>") ){
 				    		String tmp[] = matcher.group(2).split("<br>");
