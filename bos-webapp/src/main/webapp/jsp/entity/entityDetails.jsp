@@ -34,6 +34,7 @@
 	<c:set var="mapkey22" value="${compareCategory[22]['key']}${noofyear-1}"/> <!-- nofotest or session for kindergarten-->
   	<c:set var="mapkey23" value="${compareCategory[23]['key']}${noofyear-1}"/> <!-- noofexam -->
    	<c:set var="mapkey24" value="${compareCategory[24]['key']}${noofyear-1}"/> <!-- elite -->
+   	<c:set var="mapkeyx" value="${requestScope.entityVerticalCategoryList[2][17]['key']}${noofyear-1}"/> <!-- athleticsdivname -->
 
 
 <script src="/school/js/rssdisplayer.js"></script>
@@ -805,6 +806,10 @@ ${requestScope.categoryid eq '5' ||  empty requestScope.ranking ||  requestScope
         <td style="border-bottom: 1px solid #FFF;padding-right:2px;">${btn}</td>
         </c:forEach>
 	</tr>
+    <%--
+      <c:out value = "${'test1234['.concat(requestScope.entityVerticalCategoryList[2][17][mapkeyx]).concat(']end') }"/>
+      <c:out value = "${'mapkeyx:['.concat(mapkeyx).concat(']end') }"/>
+    --%>
 	<tr><td colspan="${noofyear+1}" style="text-align: right"><spring:message code="label.updateingshort" text="default" arguments="${requestScope.rankingyear}"/></td></tr>
 	<tbody>
 	<c:forEach var="compareCategory" begin="1" items="${requestScope.entityVerticalCategoryList}" varStatus="rowCounterCategory">
@@ -852,11 +857,13 @@ ${requestScope.categoryid eq '5' ||  empty requestScope.ranking ||  requestScope
 			<c:when test="${   requestScope.entityVerticalCategoryList[0][18][mapkey18] eq female &&  (fn:contains( compare['key'] , male)  )  }">
 			
 			</c:when>
-			<c:when test="${   (fn:contains( requestScope.entityVerticalCategoryList[0][2][mapkey2] , nt)  || fn:contains( requestScope.entityVerticalCategoryList[0][2][mapkey2] , lantau) ) &&  (fn:contains( compare['key'] , division)  )  }">
+			<%--  show NT div name for NT sch --%>
+            <c:when test="${   ( not empty requestScope.entityVerticalCategoryList[2][17][mapkeyx]  ) &&  (fn:contains( compare['key'] , division)  )  }">
 			
 			</c:when>
-			<c:when test="${  not fn:contains( requestScope.entityVerticalCategoryList[0][2][mapkey2] , nt)  && not fn:contains( requestScope.entityVerticalCategoryList[0][2][mapkey2] , lantau) &&  (fn:contains( compare['key'] , nt))  ||   (fn:contains( compare['key'] , lantau))  }">
-			
+			<%-- not show NT div name for HK KLN sch --%>
+			<c:when test="${  empty requestScope.entityVerticalCategoryList[2][17][mapkeyx]   &&  (fn:contains( compare['key'] , nt))  }">
+
 			</c:when>
 			<c:when test="${ fn:contains(compare['key'] , 'division') || fn:contains( compare['key'], 'Choir') || fn:contains( compare['key'], 'Musical Instruments') || fn:contains( compare['key'], choirchi) || fn:contains( compare['key'], instrumentschi)  }">
 			
@@ -892,10 +899,10 @@ ${requestScope.categoryid eq '5' ||  empty requestScope.ranking ||  requestScope
 						<td  colspan="1" valign="top" align="right" ${fn:length(compare[mapkey]) < 10 ? 'xnowrap' : '' }>  <!-- todo sport division not enough space-->
 						<div class="entitycategoryfield ${colunmCounter.count eq noofyear ? 'd3-color-orange' : '' }">
 						<c:choose>
-								<c:when test="${not empty requestScope.entityVerticalCategoryList[rowCounterCategory.count][17][mapkeydivname] }"><div class="fontsmall d3-color-gray-2">${requestScope.entityVerticalCategoryList[rowCounterCategory.count][17][mapkeydivname] }</div></c:when>
-  								<c:when test="${requestScope.entityVerticalCategoryList[rowCounterCategory.count][rowCounter.count+8][mapkeydiv] eq '1'}"><span class="fontsmall d3-color-gray-2"><spring:message code="label.divone"/></span></c:when>
-  								<c:when test="${requestScope.entityVerticalCategoryList[rowCounterCategory.count][rowCounter.count+8][mapkeydiv] eq '2'}"><span class="fontsmall d3-color-gray-2"><spring:message code="label.divtwo"/></span></c:when>
-  								<c:when test="${requestScope.entityVerticalCategoryList[rowCounterCategory.count][rowCounter.count+8][mapkeydiv] eq '3'}"><span class="fontsmall d3-color-gray-2"><spring:message code="label.divthree"/></span></c:when>
+								<c:when test="${not empty requestScope.entityVerticalCategoryList[rowCounterCategory.count][17][mapkeydivname] }"><div class="fonttiny d3-color-gray-2">${requestScope.entityVerticalCategoryList[rowCounterCategory.count][17][mapkeydivname] }</div></c:when>
+  								<c:when test="${requestScope.entityVerticalCategoryList[rowCounterCategory.count][rowCounter.count+8][mapkeydiv] eq '1'}"><span class="fonttiny d3-color-gray-2"><spring:message code="label.divone"/></span></c:when>
+  								<c:when test="${requestScope.entityVerticalCategoryList[rowCounterCategory.count][rowCounter.count+8][mapkeydiv] eq '2'}"><span class="fonttiny d3-color-gray-2"><spring:message code="label.divtwo"/></span></c:when>
+  								<c:when test="${requestScope.entityVerticalCategoryList[rowCounterCategory.count][rowCounter.count+8][mapkeydiv] eq '3'}"><span class="fonttiny d3-color-gray-2"><spring:message code="label.divthree"/></span></c:when>
 						</c:choose>
 							${compare[mapkey] eq '0' || empty compare[mapkey] || compare[mapkey] eq '999' || compare[mapkey] eq '0.0' ? '-' : compare[mapkey] }</div>
 						</td>
