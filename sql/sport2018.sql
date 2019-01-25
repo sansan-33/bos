@@ -1628,7 +1628,7 @@ es.basketballposmale = e.basketballposmale,
 es.basketballposfemale = e.basketballposfemale,
 es.footballdiv = e.footballdiv,
 es.footballpos = e.footballpos
-where es.entityid=e.id and es.year=2017;
+where es.entityid=e.id and es.year=2018 and e.id=5890;
 
 
 
