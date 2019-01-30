@@ -17,7 +17,7 @@ update entity set musicfirst=musicfirst+1 where lower(nameeng) = lower('Chiu Lut
 update entity set musicsecond=musicsecond+1 where lower(nameeng) = lower('Chiu Yang Primary School of Hong Kong') and categoryid=1;
 update entity set musicthird=musicthird+1 where lower(nameeng) = lower('Christian Alliance H.C. Chan Primary School') and categoryid=1;
 update entity set musicsecond=musicsecond+1 where lower(nameeng) = lower('Christian Alliance S. C. Chan Memorial College') and categoryid=2;
-update entity set musicthird=musicthird+1 where lower(nameeng) = lower('Christian Alliance S Y Yeh Memorial Primary School') and categoryid=1;
+update entity set musicthird=musicthird+1 where lower(nameeng) = lower('Christian Alliance S.Y. Yeh Memorial Primary School') and categoryid=1;
 update entity set musicsecond=musicsecond+1 where lower(nameeng) = lower('Christian Alliance Toi Shan H C Chan Primary School') and categoryid=1;
 update entity set musicfirst=musicfirst+1 where lower(nameeng) = lower('CNEC Christian College') and categoryid=2;
 update entity set musicfirst=musicfirst+7,musicsecond=musicsecond+2,musicthird=musicthird+3 where lower(nameeng) = lower('Diocesan Boys'' School') and categoryid=2;
@@ -26,8 +26,7 @@ update entity set musicfirst=musicfirst+4,musicsecond=musicsecond+2 where lower(
 update entity set musicfirst=musicfirst+3,musicsecond=musicsecond+3,musicthird=musicthird+4 where lower(nameeng) = lower('Diocesan Girls'' School') and categoryid=2;
 update entity set musicthird=musicthird+1 where lower(nameeng) = lower('Diocesan Preparatory School') and categoryid=1;
 update entity set musicfirst=musicfirst+1 where lower(nameeng) = lower('Dr. Catherine F. Woo Memorial School') and categoryid=1;
-update entity set musicfirst=musicfirst+1,musicthird=musicthird+1 where lower(nameeng) = lower('Good Hope Primary School cum') and categoryid=1;
-update entity set musicsecond=musicsecond+1,musicthird=musicthird+1 where lower(nameeng) = lower('Good Hope Primary School cum Kindergarten') and categoryid=1;
+update entity set musicfirst=musicfirst+1,musicsecond=musicsecond+1,musicthird=musicthird+2 where lower(nameeng) = lower('Good Hope Primary School cum Kindergarten') and categoryid=1;
 update entity set musicfirst=musicfirst+2,musicsecond=musicsecond+3 where lower(nameeng) = lower('Good Hope School') and categoryid=2;
 update entity set musicthird=musicthird+2 where lower(nameeng) = lower('Heep Yunn Primary School') and categoryid=1;
 update entity set musicfirst=musicfirst+2,musicsecond=musicsecond+3,musicthird=musicthird+2 where lower(nameeng) = lower('Heep Yunn School') and categoryid=2;
@@ -41,7 +40,7 @@ update entity set musicsecond=musicsecond+1 where lower(nameeng) = lower('Ho Fun
 update entity set musicfirst=musicfirst+2 where lower(nameeng) = lower('Hoi Pa Street Government Primary School') and categoryid=1;
 update entity set musicthird=musicthird+1 where lower(nameeng) = lower('Hoi Ping Chamber of Commerce Secondary School') and categoryid=2;
 update entity set musicfirst=musicfirst+1 where lower(nameeng) = lower('Holy Family Canossian College') and categoryid=2;
-update entity set musicfirst=musicfirst+1 where lower(nameeng) = lower('Hong Kong Student Aid Society Primary') and categoryid=1;
+update entity set musicfirst=musicfirst+1 where lower(nameeng) = lower('Hong Kong Student Aid Society Primary School') and categoryid=1;
 update entity set musicthird=musicthird+1 where lower(nameeng) = lower('Hotung Secondary School') and categoryid=2;
 update entity set musicsecond=musicsecond+1 where lower(nameeng) = lower('International Christian Quality Music Sec. and Pri. School') and categoryid=1;
 update entity set musicfirst=musicfirst+2,musicsecond=musicsecond+2 where lower(nameeng) = lower('King''s College') and categoryid=2;
@@ -54,8 +53,8 @@ update entity set musicthird=musicthird+1 where lower(nameeng) = lower('Maryknol
 update entity set musicfirst=musicfirst+1,musicsecond=musicsecond+1 where lower(nameeng) = lower('Marymount Primary School') and categoryid=1;
 update entity set musicfirst=musicfirst+1 where lower(nameeng) = lower('Marymount Secondary School') and categoryid=2;
 update entity set musicthird=musicthird+1 where lower(nameeng) = lower('N.T. Heung Yee Kuk Yuen Long District Secondary School') and categoryid=2;
-update entity set musicthird=musicthird+1 where lower(nameeng) = lower('North Point Methodist Primary School (A.M.)') and categoryid=1;
-update entity set musicthird=musicthird+1 where lower(nameeng) = lower('PLK Dr. Jimmy Wong Chi-Ho ( Tin Sum Valley ) Primary School') and categoryid=1;
+update entity set musicthird=musicthird+1 where lower(nameeng) = lower('North Point Methodist Primary School') and categoryid=1;
+update entity set musicthird=musicthird+1 where lower(nameeng) = lower('PLK Dr. Jimmy Wong Chi-Ho (Tin Sum Valley) Primary School') and categoryid=1;
 update entity set musicfirst=musicfirst+2,musicsecond=musicsecond+1,musicthird=musicthird+1 where lower(nameeng) = lower('Po Leung Kuk Hong Kong Taoist Association Yuen Yuen Primary School') and categoryid=1;
 update entity set musicsecond=musicsecond+1 where lower(nameeng) = lower('PLK Women''s Welfare Club (WD) Fung Lee Pui Yiu Pri. Sch.') and categoryid=1;
 update entity set musicthird=musicthird+2 where lower(nameeng) = lower('P.L.K. Camões Tan Siu Lin Primary School') and categoryid=1;
@@ -75,7 +74,7 @@ update entity set musicfirst=musicfirst+1 where lower(nameeng) = lower('S.K.H. T
 update entity set musicthird=musicthird+1 where lower(nameeng) = lower('S.K.H. Tsing Yi Chu Yan Primary School') and categoryid=1;
 update entity set musicsecond=musicsecond+1,musicthird=musicthird+2 where lower(nameeng) = lower('Sacred Heart Canossian College') and categoryid=2;
 update entity set musicthird=musicthird+1 where lower(nameeng) = lower('Sacred Heart Canossian School') and categoryid=1;
-update entity set musicfirst=musicfirst+1 where lower(nameeng) = lower('Sacred Heart Canossian School Private Section') and categoryid=1;
+update entity set musicfirst=musicfirst+1 where lower(nameeng) = lower('Sacred Heart Canossian School, Private Section') and categoryid=1;
 update entity set musicsecond=musicsecond+1 where lower(nameeng) = lower('Salesian English School') and categoryid=2;
 update entity set musicsecond=musicsecond+1 where lower(nameeng) = lower('Sha Tin Methodist College') and categoryid=2;
 update entity set musicfirst=musicfirst+1 where lower(nameeng) = lower('Shak Chung Shan Memorial Catholic Primary School') and categoryid=1;
@@ -110,7 +109,7 @@ update entity set musicfirst=musicfirst+1 where lower(nameeng) = lower('Taoist C
 update entity set musicthird=musicthird+1 where lower(nameeng) = lower('The Education University of Hong Kong Jockey Club Primary School') and categoryid=1;
 update entity set musicsecond=musicsecond+1,musicthird=musicthird+1 where lower(nameeng) = lower('The ELCHK Yuen Long Lutheran Secondary School') and categoryid=2;
 update entity set musicthird=musicthird+1 where lower(nameeng) = lower('H.K.E.C.A. Wu Si Chong Memorial School') and categoryid=1;
-update entity set musicthird=musicthird+1 where lower(nameeng) = lower('S.A. Ann Wyllie Memorial School') and categoryid=1;
+update entity set musicthird=musicthird+1 where lower(nameeng) = lower('The Salvation Army Ann Wyllie Memorial School') and categoryid=1;
 update entity set musicsecond=musicsecond+1 where lower(nameeng) = lower('The True Light Middle School of Hong Kong (Primary Section)') and categoryid=1;
 update entity set musicsecond=musicsecond+2 where lower(nameeng) = lower('Tin Shui Wai Catholic Primary School') and categoryid=1;
 update entity set musicsecond=musicsecond+1 where lower(nameeng) = lower('Tin Shui Wai Government Primary School') and categoryid=1;
@@ -195,7 +194,7 @@ update entity set musicfirst=musicfirst+4 where name = '拔萃女小學 ' and ca
 update entity set musicfirst=musicfirst+3,musicsecond=musicsecond+2,musicthird=musicthird+2 where name = '拔萃女書院' and categoryid=2;
 update entity set musicfirst=musicfirst+5,musicsecond=musicsecond+4,musicthird=musicthird+2 where name = '拔萃男書院' and categoryid=2;
 update entity set musicsecond=musicsecond+2 where name = '拔萃男書院附屬小學' and categoryid=1;
-update entity set musicthird=musicthird+1 where name = '播道書院（小學部）' and categoryid=1;
+update entity set musicthird=musicthird+1 where name = '播道書院' and categoryid=1;
 update entity set musicfirst=musicfirst+1,musicthird=musicthird+1 where name = '新界婦孺福利會梁省德學校' and categoryid=1;
 update entity set musicsecond=musicsecond+1,musicthird=musicthird+1 where name = '新界鄉議局元朗區中學' and categoryid=2;
 update entity set musicfirst=musicfirst+1,musicsecond=musicsecond+1 where name = '曾梅千禧學校' and categoryid=1;
