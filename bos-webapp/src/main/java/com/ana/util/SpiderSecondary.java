@@ -45,8 +45,8 @@ public class SpiderSecondary extends Spider{
 		
 		//searchKeyList.add(searchKeyMap);
 		//searchKeyMap = new HashMap();
-		searchKeyMap.put("schoolfee", "(中六.*?</strong></td>\\s+.*?<td align=\"left\">)(.*)(</td>)");
-		searchKeyMap.put("tuitionfee", "(中六.*?</strong></td>\\s+.*?<td align=\"left\">.*?</td>\\s+.*?<td.*?>)(.*)(</td>)");
+		searchKeyMap.put("schoolfee", "(中六.*?</td>\\s+.*?<td align=\"left\">)(.*)(</td>)");
+		searchKeyMap.put("tuitionfee", "(中六.*?</td>\\s+.*?<td align=\"left\">.*?</td>\\s+.*?<td.*?>)(.*)(</td>)");
 
 		//searchKeyList.add(searchKeyMap);
 		//searchKeyMap = new HashMap();
@@ -80,7 +80,7 @@ public class SpiderSecondary extends Spider{
 			SpiderSecondary sp = new SpiderSecondary();
 
 			try {
-				sp.onWeb(58,59);
+				sp.onWeb(2,3);
 
 			} catch (Exception ex) {
 				ex.printStackTrace();
@@ -115,7 +115,7 @@ public class SpiderSecondary extends Spider{
 				    Matcher matcher = p.matcher(result);
 				    boolean matchFound = matcher.find();
 				    if(matchFound) {
-				    	//System.out.println(key + " " + matcher.group(2));
+				    	System.out.println(key + " " + matcher.group(2));
 
 				        if("financetype".equalsIgnoreCase(key) && matcher.group(2).contains("<br>") ){
 				    		String tmp[] = matcher.group(2).split("<br>");
