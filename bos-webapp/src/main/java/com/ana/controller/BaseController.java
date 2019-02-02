@@ -116,7 +116,8 @@ public abstract class BaseController {
 		foulLanguageSet.add("屌");
 		foulLanguageSet.add("老母");
 		foulLanguageSet.add("臭");
-
+		foulLanguageSet.add("周麗敏");
+		foulLanguageSet.add("垃圾");
 
 		try{
 			userid = user != null && user.get("ID") != null &&  (Integer) user.get("ID") > 0  ? ((Integer) user.get("ID")).toString()  : "-1";
