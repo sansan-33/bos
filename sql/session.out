@@ -1,563 +1,287 @@
-mysql> 
-mysql> select distinct  bsaid from schoolbasic;
-+-------+
-| bsaid |
-+-------+
-|   430 |
-|  3690 |
-|  3647 |
-|   318 |
-|  2559 |
-|   373 |
-|    49 |
-|   130 |
-|  3758 |
-|  2543 |
-|  3672 |
-|   518 |
-|   282 |
-|    96 |
-|   285 |
-|  3699 |
-|  3728 |
-|  2564 |
-|  2542 |
-|   463 |
-|   479 |
-|  2576 |
-|  3654 |
-|    14 |
-|   219 |
-|   302 |
-|  3592 |
-|   428 |
-|  3748 |
-|  3610 |
-|   421 |
-|   172 |
-|   517 |
-|  3666 |
-|  3665 |
-|  2555 |
-|   424 |
-|  3752 |
-|   328 |
-|  2573 |
-|  2544 |
-|   363 |
-|   384 |
-|  2534 |
-|    32 |
-|    28 |
-|  2562 |
-|   401 |
-|  2551 |
-|  3615 |
-|  2583 |
-|  3747 |
-|   427 |
-|   118 |
-|   403 |
-|  3629 |
-|   359 |
-|  3657 |
-|   226 |
-|   488 |
-|   139 |
-|  3674 |
-|   490 |
-|  3681 |
-|   423 |
-|     3 |
-|    12 |
-|  1523 |
-|   321 |
-|   317 |
-|  2578 |
-|  3716 |
-|   459 |
-|  3626 |
-|  3687 |
-|  3599 |
-|  2545 |
-|  3753 |
-|  3675 |
-|  3618 |
-|   110 |
-|  3638 |
-|    23 |
-|  3700 |
-|    38 |
-|   165 |
-|  3701 |
-|  3655 |
-|    36 |
-|    50 |
-|    61 |
-|  3695 |
-|  3724 |
-|   323 |
-|   481 |
-|   179 |
-|   486 |
-|   181 |
-|  1519 |
-|   157 |
-|  3644 |
-|    80 |
-|  2590 |
-|   343 |
-|   126 |
-|  2541 |
-|  3751 |
-|   252 |
-|  3590 |
-|  3708 |
-|   163 |
-|    88 |
-|   240 |
-|  3689 |
-|   195 |
-|   132 |
-|   291 |
-|    34 |
-|  3682 |
-|    69 |
-|  3591 |
-|   513 |
-|   288 |
-|  3706 |
-|   220 |
-|  2560 |
-|   347 |
-|   492 |
-|  3693 |
-|  3710 |
-|   491 |
-|   171 |
-|  3722 |
-|   487 |
-|  3670 |
-|   278 |
-|  3679 |
-|    75 |
-|    11 |
-|  3614 |
-|   498 |
-|   467 |
-|   402 |
-|   510 |
-|   325 |
-|   273 |
-|   136 |
-|  2524 |
-|  2556 |
-|  3713 |
-|  3677 |
-|     9 |
-|   386 |
-|   120 |
-|   131 |
-|  3669 |
-|   310 |
-|  3659 |
-|  3671 |
-|   197 |
-|   497 |
-|  3612 |
-|   358 |
-|  3756 |
-|   465 |
-|  3664 |
-|  3757 |
-|  3707 |
-|   312 |
-|    16 |
-|   186 |
-|    71 |
-|  3595 |
-|    94 |
-|    95 |
-|  2569 |
-|   244 |
-|   381 |
-|  3744 |
-|   218 |
-|   434 |
-|   101 |
-|   416 |
-|  3740 |
-|   276 |
-|  3617 |
-|   124 |
-|    47 |
-|   380 |
-|   255 |
-|   227 |
-|   472 |
-|   209 |
-|   224 |
-|  2582 |
-|  3645 |
-|   230 |
-|    83 |
-|  3641 |
-|  2581 |
-|   152 |
-|  2537 |
-|    99 |
-|    17 |
-|   135 |
-|   341 |
-|  2535 |
-|   475 |
-|   203 |
-|   206 |
-|  2550 |
-|  2577 |
-|   283 |
-|   466 |
-|   369 |
-|   233 |
-|   385 |
-|  2585 |
-|  3720 |
-|   175 |
-|  3729 |
-|  3643 |
-|  3673 |
-|   267 |
-|  3721 |
-|   260 |
-|    30 |
-|   445 |
-|   144 |
-|   406 |
-|   105 |
-|   169 |
-|  3746 |
-|    43 |
-|   455 |
-|  3704 |
-|   383 |
-|   122 |
-|  1518 |
-|   319 |
-|  3652 |
-|   201 |
-|   183 |
-|  3609 |
-|   284 |
-|  3739 |
-|   370 |
-|   243 |
-|   516 |
-|  3741 |
-|  3683 |
-|   495 |
-|  3688 |
-|   293 |
-|    26 |
-|   202 |
-|  3662 |
-|    67 |
-|  3642 |
-|   154 |
-|   242 |
-|  3715 |
-|   162 |
-|  3603 |
-|   483 |
-|   225 |
-|  3663 |
-|   277 |
-|  2572 |
-|  3731 |
-|   405 |
-|   266 |
-|  2588 |
-|   329 |
-|   382 |
-|   296 |
-|  1521 |
-|  3725 |
-|   236 |
-|   158 |
-|   452 |
-|   432 |
-|  2533 |
-|   222 |
-|  3712 |
-|   286 |
-|  2558 |
-|   335 |
-|  3727 |
-|  3733 |
-|  3680 |
-|  1520 |
-|  3636 |
-|   193 |
-|  2557 |
-|   447 |
-|  3754 |
-|  2563 |
-|   279 |
-|    18 |
-|   412 |
-|  3625 |
-|    81 |
-|   357 |
-|  3651 |
-|   480 |
-|   117 |
-|  3628 |
-|  3653 |
-|  3737 |
-|   265 |
-|  3624 |
-|   330 |
-|   332 |
-|   173 |
-|  3602 |
-|  2561 |
-|    55 |
-|   354 |
-|   326 |
-|   426 |
-|   287 |
-|  3759 |
-|  3640 |
-|  3613 |
-|  2554 |
-|   367 |
-|  3718 |
-|   514 |
-|   484 |
-|   333 |
-|   429 |
-|   108 |
-|   153 |
-|  3637 |
-|  2566 |
-|   142 |
-|   396 |
-|   307 |
-|   215 |
-|   450 |
-|   159 |
-|    76 |
-|   400 |
-|   503 |
-|    27 |
-|   478 |
-|   408 |
-|  3750 |
-|    35 |
-|   187 |
-|  2567 |
-|  3593 |
-|  3649 |
-|  2548 |
-|  3723 |
-|  3698 |
-|  3656 |
-|   314 |
-|  3605 |
-|  3685 |
-|  3620 |
-|   116 |
-|   464 |
-|  2532 |
-|   294 |
-|   146 |
-|   353 |
-|  2540 |
-|    63 |
-|  3597 |
-|   106 |
-|   482 |
-|   439 |
-|    79 |
-|   506 |
-|    90 |
-|   191 |
-|  2538 |
-|   320 |
-|   178 |
-|   251 |
-|  3635 |
-|   345 |
-|   248 |
-|   470 |
-|   223 |
-|   189 |
-|   258 |
-|   515 |
-|  2539 |
-|  3631 |
-|  2526 |
-|  3621 |
-|  2586 |
-|   322 |
-|  3622 |
-|  3726 |
-|  3594 |
-|   270 |
-|   150 |
-|   196 |
-|  3696 |
-|   250 |
-|   512 |
-|    56 |
-|   199 |
-|  3616 |
-|   451 |
-|   127 |
-|   210 |
-|  3697 |
-|  3702 |
-|   107 |
-|  2570 |
-|  3630 |
-|   301 |
-|   216 |
-|    41 |
-|    66 |
-|   247 |
-|   280 |
-|   263 |
-|  3749 |
-|  3694 |
-|  2571 |
-|  3619 |
-|  3735 |
-|   167 |
-|   505 |
-|   500 |
-|   355 |
-|  2528 |
-|  3755 |
-|   376 |
-|   214 |
-|   493 |
-|  3714 |
-|  3691 |
-|  3738 |
-|    62 |
-|  2589 |
-|   292 |
-|   334 |
-|   508 |
-|   509 |
-|    68 |
-|    57 |
-|   166 |
-|  3717 |
-|  3686 |
-|   338 |
-|   461 |
-|  2525 |
-|   399 |
-|  3667 |
-|   397 |
-|    93 |
-|   217 |
-|   398 |
-|  2536 |
-|  2547 |
-|  3676 |
-|   303 |
-|  3632 |
-|   388 |
-|   422 |
-|    89 |
-|   121 |
-|   448 |
-|   316 |
-|  3627 |
-|  3639 |
-|   346 |
-|   442 |
-|  3732 |
-|  3745 |
-|  3678 |
-|   433 |
-|   177 |
-|    60 |
-|  3719 |
-|   504 |
-|  3596 |
-|    21 |
-|   161 |
-|   362 |
-|  3633 |
-|  2523 |
-|  3601 |
-|  3611 |
-|   348 |
-|  3734 |
-|  2530 |
-|   469 |
-|   395 |
-|   234 |
-|   387 |
-|  2531 |
-|   211 |
-|   155 |
-|    39 |
-|  2575 |
-|  1522 |
-|   339 |
-|   368 |
-|  2546 |
-|   111 |
-|   262 |
-|   460 |
-|   511 |
-|   494 |
-|  3634 |
-|  2568 |
-|   454 |
-|  2584 |
-|  3658 |
-|  3703 |
-|   229 |
-|   499 |
-|   114 |
-|    48 |
-|   239 |
-|   394 |
-|  2565 |
-|   462 |
-|   501 |
-|   485 |
-|  3743 |
-|  3742 |
-|    19 |
-|   476 |
-|  3604 |
-|  2549 |
-|  2553 |
-|  3730 |
-|   272 |
-|   407 |
-|   249 |
-|   425 |
-|   417 |
-|   269 |
-|    37 |
-|   109 |
-|  3660 |
-|   372 |
-|   350 |
-|   378 |
-|   456 |
-|   232 |
-|   238 |
-|   115 |
-|   449 |
-|    45 |
-+-------+
-554 rows in set (0.00 sec)
+mysql> source 2017dse.sql
+Query OK, 233 rows affected (0.02 sec)
+Rows matched: 513  Changed: 233  Warnings: 0
+
+Query OK, 232 rows affected (0.04 sec)
+Rows matched: 513  Changed: 232  Warnings: 0
+
+Query OK, 1 row affected, 1 warning (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected, 1 warning (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected, 1 warning (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected, 1 warning (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+Query OK, 1 row affected, 1 warning (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected, 1 warning (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected, 1 warning (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected, 1 warning (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected, 1 warning (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected, 1 warning (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected, 2 warnings (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 2
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected, 1 warning (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected, 1 warning (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected, 1 warning (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected, 1 warning (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+Query OK, 1 row affected, 1 warning (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected, 1 warning (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 92 rows affected (0.03 sec)
+Rows matched: 513  Changed: 92  Warnings: 0
 
 mysql> exit
