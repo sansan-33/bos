@@ -118,10 +118,7 @@ public class Spider {
 				URL url = new URL(URL[j] + i);
 				String result = getURLContent(url,"UTF-8");
 				
-				//result = result.replaceAll("<br>", "");
-				//result = result.replaceAll("<p align='left'>-</p>", "");
-				
-		
+
 				HashMap<String,String> map = searchKeyList.get(j);
 				for (String key : map.keySet()) {
 					//System.out.println(key + " " + map.get(key));
