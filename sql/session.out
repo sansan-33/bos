@@ -1,17 +1,17 @@
 mysql> source 2018dse.sql
-Query OK, 92 rows affected (0.06 sec)
+Query OK, 92 rows affected (0.02 sec)
 Rows matched: 513  Changed: 92  Warnings: 0
 
-Query OK, 1 row affected (0.08 sec)
-Rows matched: 513  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.02 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
+Query OK, 160 rows affected (0.04 sec)
+Rows matched: 513  Changed: 160  Warnings: 0
 
 Query OK, 1 row affected (0.01 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
 
 Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.00 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
 
 Query OK, 1 row affected (0.01 sec)
@@ -35,44 +35,8 @@ Rows matched: 1  Changed: 1  Warnings: 0
 Query OK, 1 row affected (0.01 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
 
-Query OK, 1 row affected (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
 Query OK, 1 row affected (0.00 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected, 1 warning (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 1
-
-Query OK, 1 row affected (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.00 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.02 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.00 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected, 1 warning (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 1
 
 Query OK, 1 row affected (0.01 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
@@ -86,6 +50,12 @@ Rows matched: 1  Changed: 1  Warnings: 0
 Query OK, 1 row affected, 1 warning (0.01 sec)
 Rows matched: 1  Changed: 1  Warnings: 1
 
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
 Query OK, 1 row affected (0.01 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
 
@@ -99,6 +69,36 @@ Query OK, 1 row affected (0.01 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
 
 Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected, 1 warning (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected, 1 warning (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.00 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
 
 Query OK, 1 row affected, 1 warning (0.01 sec)
@@ -128,13 +128,13 @@ Rows matched: 1  Changed: 1  Warnings: 0
 Query OK, 1 row affected (0.01 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
 
-Query OK, 1 row affected (0.01 sec)
+Query OK, 1 row affected (0.00 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
 
 Query OK, 1 row affected, 1 warning (0.01 sec)
 Rows matched: 1  Changed: 1  Warnings: 1
 
-Query OK, 1 row affected (0.00 sec)
+Query OK, 1 row affected (0.01 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
 
 Query OK, 1 row affected (0.01 sec)
@@ -146,7 +146,7 @@ Rows matched: 1  Changed: 1  Warnings: 1
 Query OK, 1 row affected, 2 warnings (0.01 sec)
 Rows matched: 1  Changed: 1  Warnings: 2
 
-Query OK, 1 row affected (0.01 sec)
+Query OK, 1 row affected (0.00 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
 
 Query OK, 1 row affected (0.01 sec)
@@ -172,72 +172,33 @@ Rows matched: 1  Changed: 1  Warnings: 0
 
 Query OK, 1 row affected (0.01 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected, 1 warning (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 1
-
-Query OK, 1 row affected (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.00 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.00 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected, 1 warning (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 1
-
-Query OK, 1 row affected (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.00 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected, 1 warning (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 1
-
-Query OK, 1 row affected, 1 warning (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 1
-
-Query OK, 1 row affected (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected, 1 warning (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 1
 
 Query OK, 1 row affected, 1 warning (0.00 sec)
 Rows matched: 1  Changed: 1  Warnings: 1
 
-Query OK, 1 row affected, 1 warning (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 1
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
 
-Query OK, 1 row affected, 1 warning (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 1
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
 
 Query OK, 1 row affected (0.01 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
 
 Query OK, 1 row affected (0.01 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected, 1 warning (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
 
 Query OK, 1 row affected (0.00 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
@@ -254,8 +215,56 @@ Rows matched: 1  Changed: 1  Warnings: 1
 Query OK, 1 row affected, 1 warning (0.01 sec)
 Rows matched: 1  Changed: 1  Warnings: 1
 
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
 Query OK, 1 row affected (0.00 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected, 1 warning (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+Query OK, 1 row affected, 1 warning (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+Query OK, 1 row affected, 1 warning (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+Query OK, 1 row affected, 1 warning (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected, 1 warning (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+Query OK, 1 row affected, 1 warning (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected, 1 warning (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
 
 Query OK, 1 row affected (0.01 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
@@ -272,22 +281,13 @@ Rows matched: 1  Changed: 1  Warnings: 0
 Query OK, 1 row affected (0.01 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
 
-Query OK, 1 row affected, 1 warning (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 1
-
 Query OK, 1 row affected (0.01 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
 
 Query OK, 1 row affected (0.01 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
 
-Query OK, 1 row affected (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.00 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected, 1 warning (0.01 sec)
+Query OK, 1 row affected, 1 warning (0.00 sec)
 Rows matched: 1  Changed: 1  Warnings: 1
 
 Query OK, 1 row affected (0.01 sec)
@@ -299,6 +299,24 @@ Rows matched: 1  Changed: 1  Warnings: 0
 Query OK, 1 row affected, 2 warnings (0.01 sec)
 Rows matched: 1  Changed: 1  Warnings: 2
 
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected, 1 warning (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
 Query OK, 1 row affected (0.01 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
 
@@ -308,24 +326,6 @@ Rows matched: 1  Changed: 1  Warnings: 0
 Query OK, 1 row affected, 1 warning (0.00 sec)
 Rows matched: 1  Changed: 1  Warnings: 1
 
-Query OK, 1 row affected (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.00 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected, 1 warning (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 1
-
 Query OK, 1 row affected, 1 warning (0.01 sec)
 Rows matched: 1  Changed: 1  Warnings: 1
 
@@ -362,9 +362,6 @@ Rows matched: 1  Changed: 1  Warnings: 1
 Query OK, 1 row affected (0.01 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
 
-Query OK, 1 row affected (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
 Query OK, 1 row affected (0.00 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
 
@@ -373,60 +370,6 @@ Rows matched: 1  Changed: 1  Warnings: 0
 
 Query OK, 1 row affected (0.01 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.00 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.00 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected, 1 warning (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 1
-
-Query OK, 1 row affected (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.00 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected, 1 warning (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 1
-
-Query OK, 1 row affected (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.00 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected, 1 warning (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 1
 
 Query OK, 1 row affected (0.01 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
@@ -447,27 +390,6 @@ Query OK, 1 row affected (0.01 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
 
 Query OK, 1 row affected (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.00 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-Query OK, 1 row affected (0.00 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
 
 Query OK, 1 row affected (0.01 sec)
@@ -488,154 +410,85 @@ Rows matched: 1  Changed: 1  Warnings: 0
 Query OK, 1 row affected (0.01 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
 
-Query OK, 174 rows affected (0.03 sec)
-Rows matched: 513  Changed: 174  Warnings: 0
+Query OK, 1 row affected, 1 warning (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
 
-mysql> select * from entity where entityid=5914
-    -> ;
-ERROR 1054 (42S22): Unknown column 'entityid' in 'where clause'
-mysql> desc entity;
-+-----------------------+---------------+------+-----+---------------------+-----------------------------------------------+
-| Field                 | Type          | Null | Key | Default             | Extra                                         |
-+-----------------------+---------------+------+-----+---------------------+-----------------------------------------------+
-| id                    | int(11)       | NO   | PRI | NULL                | auto_increment                                |
-| nameeng               | varchar(100)  | YES  |     | NULL                |                                               |
-| addresseng            | varchar(1000) | YES  |     | NULL                |                                               |
-| languageeng           | varchar(100)  | YES  |     | NULL                |                                               |
-| financetypeeng        | varchar(100)  | YES  |     | NULL                |                                               |
-| directeng             | varchar(100)  | YES  |     | NULL                |                                               |
-| sexeng                | varchar(100)  | YES  |     | NULL                |                                               |
-| name                  | varchar(100)  | YES  |     | NULL                |                                               |
-| address               | varchar(500)  | YES  |     | NULL                |                                               |
-| language              | varchar(100)  | YES  |     | NULL                |                                               |
-| financetype           | varchar(100)  | YES  |     | NULL                |                                               |
-| session               | varchar(100)  | YES  |     | NULL                |                                               |
-| direct                | varchar(100)  | YES  |     | NULL                |                                               |
-| nominated             | varchar(500)  | YES  |     | NULL                |                                               |
-| religion              | varchar(100)  | YES  |     | NULL                |                                               |
-| sex                   | varchar(20)   | YES  |     | NULL                |                                               |
-| principal             | varchar(100)  | YES  |     | NULL                |                                               |
-| schoolfee             | int(11)       | YES  |     | NULL                |                                               |
-| tuitionfee            | int(11)       | YES  |     | NULL                |                                               |
-| area                  | int(11)       | YES  |     | NULL                |                                               |
-| noofclassroom         | int(11)       | YES  |     | NULL                |                                               |
-| noofhall              | int(11)       | YES  |     | NULL                |                                               |
-| noofplayground        | varchar(100)  | YES  |     | NULL                |                                               |
-| nooflibraryroom       | int(11)       | YES  |     | NULL                |                                               |
-| noofspecialroom       | varchar(500)  | YES  |     | NULL                |                                               |
-| noofotherroom         | varchar(500)  | YES  |     | NULL                |                                               |
-| categoryid            | varchar(100)  | YES  |     | NULL                |                                               |
-| poaschoolnet          | varchar(100)  | YES  |     | NULL                |                                               |
-| url                   | varchar(500)  | YES  |     | NULL                |                                               |
-| voucher               | varchar(10)   | YES  |     | NULL                |                                               |
-| activitieswithparent  | varchar(2000) | YES  |     | NULL                |                                               |
-| nursery               | varchar(10)   | YES  |     | NULL                |                                               |
-| schoolfeenursery      | varchar(100)  | YES  |     | NULL                |                                               |
-| outdoorplayground     | varchar(50)   | YES  |     | NULL                |                                               |
-| chscid                | int(11)       | YES  |     | NULL                |                                               |
-| email                 | varchar(100)  | YES  |     | NULL                |                                               |
-| userid                | int(11)       | YES  |     | NULL                |                                               |
-| created               | timestamp     | NO   |     | CURRENT_TIMESTAMP   | DEFAULT_GENERATED on update CURRENT_TIMESTAMP |
-| lastmodified          | timestamp     | NO   |     | 0000-00-00 00:00:00 |                                               |
-| throughtrain          | varchar(500)  | YES  |     | NULL                |                                               |
-| feeder                | varchar(500)  | YES  |     | NULL                |                                               |
-| yearofcommencement    | varchar(200)  | YES  |     | NULL                |                                               |
-| discretionaryplaces   | varchar(200)  | YES  |     | NULL                |                                               |
-| secondaryoneadmission | varchar(1000) | YES  |     | NULL                |                                               |
-| transportation        | varchar(1000) | YES  |     | NULL                |                                               |
-| telephone             | varchar(100)  | YES  |     | NULL                |                                               |
-| teacherexperience     | int(11)       | YES  |     | NULL                |                                               |
-| teachermaster         | int(11)       | YES  |     | NULL                |                                               |
-| teacherbachelor       | int(11)       | YES  |     | NULL                |                                               |
-| banding               | varchar(20)   | YES  |     | NULL                |                                               |
-| sixcoursesratio       | int(11)       | YES  |     | NULL                |                                               |
-| athleticsdivmale      | varchar(50)   | YES  |     | NULL                |                                               |
-| athleticsposmale      | int(11)       | YES  |     | NULL                |                                               |
-| athleticsdivfemale    | varchar(50)   | YES  |     | NULL                |                                               |
-| athleticsposfemale    | int(11)       | YES  |     | NULL                |                                               |
-| exceedquota           | int(11)       | YES  |     | NULL                |                                               |
-| ranking               | int(11)       | YES  |     | NULL                |                                               |
-| score                 | decimal(5,2)  | YES  |     | 0.00                |                                               |
-| choirforeign          | int(11)       | YES  |     | NULL                |                                               |
-| choirchinese          | int(11)       | YES  |     | NULL                |                                               |
-| instrumentwestern     | int(11)       | YES  |     | NULL                |                                               |
-| instrumentchinese     | int(11)       | YES  |     | NULL                |                                               |
-| schoolallocationscore | decimal(5,2)  | YES  |     | 0.00                |                                               |
-| schoolmotto           | varchar(200)  | YES  |     | NULL                |                                               |
-| schoolmission         | varchar(2000) | YES  |     | NULL                |                                               |
-| languagepolicy        | varchar(6000) | YES  |     | NULL                |                                               |
-| rankingfinancetype    | int(11)       | YES  |     | NULL                |                                               |
-| rankingdistrict       | int(11)       | YES  |     | NULL                |                                               |
-| indoorplayground      | varchar(50)   | YES  |     | NULL                |                                               |
-| musicroom             | varchar(50)   | YES  |     | NULL                |                                               |
-| qareport              | varchar(100)  | YES  |     | NULL                |                                               |
-| qareporturl           | varchar(200)  | YES  |     | NULL                |                                               |
-| speechfirst           | int(11)       | YES  |     | NULL                |                                               |
-| speechsecond          | int(11)       | YES  |     | NULL                |                                               |
-| speechthird           | int(11)       | YES  |     | NULL                |                                               |
-| speechscore           | int(11)       | YES  |     | NULL                |                                               |
-| teacherpupilam        | varchar(20)   | YES  |     | NULL                |                                               |
-| teacherpupilpm        | varchar(20)   | YES  |     | NULL                |                                               |
-| chipassrate           | decimal(4,1)  | YES  |     | NULL                |                                               |
-| engpassrate           | decimal(4,1)  | YES  |     | NULL                |                                               |
-| urate                 | decimal(4,1)  | YES  |     | NULL                |                                               |
-| alpassrate            | int(11)       | YES  |     | 0                   |                                               |
-| enrolltotal           | int(11)       | YES  |     | 0                   |                                               |
-| parentscore           | int(11)       | YES  |     | NULL                |                                               |
-| entitylink            | int(11)       | YES  |     | NULL                |                                               |
-| govbody               | varchar(50)   | YES  |     | NULL                |                                               |
-| primaryprogramme      | varchar(1)    | YES  |     | NULL                |                                               |
-| middleprogramme       | varchar(1)    | YES  |     | NULL                |                                               |
-| diplomaprogramme      | varchar(1)    | YES  |     | NULL                |                                               |
-| igcse                 | decimal(4,1)  | YES  |     | NULL                |                                               |
-| dp                    | decimal(4,1)  | YES  |     | NULL                |                                               |
-| musicfirst            | int(11)       | YES  |     | NULL                |                                               |
-| musicsecond           | int(11)       | YES  |     | NULL                |                                               |
-| musicthird            | int(11)       | YES  |     | NULL                |                                               |
-| basketballdivfemale   | varchar(30)   | YES  |     | NULL                |                                               |
-| basketballposfemale   | int(11)       | YES  |     | NULL                |                                               |
-| basketballdivmale     | varchar(30)   | YES  |     | NULL                |                                               |
-| basketballposmale     | int(11)       | YES  |     | NULL                |                                               |
-| swimmingdivfemale     | varchar(30)   | YES  |     | NULL                |                                               |
-| swimmingposfemale     | int(11)       | YES  |     | NULL                |                                               |
-| swimmingdivmale       | varchar(30)   | YES  |     | NULL                |                                               |
-| swimmingposmale       | int(11)       | YES  |     | NULL                |                                               |
-| footballdiv           | varchar(30)   | YES  |     | NULL                |                                               |
-| footballpos           | int(11)       | YES  |     | NULL                |                                               |
-| sportntposfemale      | int(11)       | YES  |     | NULL                |                                               |
-| sportntposmale        | int(11)       | YES  |     | NULL                |                                               |
-| hkdsepassrate         | decimal(4,1)  | YES  |     | NULL                |                                               |
-| teacherforeign        | int(11)       | YES  |     | NULL                |                                               |
-| athleticsdivname      | varchar(50)   | YES  |     | NULL                |                                               |
-| musicother            | int(11)       | YES  |     | NULL                |                                               |
-| debatechi             | int(11)       | YES  |     | 999                 |                                               |
-| admitted              | int(11)       | YES  |     | 0                   |                                               |
-| vacancy               | int(11)       | YES  |     | 0                   |                                               |
-| status                | varchar(10)   | YES  |     | NULL                |                                               |
-| nooftest              | varchar(10)   | YES  |     | NULL                |                                               |
-| noofexam              | varchar(10)   | YES  |     | NULL                |                                               |
-| elite                 | varchar(200)  | YES  |     | NULL                |                                               |
-| chscidnew             | int(11)       | YES  |     | NULL                |                                               |
-| totalstaff            | int(11)       | YES  |     | NULL                |                                               |
-| metricparent1         | decimal(4,1)  | YES  |     | NULL                |                                               |
-| metricparent2         | decimal(4,1)  | YES  |     | NULL                |                                               |
-| metricparent3         | decimal(4,1)  | YES  |     | NULL                |                                               |
-| metricparent4         | decimal(4,1)  | YES  |     | NULL                |                                               |
-| parentcommentcount    | int(11)       | YES  |     | NULL                |                                               |
-| metricoverall1        | decimal(4,1)  | YES  |     | NULL                |                                               |
-| metricoverall2        | decimal(4,1)  | YES  |     | NULL                |                                               |
-| metricoverall3        | decimal(4,1)  | YES  |     | NULL                |                                               |
-| metricoverall4        | decimal(4,1)  | YES  |     | NULL                |                                               |
-| metricoverall5        | decimal(4,1)  | YES  |     | NULL                |                                               |
-+-----------------------+---------------+------+-----+---------------------+-----------------------------------------------+
-129 rows in set (0.01 sec)
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
 
-mysql> select hkdsepassrate, urate from entity where id=5914;
-+---------------+-------+
-| hkdsepassrate | urate |
-+---------------+-------+
-|          95.2 |  81.0 |
-+---------------+-------+
-1 row in set (0.00 sec)
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected, 1 warning (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected, 1 warning (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 160 rows affected (0.04 sec)
+Rows matched: 513  Changed: 160  Warnings: 0
 
 mysql> exit

@@ -163,4 +163,4 @@ update entity set hkdsepassrate=24 where name='東華三院馮黃鳳亭中學' a
 update entity set hkdsepassrate=45.7 where name='鳳溪廖萬石堂中學' and categoryid=2;
 update entity set hkdsepassrate=71.9 where name='東華三院黃笏南中學' and categoryid=2;
 
-update entityscore es, entity e set es.hkdsepassrate=e.hkdsepassrate,es.chipassrate=e.chipassrate,es.engpassrate=e.engpassrate,es.urate=e.urate where es.entityid=e.id and es.year=2017 and e.categoryid in (2,5) ;
+update entityscore es, entity e set es.hkdsepassrate=e.hkdsepassrate,es.chipassrate=e.chipassrate,es.engpassrate=e.engpassrate,es.urate=e.urate where es.entityid=e.id and es.year=2018 and e.categoryid in (2,5) ;
