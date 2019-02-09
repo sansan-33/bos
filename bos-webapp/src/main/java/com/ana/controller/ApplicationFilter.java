@@ -231,7 +231,7 @@ public class ApplicationFilter implements Filter {
 
 		if (checkUrlForm(req.getRequestURI())) {
 			theLogger.debug("checking spam attack url........");
-			if ("POST".equalsIgnoreCase(req.getMethod())) {
+			if (! "POST".equalsIgnoreCase(req.getMethod())) {
 				theLogger.info("URL Form is {} , not POST",req.getMethod());
 				result = true;
 			} else if (!req.getRemoteHost().contains("bookofschool.com") && !req.getRemoteHost().contains("0:0:0:0:0:0:0:1%0") ) {
