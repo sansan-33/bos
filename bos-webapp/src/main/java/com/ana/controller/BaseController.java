@@ -118,6 +118,8 @@ public abstract class BaseController {
 		foulLanguageSet.add("臭");
 		foulLanguageSet.add("周麗敏");
 		foulLanguageSet.add("垃圾");
+		foulLanguageSet.add("fuck");
+
 
 		try{
 			userid = user != null && user.get("ID") != null &&  (Integer) user.get("ID") > 0  ? ((Integer) user.get("ID")).toString()  : "-1";
@@ -775,8 +777,9 @@ public abstract class BaseController {
 
 	public boolean isFoulLanguage(String source){
 		boolean isFoul = false;
+		String lsource = source.toLowerCase();
 		for(String s: foulLanguageSet){
-			if(source.contains(s)){
+			if(lsource.contains(s) ){
 				isFoul = true;
 				break;
 			}
