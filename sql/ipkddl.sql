@@ -973,3 +973,4 @@ update entity set poaschoolnet='Central & Western' where categoryid=2 and poasch
 
 
 
+[https-jsse-nio-443-exec-125] org.apache.catalina.webresources.Cache.getResource Unable to add the resource at [/jsp/status.jsp] to the cache for web application [/school] because there was insufficient free space available after evicting expired cache entries - consider increasing the maximum size of the cache

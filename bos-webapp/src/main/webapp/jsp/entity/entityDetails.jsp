@@ -37,7 +37,7 @@
    	<c:set var="mapkeyx" value="${requestScope.entityVerticalCategoryList[2][17]['key']}${noofyear-1}"/> <!-- athleticsdivname -->
 
 
-<script src="/school/js/rssdisplayer.js"></script>
+<!-- remove rssdisplayer.js here- -->
 <script src="/school/js/jquery.corner.js"></script>
 <script type="text/javascript" charset="utf-8" src="/school/js/jquery.raty.min.js"></script>
 <script type="text/javascript" >
@@ -991,7 +991,8 @@ ${requestScope.categoryid eq '5' ||  empty requestScope.ranking ||  requestScope
 
 <br>
 <div class="divider-small"></div>
-<jsp:include page="../common/rssFeed.jsp"/>
+<!-- remove common/rssFeed.jsp here- -->
+
 
 </td></tr></TABLE> <!--  Top Biggest Table -->
 </div>
