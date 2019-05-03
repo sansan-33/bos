@@ -117,7 +117,7 @@ public class EntityDAO extends BaseDAO {
 		}
 
 		StringBuffer sqlcommon = new StringBuffer();
-		sqlcommon.append(" name,nameeng,address,telephone,url,language,nominated,throughtrain,feeder,yearofcommencement,schoolmotto,schoolmission,languagepolicy,financetype,a.poaschoolnet,nursery,session,principal,religion, ");
+		sqlcommon.append(" name,nameeng,address,telephone,url,email,language,nominated,throughtrain,feeder,yearofcommencement,schoolmotto,schoolmission,languagepolicy,financetype,a.poaschoolnet,nursery,session,principal,religion, ");
         sqlcommon.append(" a.categoryid,a.ranking,a.rankingfinancetype,a.rankingdistrict,a.score,a.exceedquota,a.enrolltotal,a.schoolallocationscore , ");
 		sqlcommon.append(" a.banding,a.sixcoursesratio,a.chipassrate,a.engpassrate,a.urate,a.alpassrate,a.dp,a.igcse,a.hkdsepassrate,  ");
 		sqlcommon.append(" a.athleticsdivmale,a.athleticsposmale,a.athleticsdivfemale,a.athleticsposfemale, a.athleticsdivmale as athleticsposmaledivision, a.athleticsdivfemale as athleticsposfemaledivision, a.athleticsdivname,a.sex,   ");     

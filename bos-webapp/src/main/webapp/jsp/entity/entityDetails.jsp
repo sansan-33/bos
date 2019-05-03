@@ -34,7 +34,8 @@
 	<c:set var="mapkey22" value="${compareCategory[22]['key']}${noofyear-1}"/> <!-- nofotest or session for kindergarten-->
   	<c:set var="mapkey23" value="${compareCategory[23]['key']}${noofyear-1}"/> <!-- noofexam -->
    	<c:set var="mapkey24" value="${compareCategory[24]['key']}${noofyear-1}"/> <!-- elite -->
-   	<c:set var="mapkeyx" value="${requestScope.entityVerticalCategoryList[2][17]['key']}${noofyear-1}"/> <!-- athleticsdivname -->
+   	<c:set var="mapkey25" value="${compareCategory[25]['key']}${noofyear-1}"/> <!-- email -->
+       	<c:set var="mapkeyx" value="${requestScope.entityVerticalCategoryList[2][17]['key']}${noofyear-1}"/> <!-- athleticsdivname -->
 
 
 <!-- remove rssdisplayer.js here- -->
@@ -405,7 +406,8 @@ $(document).ready(function() {
 			
 			<br class="clearboth"/>
 			<img src="/school/img/website.png" style="position:relative;top:3px;padding-left:10px;padding-right:5px;"><a  href="${compareCategory[4][mapkey4]}" target="_blank" >${  fn:length(compareCategory[4][mapkey4]) > 50 ? fn:substring(compareCategory[4][mapkey4],0,50) : compareCategory[4][mapkey4]}</a>
-			<img src="/school/img/basicinfo.png" style="padding-right:5px;padding-left:8px;position:relative;top:3px;width:16px;height:14px"><a rel="#basicinfo_overlay" href="#"><spring:message code="label.basicinfo"/></a>
+			<img src="/school/img/email.png" width="15px" style="position:relative;top:3px;padding-left:10px;padding-right:5px;"><a  href="${compareCategory[25][mapkey25]}" target="_blank" >${  fn:length(compareCategory[25][mapkey25]) > 50 ? fn:substring(compareCategory[25][mapkey25],0,50) : compareCategory[25][mapkey25]}</a>
+            <img src="/school/img/basicinfo.png" style="padding-right:5px;padding-left:8px;position:relative;top:3px;width:16px;height:14px"><a rel="#basicinfo_overlay" href="#"><spring:message code="label.basicinfo"/></a>
 			
 			</div>
 			

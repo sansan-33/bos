@@ -72,6 +72,7 @@ insert into bos.entitymetadata (fieldname,fieldorder,fieldcategory,active,fieldl
 insert into bos.entitymetadata (fieldname,fieldorder,fieldcategory,active,fieldlabel,entitycategory,categoryorder,excludecompare) values ('principal',20,'b','y','校長','0',0,'n');
 insert into bos.entitymetadata (fieldname,fieldorder,fieldcategory,active,fieldlabel,entitycategory,categoryorder,excludecompare) values ('religion',21,'b','y','宗教','0',0,'n');
 insert into bos.entitymetadata (fieldname,fieldorder,fieldcategory,active,fieldlabel,entitycategory,categoryorder,excludecompare) values ('session',22,'b','y','全日/半日班','0',0,'y');
+insert into bos.entitymetadata (fieldname,fieldorder,fieldcategory,active,fieldlabel,entitycategory,categoryorder,excludecompare) values ('email',25,'b','y','電郵','0',0,'y');
 
 
 
@@ -122,6 +123,7 @@ insert into bos.entitymetadata (fieldname,fieldorder,fieldcategory,active,fieldl
 insert into bos.entitymetadata (fieldname,fieldorder,fieldcategory,active,fieldlabel,entitycategory,categoryorder,excludecompare) values ('nooftest',22,'b','y','全年全科測驗次數','1',0,'n');
 insert into bos.entitymetadata (fieldname,fieldorder,fieldcategory,active,fieldlabel,entitycategory,categoryorder,excludecompare) values ('noofexam',23,'b','y','全年全科考試次數','1',0,'n');
 insert into bos.entitymetadata (fieldname,fieldorder,fieldcategory,active,fieldlabel,entitycategory,categoryorder,excludecompare) values ('elite',24,'b','y','分班安排','1',0,'n');
+insert into bos.entitymetadata (fieldname,fieldorder,fieldcategory,active,fieldlabel,entitycategory,categoryorder,excludecompare) values ('email',25,'b','y','電郵','1',0,'y');
 
 
 insert into bos.entitymetadata (fieldname,fieldorder,fieldcategory,active,fieldlabel,entitycategory,categoryorder) values ('area',1,'c','y','學校佔地面積','1',4);
@@ -182,6 +184,7 @@ insert into bos.entitymetadata (fieldname,fieldorder,fieldcategory,active,fieldl
 insert into bos.entitymetadata (fieldname,fieldorder,fieldcategory,active,fieldlabel,entitycategory,categoryorder,excludecompare) values ('session',19,'b','y','授課時間','2',0,'n');
 insert into bos.entitymetadata (fieldname,fieldorder,fieldcategory,active,fieldlabel,entitycategory,categoryorder,excludecompare) values ('principal',20,'b','y','校長','2',0,'n');
 insert into bos.entitymetadata (fieldname,fieldorder,fieldcategory,active,fieldlabel,entitycategory,categoryorder,excludecompare) values ('religion',21,'b','y','宗教','2',0,'n');
+insert into bos.entitymetadata (fieldname,fieldorder,fieldcategory,active,fieldlabel,entitycategory,categoryorder,excludecompare) values ('email',25,'b','y','電郵','2',0,'y');
 
 
 insert into bos.entitymetadata (fieldname,fieldorder,fieldcategory,active,fieldlabel,entitycategory,categoryorder) values ('area',1,'c','y','學校佔地面積','2',4);
