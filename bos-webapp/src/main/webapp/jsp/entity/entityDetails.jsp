@@ -406,7 +406,20 @@ $(document).ready(function() {
 			
 			<br class="clearboth"/>
 			<img src="/school/img/website.png" style="position:relative;top:3px;padding-left:10px;padding-right:5px;"><a  href="${compareCategory[4][mapkey4]}" target="_blank" >${  fn:length(compareCategory[4][mapkey4]) > 50 ? fn:substring(compareCategory[4][mapkey4],0,50) : compareCategory[4][mapkey4]}</a>
-			<img src="/school/img/email.png" width="15px" style="position:relative;top:3px;padding-left:10px;padding-right:5px;"><a  href="${compareCategory[25][mapkey25]}" target="_blank" >${  fn:length(compareCategory[25][mapkey25]) > 50 ? fn:substring(compareCategory[25][mapkey25],0,50) : compareCategory[25][mapkey25]}</a>
+			<img src="/school/img/email.png" width="15px" style="position:relative;top:3px;padding-left:10px;padding-right:5px;">
+			<c:if  test="${ requestScope.categoryid == '0'}">
+			    <a  href="${compareCategory[23][mapkey23]}" target="_blank" >${  fn:length(compareCategory[23][mapkey23]) > 50 ? fn:substring(compareCategory[23][mapkey23],0,50) : compareCategory[23][mapkey23]}</a>
+            </c:if>
+            <c:if  test="${ requestScope.categoryid == '1'}">
+			    <a  href="${compareCategory[25][mapkey25]}" target="_blank" >${  fn:length(compareCategory[25][mapkey25]) > 50 ? fn:substring(compareCategory[25][mapkey25],0,50) : compareCategory[25][mapkey25]}</a>
+            </c:if>
+            <c:if  test="${ requestScope.categoryid == '2'}">
+                <a  href="${compareCategory[22][mapkey22]}" target="_blank" >${  fn:length(compareCategory[22][mapkey22]) > 50 ? fn:substring(compareCategory[22][mapkey22],0,50) : compareCategory[22][mapkey22]}</a>
+            </c:if>
+            <c:if  test="${ requestScope.categoryid == '5'}">
+                <a  href="${compareCategory[22][mapkey22]}" target="_blank" >${  fn:length(compareCategory[22][mapkey22]) > 50 ? fn:substring(compareCategory[22][mapkey22],0,50) : compareCategory[22][mapkey22]}</a>
+            </c:if>
+
             <img src="/school/img/basicinfo.png" style="padding-right:5px;padding-left:8px;position:relative;top:3px;width:16px;height:14px"><a rel="#basicinfo_overlay" href="#"><spring:message code="label.basicinfo"/></a>
 			
 			</div>

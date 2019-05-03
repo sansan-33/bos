@@ -271,6 +271,7 @@ insert into bos.entitymetadata (fieldname,fieldorder,fieldcategory,active,fieldl
 insert into bos.entitymetadata (fieldname,fieldorder,fieldcategory,active,fieldlabel,entitycategory,categoryorder,excludecompare) values ('session',19,'b','y','授課時間','5',0,'n');
 insert into bos.entitymetadata (fieldname,fieldorder,fieldcategory,active,fieldlabel,entitycategory,categoryorder,excludecompare) values ('principal',20,'b','y','校長','5',0,'n');
 insert into bos.entitymetadata (fieldname,fieldorder,fieldcategory,active,fieldlabel,entitycategory,categoryorder,excludecompare) values ('religion',21,'b','y','宗教','5',0,'n');
+insert into bos.entitymetadata (fieldname,fieldorder,fieldcategory,active,fieldlabel,entitycategory,categoryorder,excludecompare) values ('email',25,'b','y','電郵','5',0,'y');
 
 
 
