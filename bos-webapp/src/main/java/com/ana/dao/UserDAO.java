@@ -42,7 +42,7 @@ public class UserDAO extends BaseDAO {
 		}else if("new".equalsIgnoreCase(user.get("action"))){
 			int iExisting = jdbcTemplate.queryForObject("select count(1) from bos.user where email='" + quote((String) user.get("email")) + "'", Integer.class);
 			if(iExisting <1){
-				sql.append("insert into bos.user(namelocal,namesocial,email" + (socialtype != null && socialtype.trim().length() > 0 ? "," + socialtype : "") + ",anonymous,password,kidentityid,parententityid,selfintro,sex,rank,lookupdistrict1,lookupdistrict2,lookupdistrict3,roleid,lastmodified,created,lastlogin,parentratingcount,logincount,casesharingcount,postcount ) values( ");
+				sql.append("insert into bos.user(namelocal,namesocial,email" + (socialtype != null && socialtype.trim().length() > 0 ? "," + socialtype : "") + ",anonymous,password,kidentityid,parententityid,selfintro,sex,bosrank,lookupdistrict1,lookupdistrict2,lookupdistrict3,roleid,lastmodified,created,lastlogin,parentratingcount,logincount,casesharingcount,postcount ) values( ");
 				sql.append("'" + quote((String) user.get("namelocal")) + "',");
 				sql.append("'" + quote((String) user.get("namesocial")) + "',");
 				sql.append("'" + quote((String) user.get("email")) + "',");
@@ -260,7 +260,7 @@ public class UserDAO extends BaseDAO {
 	public Map<String, Object> viewProfile(String id) throws SQLException {
 
 		StringBuffer sql = new StringBuffer();
-		sql.append(" select u.id, u.namesocial,u.email,u.password, u.roleid,u.namelocal,u.userprofile, userscore, casesharingcount, parentratingcount,logincount,rank,postcount,   ");
+		sql.append(" select u.id, u.namesocial,u.email,u.password, u.roleid,u.namelocal,u.userprofile, userscore, casesharingcount, parentratingcount,logincount,bosrank,postcount,   ");
 		sql.append(" DATE_FORMAT(u.lastlogin,'%d %b %Y %H:%i' ) as lastlogin, DATE_FORMAT(u.created,'%d %b %Y %H:%i' ) as created, ");
 		sql.append(" e.name,e.nameeng , n.name as parententityname, n.nameeng as parententitynameeng ");
 		sql.append(" from bos.user u left join entity e on (e.id=u.kidentityid) left join entity n on (n.id=u.parententityid) ");

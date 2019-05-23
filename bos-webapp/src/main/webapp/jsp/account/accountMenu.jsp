@@ -15,7 +15,7 @@
 		</a>
 		<div style="float:left;position:relative;left:10px;top:5px;">
 			<font class="font5 d3-color-gray-1">${sessionScope.user['namelocal']}</font>
-			<br><font class="font5 d3-color-yellow-1"><spring:message code="label.userscore"/><img style="padding-left:5px;width:14px;height:16px;" src="/school/img/${sessionScope.user['rank']}"/> : ${sessionScope.user['userscore']}</font>
+			<br><font class="font5 d3-color-yellow-1"><spring:message code="label.userscore"/><img style="padding-left:5px;width:14px;height:16px;" src="/school/img/${sessionScope.user['bosrank']}"/> : ${sessionScope.user['userscore']}</font>
 			<br><font class="font1 d3-color-blue" style="padding-left:5px;"><spring:message code="label.userjoindate"/> : <fmt:formatDate pattern="dd-MMM-yyyy" value="${sessionScope.user['created']}" /></font>
 		</div>
 		<div style="float:right;position:relative;">

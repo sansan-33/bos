@@ -15,7 +15,7 @@ $('div.body-background').corner();
 			<div style="position:relative;float:left;left:20px;top:5px;" >
 			<div  class="d3-font d3-color-white">
 					${requestScope.user['namelocal']}<br>
-					<img style="width:22px;height:25px;padding-right:10px;" src="/school/img/${requestScope.user['rank']}"><span class="font6 d3-font-bold d3-shadow" style="position:relative;top:-4px;">${requestScope.user['userscore']}</span><br>
+					<img style="width:22px;height:25px;padding-right:10px;" src="/school/img/${requestScope.user['bosrank']}"><span class="font6 d3-font-bold d3-shadow" style="position:relative;top:-4px;">${requestScope.user['userscore']}</span><br>
 				  	<c:choose>
 				  		<c:when test="${not empty requestScope.user['name'] }">
 				  			<font class="font1">${requestScope.user['name']}<spring:message code="label.parent"/></font>
