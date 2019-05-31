@@ -2,6 +2,10 @@
 
 [
 {
+ 	"content": "<div class='slide_inner'><a class='photo_link' href='https://www.right-school.com'><img class='photo' src='/school/img/rightschoolopen.png' alt='case'></a><a target='_blank' class='caption' href='#'><spring:message code="label.rightschoolopen"/></a></div>",
+     "content_button": "<div ><img  class='thumb' src='/school/img/rightschoolopenthumb.jpg' alt='case'></div><p><spring:message code="label.rightschoolopen"/></p>"
+},
+{
  	"content": "<div class='slide_inner'><a class='photo_link' href='/school/controller/getCMSDetails?id=6'><img class='photo' src='/school/img/likeprimaryschool.jpg' alt='case'></a><a target='_blank' class='caption' href='#'><spring:message code="label.likeprimaryschool"/></a></div>",
      "content_button": "<div ><img  class='thumb' src='/school/img/likeprimaryschoolthumb.jpg' alt='case'></div><p><spring:message code="label.likeprimaryschool"/></p>"
 },
