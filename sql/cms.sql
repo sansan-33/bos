@@ -175,3 +175,19 @@ insert into bos.cms (imgfilename,title,summary,content,lastmodified,created) val
 ',now(),now());
 
 
+insert into bos.cms (imgfilename,title,summary,content,lastmodified,created) values ('../img/rightschoolopen.png','全英國寄宿學校','提供排名，入學申請，人工智能配對 , 讓孩子尋找最適合的學校。','<font class="fontxxlarge d3-color-gray-1 fontbold">全英國寄宿學校</font><br><br><br><br>
+
+<font class="fontlarge d3-color-gray-2">
+
+英國寄宿學校 - 提供排名，入學申請，人工智能配對 , 讓孩子尋找最適合的學校。
+<br><br><br>
+提供教育諮詢，與代理商聯絡並與學校合作，協助學生申請英國寄宿學校。 幫助家長找到最適合您孩子的學校。
+<br><br>
+<a href="https://www.right-school.com" target="_self">
+<img src="../img/rightschoolopen.png" style="width:400px;height:100px;"/>
+</a>
+</font>
+<br><br>
+',now(),now());
+
+
