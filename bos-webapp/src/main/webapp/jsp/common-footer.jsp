@@ -283,11 +283,16 @@
 ||  fn:contains(requestScope['javax.servlet.forward.request_uri'],'getHitSchoolReport')
 
 }" >
+
+<!--
 <script src="https://js.kiwihk.net/bookofschool/v1/ypa_listing.js"  type="text/javascript"></script>
+-->
 </c:if>
 <c:if test="${fn:contains(requestScope['javax.servlet.forward.request_uri'],'schoolCompare')
 }" >
+<!--
 <script src="https://js.kiwihk.net/bookofschool/v1/gemini.js" type="text/javascript"></script>
+-->
 </c:if>
 
 
