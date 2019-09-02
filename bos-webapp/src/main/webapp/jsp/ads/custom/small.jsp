@@ -1,8 +1,8 @@
 <%@page import="java.util.*" %>
 <%
     Random rand = new Random();
-    int n = rand.nextInt(2);
-    String[] adspath = {"/school/jsp/ads/custom/300x250.jsp","/school/jsp/ads/custom/300x250img.jsp"};
+    int n = rand.nextInt(3);
+    String[] adspath = {"/school/jsp/ads/custom/300x250.jsp","/school/jsp/ads/custom/300x250img.jsp","/school/jsp/ads/custom/300x250img.jsp"};
 %>
 
 
