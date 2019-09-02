@@ -8,6 +8,7 @@
 <script language="JavaScript" type="text/javascript">
 function checkform ()
 {
+    $('#questionanswer').val($('#editorcomment').val());
     if (document.forms["savequestionanswer"].questionanswer.value == "") {
 	    alert( "<spring:message code='alert.content'/>" );
         document.forms["savequestionanswer"].editorcomment.focus();
@@ -211,6 +212,8 @@ function checkform ()
 $("textarea").jqte({
     change: function(){
         $('#questionanswer').val($('#editorcomment').val());
+        console.log($('#questionanswer').val());
+        console.log($('#editorcomment').val());
     }
    });
 
