@@ -61,7 +61,7 @@ function handleComplete(evt,comp) {
 <body onload="init();" style="margin:0px;">
 <a href="https://www.right-school.com" target="_blank">
 	<div id="animation_container" style="background-color:rgba(255, 255, 255, 1.00); width:300px; height:250px">
-		<canvas id="canvas" width="300" height="250" style="position: absolute; display: block; background-color:rgba(255, 255, 255, 1.00);"></canvas>
+		<canvas id="canvas" width="308" height="250" style="position: absolute; display: block; background-color:rgba(255, 255, 255, 1.00);"></canvas>
 		<div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:300px; height:250px; position: absolute; left: 0px; top: 0px; display: block;">
 		</div>
 	</div>

@@ -6,5 +6,5 @@
 %>
 
 
-<iframe src="<%=adspath[n]%>" style="height:250px;width:300px;">
+<iframe src="<%=adspath[n]%>" style="height:250px;width:308px;" scrolling="no">
 </iframe>
