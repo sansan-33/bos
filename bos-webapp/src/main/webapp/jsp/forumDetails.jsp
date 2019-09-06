@@ -1,5 +1,5 @@
 <%@ include file="common-header.jsp" %>
-<script type="text/javascript" src="http://code.jquery.com/jquery.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery.min.js" charset="utf-8"></script>
 <script src="/school/js/jquery-te-1.4.0.min.js"></script>
 <LINK REL='stylesheet' TYPE='text/css' HREF='${pageContext.request.contextPath}/stylesheet/jquery-te.css'>
 
