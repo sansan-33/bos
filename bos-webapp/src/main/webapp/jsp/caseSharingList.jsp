@@ -208,3 +208,13 @@ $('#loadingdiv')
 				
 			} );
 </script>
+
+
+
+select c.id, c.approved, c.title
+from casesharing c left join (select * from objectstat where status='active' and type='case') n on (c.id=n.objectid) , entity te, lookup l, user u, entity ce, entity fe,
+(select referenceid,filename from userimage where imagetype='casesharing' group by referenceid having max(id)) u
+where c.targetentityid=te.id and DATE_ADD(c.lastmodified,INTERVAL 3650 DAY) >= now()
+and  c.userid = u.id  and c.currententityid=ce.id and c.finalentityid=fe.id
+and  l.type = 'entity.category.chi' and te.categoryid=l.value  and  c.id=u.referenceid
+ order by c.lastmodified desc

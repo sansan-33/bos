@@ -53,7 +53,7 @@ public class CaseDAO extends BaseDAO {
 
         sql.append(searchMap.get("limit") != null ? " limit " + searchMap.get("limit") : " ");
 
-        theLogger.debug("getCaseSharingList:" + sql.toString());
+        theLogger.info("getCaseSharingList:" + sql.toString());
 		List<Map<String, Object>> result = jdbcTemplate.queryForList(sql.toString());
 		return result;
 	}

@@ -716,7 +716,7 @@ public class ServiceController extends BaseController {
 			    String filename= (imagekey.contains("mobile")  ? "" :  userid + "-" ) + multipartFile.getOriginalFilename() ;
 			    try{
 			    	path = fileUtil.saveFileToServer(multipartFile, request.getServletContext().getRealPath("/") + prefix +  System.getProperty("file.separator"), filename);
-			    	path = fileUtil.saveFileToServer(multipartFile, "/home/ubuntu/repository/" +  prefix + "/", filename);
+			    	path = fileUtil.saveFileToServer(multipartFile, "/home/ytwong/repository/" +  prefix + "/", filename);
 			    	session.setAttribute(imagekey,filename);
 			    
 			    }catch(Exception ex){
