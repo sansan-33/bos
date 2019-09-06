@@ -289,6 +289,7 @@ public class QuestionAnswerController extends BaseController {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession(true);
 		Map user = (Map) session.getAttribute("user");
+		theLogger.info("saveQuestionAnswer start");
 		String userid = "-1"; 		try { 			userid = user != null && user.get("ID") != null && (Integer) user.get("ID") > 0 ? ((Integer) user.get("ID")).toString() : "-1"; 		}catch (Exception ex){ 	 		}		;
 		if(user != null && !"-1".equalsIgnoreCase(userid)){
 	
@@ -299,7 +300,7 @@ public class QuestionAnswerController extends BaseController {
 			String type = request.getParameter("type") != null && request.getParameter("type").trim().length() > 0 ? request.getParameter("type") : "-1";
 			String entityid = request.getParameter("entityid") != null && request.getParameter("entityid").trim().length() > 0 ? request.getParameter("entityid") : "0";
 			String categoryid = request.getParameter("categoryid") != null && request.getParameter("categoryid").trim().length() > 0 ? request.getParameter("categoryid") : "0";
-			theLogger.debug("saveQuestionAnswer " + request.getParameter("entityid"));
+			theLogger.info("saveQuestionAnswer " + request.getParameter("entityid"));
 			String parentid = request.getParameter("parentid") != null && request.getParameter("parentid").trim().length() > 0 ? request.getParameter("parentid") : "0";
 			
 			HashMap<String,String> searchParam = new HashMap<String,String>();
@@ -344,7 +345,7 @@ public class QuestionAnswerController extends BaseController {
 			
 			userDAO.updateCounter("postcount", userid);
 			String key = questionAnswerDAO.saveQuestionAnswer(searchParam);
-			theLogger.debug("parentid " + parentid);
+			theLogger.info("parentid " + parentid);
 			if(!"0".equalsIgnoreCase(parentid)){
 				questionAnswerDAO.updateQuestionAnswerTotalReply(parentid);
 				theLogger.debug("update total reply  " + parentid);

@@ -150,7 +150,7 @@ $(document).ready(function()
   		$('#appsbox').hide();
 	});
 
-   
+
     if(isMobileDevice()){
         $('#appsbox').animate({top:$(window).scrollTop()+"px" },{queue: false, duration: 550},"slow");
         $('#appsbox').show();
