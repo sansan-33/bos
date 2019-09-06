@@ -280,11 +280,11 @@ public class QuestionAnswerDAO extends BaseDAO {
 						    keyHolder);
 							key = keyHolder.getKey().toString(); //now contains the generated key
 
-						theLogger.info("executed ps");
+						theLogger.info("executed ps with key {} " , key);
 							
 						}
 				}
-				theLogger.info(sql.toString());
+				theLogger.info("sql {} {} ",  sql.toString() , questionanswer.toString());
 				return key;
 			}else{
 				return "-1";
