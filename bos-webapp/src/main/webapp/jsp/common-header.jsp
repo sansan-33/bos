@@ -149,33 +149,8 @@ $(document).ready(function()
 	{
   		$('#appsbox').hide();
 	});
-	$("#report").tooltip({ 
-		effect: 'slide',
-		relative: true,
-		 offset: [90, 2]
-	}).dynamic({ bottom: { direction: 'down', bounce: true } });
 
-    <!-- make all links with the 'rel' attribute open overlays -->
-
-	$("a[rel]").click(function() { overlayElem = $(this); });
-
-        // if the function argument is given to overlay,
-        // it is assumed to be the onBeforeLoad event listener
-        $("a[rel]").overlay({
-
-            effect: 'apple',
-
-            onBeforeLoad: function() {
-
-                // grab wrapper element inside content
-                var wrap = this.getOverlay().find(".contentWrap");
-
-                // load the page specified in the trigger
-                wrap.load(this.getTrigger().attr("href"));
-            }
-
-    });
-
+   
     if(isMobileDevice()){
         $('#appsbox').animate({top:$(window).scrollTop()+"px" },{queue: false, duration: 550},"slow");
         $('#appsbox').show();

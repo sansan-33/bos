@@ -212,8 +212,8 @@ function checkform ()
 $("textarea").jqte({
     change: function(){
         $('#questionanswer').val($('#editorcomment').val());
-        console.log($('#questionanswer').val());
-        console.log($('#editorcomment').val());
+        console.log('questionanswer'  + $('#questionanswer').val());
+        console.log('editorcomment'  +  $('#editorcomment').val());
     }
    });
 
