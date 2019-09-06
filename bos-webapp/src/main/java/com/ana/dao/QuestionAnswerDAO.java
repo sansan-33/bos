@@ -247,9 +247,10 @@ public class QuestionAnswerDAO extends BaseDAO {
 				
 					
 					sql.append("current_timestamp,current_timestamp)");
+					theLogger.info("subject / answer {} {} " , questionanswer.get("subject") ,  questionanswer.get("questionanswer"));
+
 					if(!"-1".equalsIgnoreCase(questionanswer.get("subject")) && !"-1".equalsIgnoreCase(questionanswer.get("questionanswer")) ){
-					
-						
+
 						KeyHolder keyHolder = new GeneratedKeyHolder();
 						jdbcTemplate.update(
 						    new PreparedStatementCreator() {
@@ -278,6 +279,8 @@ public class QuestionAnswerDAO extends BaseDAO {
 						    },
 						    keyHolder);
 							key = keyHolder.getKey().toString(); //now contains the generated key
+
+						theLogger.info("executed ps");
 							
 						}
 				}
