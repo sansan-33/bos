@@ -348,7 +348,7 @@ public class QuestionAnswerController extends BaseController {
 			theLogger.info("parentid " + parentid);
 			if(!"0".equalsIgnoreCase(parentid)){
 				questionAnswerDAO.updateQuestionAnswerTotalReply(parentid);
-				theLogger.debug("update total reply  " + parentid);
+				theLogger.info("update total reply  " + parentid);
 			}else{
 				entityDAO.getEntityHitCount(key,"forum");
 			}

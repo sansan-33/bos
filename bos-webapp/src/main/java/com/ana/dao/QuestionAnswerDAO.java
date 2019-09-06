@@ -281,7 +281,7 @@ public class QuestionAnswerDAO extends BaseDAO {
 							
 						}
 				}
-				//theLogger.debug(sql.toString());
+				theLogger.info(sql.toString());
 				return key;
 			}else{
 				return "-1";
