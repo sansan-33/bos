@@ -242,7 +242,7 @@ INSERT INTO entityscore (
 	sex,
 	poaschoolnet
 )
-  SELECT id,2018,categoryid,ranking,
+  SELECT id,2019,categoryid,ranking,
 	rankingfinancetype,
 	rankingdistrict ,
 	score ,
@@ -287,7 +287,7 @@ INSERT INTO entityscore (
 
   INSERT INTO comment (
   comment,userlike,userdislike,entityid,userid,subject,grade,metric1,metric2,metric3,metric4,metric5,lastmodified,created,metric6,metadesc,keywords,ip,type,year)
-  select c.comment,c.userlike,c.userdislike,c.entityid,c.userid,c.subject,c.grade,c.metric1,c.metric2,c.metric3,c.metric4,c.metric5,c.lastmodified,c.created,c.metric6,c.metadesc,c.keywords,c.ip,c.type,2018 from comment c, entity e where type='system' and c.userid=1 and year=2017 and c.entityid=e.id and e.categoryid in (0,1,2,5);
+  select c.comment,c.userlike,c.userdislike,c.entityid,c.userid,c.subject,c.grade,c.metric1,c.metric2,c.metric3,c.metric4,c.metric5,c.lastmodified,c.created,c.metric6,c.metadesc,c.keywords,c.ip,c.type,2019 from comment c, entity e where type='system' and c.userid=1 and year=2018 and c.entityid=e.id and e.categoryid in (0,1,2,5);
 
 
 update entityscore es1, entityscore es2 set
@@ -314,7 +314,7 @@ es1.footballpos = es2.footballpos,
 es1.sportntposfemale = es2.sportntposfemale,
 es1.sportntposmale = es2.sportntposmale
 
- where es1.entityid=es2.entityid and es1.year=2018 and es2.year=2017;
+ where es1.entityid=es2.entityid and es1.year=2019 and es2.year=2018;
 
 
 update entity e,
